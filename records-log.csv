@@ -1,0 +1,782 @@
+status,agency,current_file,original_file
+awaiting-cleaning,Sedro-Wooley Police Department,S000236.csv,S000236.pdf
+awaiting-cleaning,Bothell Police Department,INTERNALS_2000-2013_Redacted.csv,INTERNALS_2000-2013_Redacted.pdf
+awaiting-cleaning,Bothell Police Department,INTERNALS_2014_UP_Redacted.csv,INTERNALS_2014_UP_Redacted.pdf
+awaiting-cleaning,Auburn Police Department,allegations_and_findings-internal investigations.csv,allegations_and_findings.xlsx
+awaiting-cleaning,Auburn Police Department,allegations_and_findings-supervisor inquiries.csv,allegations_and_findings.xlsx
+awaiting-cleaning,Yakima Police Department,YPD Violation Data.csv,YPD Violation Data.xlsx
+unchecked,Quincy Police Department,Installment #1 Bates #0001-0041.pdf,Installment #1 Bates #0001-0041.pdf
+unchecked,Quincy Police Department,Installment #1 Bates #0001-0041_Redacted.pdf,Installment #1 Bates #0001-0041_Redacted.pdf
+unchecked,Fircrest Police Department,Fircrest-Public-Records-Request-Form-signed.pdf,Fircrest-Public-Records-Request-Form-signed.pdf
+unchecked,Fircrest Police Department,PDR - Roberts.pdf,PDR - Roberts.pdf
+unchecked,Centralia Police Department,D446-061620_1st_installment_invoice.pdf,D446-061620_1st_installment_invoice.pdf
+unchecked,Centralia Police Department,D446-061620_AI_I-16-05.pdf,D446-061620_AI_I-16-05.pdf
+unchecked,Centralia Police Department,D446-061620_I-16-01.pdf,D446-061620_I-16-01.pdf
+unchecked,Centralia Police Department,D446-061620_I-16-02.pdf,D446-061620_I-16-02.pdf
+unchecked,Centralia Police Department,D446-061620_I-16-04.pdf,D446-061620_I-16-04.pdf
+unchecked,Centralia Police Department,D446-061620_I-17-01.pdf,D446-061620_I-17-01.pdf
+unchecked,Centralia Police Department,D446-061620_I-17-02__I-17-03.pdf,D446-061620_I-17-02__I-17-03.pdf
+unchecked,Centralia Police Department,D446-061620_I-17-04.pdf,D446-061620_I-17-04.pdf
+unchecked,Centralia Police Department,D446-061620_I-17-04_contd.pdf,D446-061620_I-17-04_contd.pdf
+unchecked,Centralia Police Department,D446-061620_I-17-05_R.pdf,D446-061620_I-17-05_R.pdf
+unchecked,Centralia Police Department,D446-061620_I-17-08_R.pdf,D446-061620_I-17-08_R.pdf
+unchecked,Centralia Police Department,D446-061620_I-17-09.pdf,D446-061620_I-17-09.pdf
+unchecked,Centralia Police Department,D446-061620_I-17_06_R.pdf,D446-061620_I-17_06_R.pdf
+unchecked,Centralia Police Department,D446-061620_I-18-01.pdf,D446-061620_I-18-01.pdf
+unchecked,Centralia Police Department,D446-061620_I-18-04.pdf,D446-061620_I-18-04.pdf
+unchecked,Centralia Police Department,D446-061620_I-18-06.pdf,D446-061620_I-18-06.pdf
+unchecked,Centralia Police Department,D446-061620_I-18-10.pdf,D446-061620_I-18-10.pdf
+unchecked,Centralia Police Department,D446-061620_I-18-11.pdf,D446-061620_I-18-11.pdf
+unchecked,Centralia Police Department,D446-061620_I-19-01.pdf,D446-061620_I-19-01.pdf
+unchecked,Centralia Police Department,D446-061620_I-19-03.pdf,D446-061620_I-19-03.pdf
+unchecked,Centralia Police Department,D446-061620_I-19-04.pdf,D446-061620_I-19-04.pdf
+unchecked,Centralia Police Department,D446-061620_I-19-05_R.pdf,D446-061620_I-19-05_R.pdf
+unchecked,Centralia Police Department,D446-061620_I-19-10_R.pdf,D446-061620_I-19-10_R.pdf
+unchecked,Centralia Police Department,D446-061620_I-19-11.pdf,D446-061620_I-19-11.pdf
+unchecked,Centralia Police Department,D446-061620_I-19-11_(2).pdf,D446-061620_I-19-11_(2).pdf
+unchecked,Centralia Police Department,D446-061620_I-19-12.pdf,D446-061620_I-19-12.pdf
+unchecked,Centralia Police Department,D446-061620_IA-16-09.pdf,D446-061620_IA-16-09.pdf
+unchecked,Centralia Police Department,D446-061620_IA-16-10.pdf,D446-061620_IA-16-10.pdf
+unchecked,Centralia Police Department,D446-061620_IA-16-11.pdf,D446-061620_IA-16-11.pdf
+unchecked,Centralia Police Department,D446-061620_IA-19-06.pdf,D446-061620_IA-19-06.pdf
+unchecked,Centralia Police Department,D446-061620_IA15-08.pdf,D446-061620_IA15-08.pdf
+unchecked,Centralia Police Department,D446-061620_I_18_08.pdf,D446-061620_I_18_08.pdf
+unchecked,Centralia Police Department,D446-061620_I_18_12_I_18_13.pdf,D446-061620_I_18_12_I_18_13.pdf
+unchecked,Centralia Police Department,D446-061620_I_19.pdf,D446-061620_I_19.pdf
+unchecked,Centralia Police Department,D446-061620_Installment_2_invoice.pdf,D446-061620_Installment_2_invoice.pdf
+unchecked,Centralia Police Department,D446-061620_Installment_2_letter.pdf,D446-061620_Installment_2_letter.pdf
+unchecked,Centralia Police Department,D446-0906120_I_18_09.pdf,D446-0906120_I_18_09.pdf
+unchecked,Centralia Police Department,Employee_discipline_records.pdf,Employee_discipline_records.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Fifth Installment_Redacted-p1.csv,Roberts Fifth Installment_Redacted.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Fifth Installment_Redacted-p2.csv,Roberts Fifth Installment_Redacted.pdf
+awaiting-csv,Oak Harbor Police Department,Roberts Fifth Installment_Redacted.ocr.pdf,Roberts Fifth Installment_Redacted.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts First Installment 2010-2013-p2.csv,Roberts First Installment 2010-2013.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts First Installment 2010-2013-p3.csv,Roberts First Installment 2010-2013.pdf
+unchecked,Oak Harbor Police Department,Roberts First Installment 2010-2013.pdf,Roberts First Installment 2010-2013.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Fourth Installment-p2.csv,Roberts Fourth Installment.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Fourth Installment-p3.csv,Roberts Fourth Installment.pdf
+unchecked,Oak Harbor Police Department,Roberts Fourth Installment.pdf,Roberts Fourth Installment.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Second Installment 2013.csv,Roberts Second Installment 2013.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Seventh Installment.csv,Roberts Seventh Installment.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Sixth Installment_Redacted-p1.csv,Roberts Sixth Installment_Redacted.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Sixth Installment_Redacted-p2.csv,Roberts Sixth Installment_Redacted.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Sixth Installment_Redacted.csv,Roberts Sixth Installment_Redacted.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Third Installment_Redacted-p1.csv,Roberts Third Installment_Redacted.pdf
+awaiting-cleaning,Oak Harbor Police Department,Roberts Third Installment_Redacted-p3.csv,Roberts Third Installment_Redacted.pdf
+unchecked,Oak Harbor Police Department,Roberts Third Installment_Redacted.pdf,Roberts Third Installment_Redacted.pdf
+awaiting-cleaning,Union Gap Police Department,OFFICER REPRIMANDS REQUEST BRANDON ROBERTS-Sheet1.csv,OFFICER REPRIMANDS REQUEST BRANDON ROBERTS.xlsx
+awaiting-cleaning,Union Gap Police Department,OFFICER REPRIMANDS REQUEST BRANDON ROBERTS-Sheet2.csv,OFFICER REPRIMANDS REQUEST BRANDON ROBERTS.xlsx
+awaiting-cleaning,Union Gap Police Department,OFFICER REPRIMANDS REQUEST BRANDON ROBERTS-Sheet3.csv,OFFICER REPRIMANDS REQUEST BRANDON ROBERTS.xlsx
+unchecked,Pe Ell Marshals Office,Police PR 1.pdf,Police PR 1.pdf
+unchecked,Pe Ell Marshals Office,Police PR 2.pdf,Police PR 2.pdf
+unchecked,Pe Ell Marshals Office,Police PR 3.pdf,Police PR 3.pdf
+unchecked,Vader Police Department,PRR061520B Response.Closeout Ltr.pdf,PRR061520B Response.Closeout Ltr.pdf
+unchecked,Vader Police Department,SOS Records Retention page 129.pdf,SOS Records Retention page 129.pdf
+unchecked,Tumwater Police Department,2001-01-19_Collision.pdf,2001-01-19_Collision.pdf
+unchecked,Tumwater Police Department,2001-03-19_Collision.pdf,2001-03-19_Collision.pdf
+unchecked,Tumwater Police Department,2003-09-16Performance.pdf,2003-09-16Performance.pdf
+unchecked,Tumwater Police Department,2004-06-27_Reports.pdf,2004-06-27_Reports.pdf
+unchecked,Tumwater Police Department,2004-12-13Peformance.pdf,2004-12-13Peformance.pdf
+unchecked,Tumwater Police Department,2005-04-26Performance.pdf,2005-04-26Performance.pdf
+unchecked,Tumwater Police Department,2005-09-07Collision.pdf,2005-09-07Collision.pdf
+unchecked,Tumwater Police Department,2006-01-05_Infractions.pdf,2006-01-05_Infractions.pdf
+unchecked,Tumwater Police Department,2006-02-02.pdf,2006-02-02.pdf
+unchecked,Tumwater Police Department,2006-02-15_Reporting.pdf,2006-02-15_Reporting.pdf
+unchecked,Tumwater Police Department,2008-01-23.pdf,2008-01-23.pdf
+unchecked,Tumwater Police Department,2008-01-24_CollisionQuiles.pdf,2008-01-24_CollisionQuiles.pdf
+unchecked,Tumwater Police Department,2008-04-21.pdf,2008-04-21.pdf
+unchecked,Tumwater Police Department,2008-08-08_Evidence.pdf,2008-08-08_Evidence.pdf
+unchecked,Tumwater Police Department,2008-09-16Performance (copy).pdf,2008-09-16Performance (copy).pdf
+unchecked,Tumwater Police Department,2008-09-16Performance.pdf,2008-09-16Performance.pdf
+unchecked,Tumwater Police Department,2009-03-12_Conduct.pdf,2009-03-12_Conduct.pdf
+unchecked,Tumwater Police Department,2009-11-16Computer_Use.pdf,2009-11-16Computer_Use.pdf
+unchecked,Tumwater Police Department,2010-02-16_Conduct-Evidence.pdf,2010-02-16_Conduct-Evidence.pdf
+unchecked,Tumwater Police Department,2012-08-24_Performance.pdf,2012-08-24_Performance.pdf
+unchecked,Tumwater Police Department,2012-11-08_Insubordination.pdf,2012-11-08_Insubordination.pdf
+unchecked,Tumwater Police Department,2012-11-08_Report_Writing-Evidence.pdf,2012-11-08_Report_Writing-Evidence.pdf
+unchecked,Tumwater Police Department,2013-10-17_EvidenceStevens.pdf,2013-10-17_EvidenceStevens.pdf
+unchecked,Tumwater Police Department,2013-10-17_Performance.pdf,2013-10-17_Performance.pdf
+unchecked,Tumwater Police Department,2014-05-16Reporting_Use_of_Force.pdf,2014-05-16Reporting_Use_of_Force.pdf
+unchecked,Tumwater Police Department,2014-09-26.pdf,2014-09-26.pdf
+unchecked,Tumwater Police Department,2015-01-13_Collision.pdf,2015-01-13_Collision.pdf
+unchecked,Tumwater Police Department,2015-04-08_Conduct_-_Patrol_Vehicle.pdf,2015-04-08_Conduct_-_Patrol_Vehicle.pdf
+unchecked,Tumwater Police Department,2015-06-04_Conduct.pdf,2015-06-04_Conduct.pdf
+unchecked,Tumwater Police Department,2016-01-11Report_Writing.pdf,2016-01-11Report_Writing.pdf
+unchecked,Tumwater Police Department,2016-01-29_Taser.pdf,2016-01-29_Taser.pdf
+unchecked,Tumwater Police Department,2016-08-01_Report_Writing.pdf,2016-08-01_Report_Writing.pdf
+unchecked,Tumwater Police Department,2016-11-07SpeechCady.pdf,2016-11-07SpeechCady.pdf
+unchecked,Tumwater Police Department,2017-08-03CollisionFinch.pdf,2017-08-03CollisionFinch.pdf
+unchecked,Tumwater Police Department,2019-10-21ConductThompson.pdf,2019-10-21ConductThompson.pdf
+unchecked,Tumwater Police Department,Raphael_-_Performance.pdf,Raphael_-_Performance.pdf
+unchecked,Tumwater Police Department,Robert_PDR_-_Personnel_Notices.pdf,Robert_PDR_-_Personnel_Notices.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/10-18437_counseling_statement NR.pdf,L000715-061520_First_Installment_No_Redactions/10-18437_counseling_statement NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_Dronen_2017 NR.pdf,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_Dronen_2017 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_McCalmant_2017 NR.pdf,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_McCalmant_2017 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_Pochert_2016 NR.pdf,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_Pochert_2016 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_Schwartz_2017 NR.pdf,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_Schwartz_2017 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_Simington_2016 NR.pdf,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventable_-_Simington_2016 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventible-Howard_2019 NR.pdf,L000715-061520_First_Installment_No_Redactions/Accident_Review_Preventible-Howard_2019 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Bennett_Collision_Counseling_Statement_11-14-19_-_RKELLY NR.pdf,L000715-061520_First_Installment_No_Redactions/Bennett_Collision_Counseling_Statement_11-14-19_-_RKELLY NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Bennett_Counseling_Statement_Collision_signed_copy NR.pdf,L000715-061520_First_Installment_No_Redactions/Bennett_Counseling_Statement_Collision_signed_copy NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/COUNSELING_STATEMENT_06252011 NR.pdf,L000715-061520_First_Installment_No_Redactions/COUNSELING_STATEMENT_06252011 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/COUNSELING_STATEMENT_11042009 NR.pdf,L000715-061520_First_Installment_No_Redactions/COUNSELING_STATEMENT_11042009 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/COUNSELING_STATEMENT_12162009 NR.pdf,L000715-061520_First_Installment_No_Redactions/COUNSELING_STATEMENT_12162009 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Canada Counseling NR.pdf,L000715-061520_First_Installment_No_Redactions/Canada Counseling NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_-_Officer_McMullen NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_-_Officer_McMullen NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_0022718_-_Riley NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_0022718_-_Riley NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_011118_-_Schwartz NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_011118_-_Schwartz NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_032817_-_McCalmant NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_032817_-_McCalmant NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_071017_-_Dronen NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_071017_-_Dronen NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_072516_-_Simington NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_072516_-_Simington NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_102319_-_Howard NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_102319_-_Howard NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_102616_-_Pochert NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_102616_-_Pochert NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_102716_-_Pochert NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_102716_-_Pochert NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_120117_-_Runge NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_120117_-_Runge NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_Memo_072618_-_Reynolds NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statement_Memo_072618_-_Reynolds NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Counseling_Statements_-_Dale_Kuehny NR.pdf,L000715-061520_First_Installment_No_Redactions/Counseling_Statements_-_Dale_Kuehny NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Howard Counseling NR.pdf,L000715-061520_First_Installment_No_Redactions/Howard Counseling NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Internal_Investigation_#18-008_-_Duty_110518 NR.pdf,L000715-061520_First_Installment_No_Redactions/Internal_Investigation_#18-008_-_Duty_110518 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Internal_Investigation_#19-004_-_Noble_Duty NR.pdf,L000715-061520_First_Installment_No_Redactions/Internal_Investigation_#19-004_-_Noble_Duty NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Officer_Malone_Reprimand NR.pdf,L000715-061520_First_Installment_No_Redactions/Officer_Malone_Reprimand NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/REPRIMAND_06302011 NR.pdf,L000715-061520_First_Installment_No_Redactions/REPRIMAND_06302011 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/SKM_654e20062702160 NR.pdf,L000715-061520_First_Installment_No_Redactions/SKM_654e20062702160 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/SKM_C45820061818170 NR.pdf,L000715-061520_First_Installment_No_Redactions/SKM_C45820061818170 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Shepherd Written Reprimand NR.pdf,L000715-061520_First_Installment_No_Redactions/Shepherd Written Reprimand NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Written_Reprimand_Final_112018 NR.pdf,L000715-061520_First_Installment_No_Redactions/Written_Reprimand_Final_112018 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Written_Reprimand_Noble_060419 NR.pdf,L000715-061520_First_Installment_No_Redactions/Written_Reprimand_Noble_060419 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/Written_Reprimand_Shepherd_112519 NR.pdf,L000715-061520_First_Installment_No_Redactions/Written_Reprimand_Shepherd_112519 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/henry-counseling_statement NR.pdf,L000715-061520_First_Installment_No_Redactions/henry-counseling_statement NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/sagen-counseling_statement NR.pdf,L000715-061520_First_Installment_No_Redactions/sagen-counseling_statement NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/shepherd_counseling_statement NR.pdf,L000715-061520_First_Installment_No_Redactions/shepherd_counseling_statement NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/slocombe_counseling_statement NR.pdf,L000715-061520_First_Installment_No_Redactions/slocombe_counseling_statement NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_First_Installment_No_Redactions/thatsana-counseling_statement NR.pdf,L000715-061520_First_Installment_No_Redactions/thatsana-counseling_statement NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/19-44895_Sagen_UOF_Counseling_Statement NR.pdf,L000715-061520_Second_Installment_with_Redactions/19-44895_Sagen_UOF_Counseling_Statement NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Cooper_2019 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Cooper_2019 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Hanson_2018 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Hanson_2018 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Isakson_2016 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Isakson_2016 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-McGee_2019 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-McGee_2019 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Newton_2019 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Newton_2019 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Riley_2016 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Non-Preventible-Riley_2016 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Duty_111518 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Duty_111518 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Greiber_052818 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Greiber_052818 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Henry_102318 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Henry_102318 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_McMullen_090618 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_McMullen_090618 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Shepherd_060418 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Shepherd_060418 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Thatsana_112918 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventable_-_Thatsana_112918 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Canada_2020 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Canada_2020 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Hanson_2020 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Hanson_2020 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Kuehny_2020 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Kuehny_2020 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Leander_2019 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Leander_2019 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Shepherd_2019 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Accident_Review_Preventible-Shepherd_2019 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/BALL_-_KPD_IA_15-004_Redacted.pdf,L000715-061520_Second_Installment_with_Redactions/BALL_-_KPD_IA_15-004_Redacted.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Banner-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Banner-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Bennett_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Bennett_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Bennett_Disp_Letter_15-013 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Bennett_Disp_Letter_15-013 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Blosser-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Blosser-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Blosser-KPD_IA_17-011 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Blosser-KPD_IA_17-011 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/C._Hanson-_KPD_IA_09-003 NR.pdf,L000715-061520_Second_Installment_with_Redactions/C._Hanson-_KPD_IA_09-003 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/CHILD_-_KPD_IA_19-005 NR.pdf,L000715-061520_Second_Installment_with_Redactions/CHILD_-_KPD_IA_19-005 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Canada-_KPD_IA_13-013 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Canada-_KPD_IA_13-013 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Compton-KPD_IA_17-005 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Compton-KPD_IA_17-005 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Dramis-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Dramis-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Duty-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Duty-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Duty-KPD_IA_18-008 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Duty-KPD_IA_18-008 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/EALY-THOMAS_-_KPD_IA_20-001 NR.pdf,L000715-061520_Second_Installment_with_Redactions/EALY-THOMAS_-_KPD_IA_20-001 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Genack-KPD_IA_09-012 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Genack-KPD_IA_09-012 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/HOWARDCONTRERAS-KPD_IA_20-002 NR.pdf,L000715-061520_Second_Installment_with_Redactions/HOWARDCONTRERAS-KPD_IA_20-002 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Harrington-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Harrington-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Harris-_KPD_IA_11-005 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Harris-_KPD_IA_11-005 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Harris-_KPD_IA_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Harris-_KPD_IA_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Howard_-_KPF_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Howard_-_KPF_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#18-003_-_Engel_Weatherbee_091818 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#18-003_-_Engel_Weatherbee_091818 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#19-001_-_Contreras_Weatherbee NR.pdf,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#19-001_-_Contreras_Weatherbee NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#19-007_-_Sneyd_Noble NR.pdf,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#19-007_-_Sneyd_Noble NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#20-001_-_Ealy-Thomas NR.pdf,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#20-001_-_Ealy-Thomas NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#20-002_-_Howard_Contreras NR.pdf,L000715-061520_Second_Installment_with_Redactions/Internal_Investigation_#20-002_-_Howard_Contreras NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Internal_Review_112519_-_Gregg NR.pdf,L000715-061520_Second_Installment_with_Redactions/Internal_Review_112519_-_Gregg NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Isakson_Disp_Letter_15-013 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Isakson_Disp_Letter_15-013 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Isakson__Riley__Bennett_Findings NR.pdf,L000715-061520_Second_Installment_with_Redactions/Isakson__Riley__Bennett_Findings NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/J.SULLIVAN_-_KPD_IA_17-008 NR.pdf,L000715-061520_Second_Installment_with_Redactions/J._Meyer-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/JACKSON_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/JACKSON_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/JONES_-_KPD_IA_17-001 NR.pdf,L000715-061520_Second_Installment_with_Redactions/JONES_-_KPD_IA_17-001 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Jackson-KPD_IA_16-007 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Jackson-KPD_IA_16-007 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Knox-_KPD_IA_10-010 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Knox-_KPD_IA_10-010 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Kohn_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Kohn_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Kuehny_-_KPF_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Kuehny_-_KPF_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Leander_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Leander_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Maynard-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Maynard-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/McCalmant_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/McCalmant_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Meiners-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Meiners-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Melone_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Melone_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Merkl__-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Merkl__-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Moore_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Moore_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/NOBLEDUTY_-_KPD_IA_19-004 NR.pdf,L000715-061520_Second_Installment_with_Redactions/NOBLEDUTY_-_KPD_IA_19-004 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Pearson-_KPD_IA_18-006 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Pearson-_KPD_IA_18-006 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Pitts-Sprowl-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Pitts-Sprowl-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Pochert-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Pochert-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Pochert-_KPD_IA_09-012 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Pochert-_KPD_IA_09-012 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/ROSSER_-_KPD_IA_17-009 NR.pdf,L000715-061520_Second_Installment_with_Redactions/ROSSER_-_KPD_IA_17-009 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Rees_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Rees_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Reynolds-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Reynolds-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Reynolds-KPD_File_2 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Reynolds-KPD_File_2 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Riley_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Riley_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Riley_Disp_Letter_15-013 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Riley_Disp_Letter_15-013 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Rosane-_KPD_IA_09-001 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Rosane-_KPD_IA_09-001 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Runge_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Runge_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/SAGEN_-_KPD_IA_15-007 NR.pdf,L000715-061520_Second_Installment_with_Redactions/SAGEN_-_KPD_IA_15-007 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/S_Peterso_-_KPD_File_Redacted.pdf,L000715-061520_Second_Installment_with_Redactions/S_Peterso_-_KPD_File_Redacted.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Sagen-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Sagen-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Scott-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Scott-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Shepherd-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Shepherd-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Slocombe-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Slocombe-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Sneyd_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Sneyd_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Supervisors_Vehicle_Pursuit_Report-Shepherd_2019 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Supervisors_Vehicle_Pursuit_Report-Shepherd_2019 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/T._Valdez-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/T._Valdez-_KPD_IA_18-001 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Taylor-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Taylor-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Trujillo_-_KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Trujillo_-_KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/UofF_19-43514_Kuhn_and_Howard NR.pdf,L000715-061520_Second_Installment_with_Redactions/UofF_19-43514_Kuhn_and_Howard NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/VALDEZ-KPD_IA_17-004 NR.pdf,L000715-061520_Second_Installment_with_Redactions/VALDEZ-KPD_IA_17-004 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/W._Meyer-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/W._Meyer-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/WEATHERBEE_-_KPD_IA_19-001 NR.pdf,L000715-061520_Second_Installment_with_Redactions/WEATHERBEE_-_KPD_IA_19-001 NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Weber-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/Weber-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/White-KPD_File NR.pdf,L000715-061520_Second_Installment_with_Redactions/White-KPD_File NR.pdf
+unchecked,Kennewick Police Department,L000715-061520_Second_Installment_with_Redactions/Zinsli-_KPD_IA_14-006 NR.pdf,L000715-061520_Second_Installment_with_Redactions/Zinsli-_KPD_IA_14-006 NR.pdf
+unchecked,Kennewick Police Department,Redaction_Log_Second_Installment.pdf,Redaction_Log_Second_Installment.pdf
+awaiting-cleaning,Fife Police Department,PRR Roberts 061520-0332 - RECORDS.csv,PRR Roberts 061520-0332 - RECORDS.xlsx
+unchecked,Central Washington University Washington Police Department,0719_001.pdf,0719_001.pdf
+unchecked,Central Washington University Washington Police Department,5063_Part1.pdf,5063_Part1.pdf
+unchecked,Central Washington University Washington Police Department,5063_Part2.pdf,5063_Part2.pdf
+unchecked,Central Washington University Washington Police Department,5063_Part3.pdf,5063_Part3.pdf
+unchecked,West Richland Police Department,Signed Delay Ltr-Brandon Roberts.pdf,Signed Delay Ltr-Brandon Roberts.pdf
+awaiting-cleaning,West Richland Police Department,records.csv,records.csv
+unchecked,Clyde Hill Police Department,05-05-08 Officer Cox Inquiry.pdf,05-05-08 Officer Cox Inquiry.pdf
+unchecked,Clyde Hill Police Department,08-03-12 Office Cox Inquiry.pdf,08-03-12 Office Cox Inquiry.pdf
+unchecked,Clyde Hill Police Department,09-27-18 Memorandum.pdf,09-27-18 Memorandum.pdf
+unchecked,Clyde Hill Police Department,12-01-04 Memorandum.pdf,12-01-04 Memorandum.pdf
+unchecked,Clyde Hill Police Department,12-22-18 Czebotar Investigation.pdf,12-22-18 Czebotar Investigation.pdf
+awaiting-cleaning,Clyde Hill Police Department,Summary of Incidents & Records.csv,Summary of Incidents & Records.pdf
+awaiting-cleaning,Spokane Police Department,Letter_of_Reprimand_PRR.pdf.csv,Letter_of_Reprimand_PRR.pdf.xlsx
+unchecked,Ruston Police Department,PRR 20-46  - RPD Police Records_Redacted 8-25-20.pdf,PRR 20-46  - RPD Police Records_Redacted 8-25-20.pdf
+unchecked,Kalama Police Department,Joe Stewart Termination.PDF,Joe Stewart Termination.PDF
+unchecked,Kalama Police Department,JoeStewartTermination.pdf,JoeStewartTermination.pdf
+awaiting-cleaning,Kalama Police Department,REPublicRecordsRequest-PoliceRecords-EmailR.Herrera.msg.eml-attachment.txt,REPublicRecordsRequest-PoliceRecords-EmailR.Herrera.msg
+unchecked,Kalama Police Department,image001.png,image001.png
+unchecked,Milton Police Department,Roberts PRR.pdf,Roberts PRR.pdf
+unchecked,Milton Police Department,Third-Party Notices to Roberts.pdf,Third-Party Notices to Roberts.pdf
+awaiting-cleaning,Mount Vernon Police Department,Copy_of_Conduct_Review_Internal_IA_Gen_2000_-_2020.csv,Copy_of_Conduct_Review_Internal_IA_Gen_2000_-_2020.pdf
+unchecked,Bellevue Police Department,2000_Log.pdf,2000_Log.pdf
+unchecked,Bellevue Police Department,2001_Log.pdf,2001_Log.pdf
+unchecked,Bellevue Police Department,2002_Log.pdf,2002_Log.pdf
+unchecked,Bellevue Police Department,2003_Log.pdf,2003_Log.pdf
+unchecked,Bellevue Police Department,2004_Log.pdf,2004_Log.pdf
+unchecked,Bellevue Police Department,2005_Log.pdf,2005_Log.pdf
+unchecked,Bellevue Police Department,2006_Log.pdf,2006_Log.pdf
+unchecked,Bellevue Police Department,2007_Log.pdf,2007_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2008_Log.csv,2008_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2009_Log.csv,2009_Log.pdf
+unchecked,Bellevue Police Department,2009_Red_Light_Camera_Violations.pdf,2009_Red_Light_Camera_Violations.pdf
+unchecked,Bellevue Police Department,2009_Speed_Zone_Violations.pdf,2009_Speed_Zone_Violations.pdf
+awaiting-cleaning,Bellevue Police Department,2010_Log-p1-5.csv,2010_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2010_Log-p6.csv,2010_Log.pdf
+unchecked,Bellevue Police Department,2010_Log.pdf,2010_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2011_Log-p1-6.csv,2011_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2011_Log-p7.csv,2011_Log.pdf
+unchecked,Bellevue Police Department,2011_Log.pdf,2011_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2012_Log-p1-tool.csv,2012_Log-p1-tool.csv
+awaiting-cleaning,Bellevue Police Department,2012_Log-p1.csv,2012_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2012_Log-p2.csv,2012_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2012_Log-p3.csv,2012_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2012_Log-p4.csv,2012_Log.pdf
+unchecked,Bellevue Police Department,2012_Log.pdf,2012_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2013_Log-p1-2.csv,2013_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2013_Log-p3.csv,2013_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2013_Log-p4.csv,2013_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2013_Log-p5.csv,2013_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2013_Log.csv,2013_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2014_Log-p1-2.csv,2014_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2014_Log-p3.csv,2014_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2014_Log-p4.csv,2014_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2014_Log-p5.csv,2014_Log.pdf
+unchecked,Bellevue Police Department,2014_Log.pdf,2014_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2015_Log-p1-2.csv,2015_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2015_Log-p3.csv,2015_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2015_Log-p4.csv,2015_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2015_Log-p5.csv,2015_Log.pdf
+unchecked,Bellevue Police Department,2015_Log.pdf,2015_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2016_Log-p1.csv,2016_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2016_Log-p2.csv,2016_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2016_Log-p3.csv,2016_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2016_Log.csv,2016_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2017_Log-p1.csv,2017_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2017_Log-p2-3.csv,2017_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2017_Log-p4.csv,2017_Log.pdf
+unchecked,Bellevue Police Department,2017_Log.pdf,2017_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2018_Log-p1-2.csv,2018_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2018_Log-p3.csv,2018_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2018_Log-p4.csv,2018_Log.pdf
+unchecked,Bellevue Police Department,2018_Log.pdf,2018_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2019_Log-p1.csv,2019_Log.pdf
+awaiting-cleaning,Bellevue Police Department,2019_Log-p3.csv,2019_Log.pdf
+unchecked,Bellevue Police Department,2019_Log.pdf,2019_Log.pdf
+unchecked,Granger Police Department,"Invoice for PRR 2020-46 Roberts, 6-15-20.xlsx","Invoice for PRR 2020-46 Roberts, 6-15-20.xlsx"
+unchecked,Granger Police Department,PRR 20-46 Receipt .pdf,PRR 20-46 Receipt .pdf
+unchecked,Granger Police Department,"PRR2020-46, Roberts Response Letter.pdf","PRR2020-46, Roberts Response Letter.pdf"
+unchecked,Granger Police Department,"PRR2020-46,Roberts .pdf","PRR2020-46,Roberts .pdf"
+awaiting-cleaning,Westport Police Department,punishment.csv,punishment.txt
+unchecked,Redmond Police Department,Inquiry Logs 2000-2014.pdf,Inquiry Logs 2000-2014.pdf
+awaiting-cleaning,Redmond Police Department,Report for 2014.csv,Report for 2014.csv
+awaiting-cleaning,Redmond Police Department,Report for 2015.csv,Report for 2015.csv
+awaiting-cleaning,Redmond Police Department,Report for 2016.csv,Report for 2016.csv
+awaiting-cleaning,Redmond Police Department,Report for 2017.csv,Report for 2017.csv
+awaiting-cleaning,Redmond Police Department,Report for 2018.csv,Report for 2018.csv
+awaiting-cleaning,Redmond Police Department,Report for 2019.csv,Report for 2019.csv
+awaiting-cleaning,Redmond Police Department,Report for 2020.csv,Report for 2020.csv
+unchecked,Kelso Police Department,20200622113853416.pdf,20200622113853416.pdf
+unchecked,Kelso Police Department,records request 213.pdf,records request 213.pdf
+unchecked,Kelso Police Department,redaction 213.pdf,redaction 213.pdf
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2010.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2011.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2012.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2013.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2014.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2015.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2016.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2017.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2018.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2019.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,2019 PSU Tracking - Records Request Brandon Roberts install 3-2020.csv,2019 PSU Tracking - Records Request Brandon Roberts install 3.xls
+awaiting-cleaning,Monroe Police Department,Install 1 2019 PSU Tracking 2010 and 2011 Records Request (3)-2010.csv,Install 1 2019 PSU Tracking 2010 and 2011 Records Request (3)-2010.csv
+awaiting-cleaning,Monroe Police Department,Install 1 2019 PSU Tracking 2010 and 2011 Records Request (3)-2011.csv,Install 1 2019 PSU Tracking 2010 and 2011 Records Request (3)-2011.csv
+unchecked,Monroe Police Department,Install 1 2019 PSU Tracking 2010 and 2011 Records Request (3).xls,Install 1 2019 PSU Tracking 2010 and 2011 Records Request (3).xls
+awaiting-cleaning,Monroe Police Department,PSU Tracking - Records Request Brandon Roberts Installment 2 (1)-2012.csv,PSU Tracking - Records Request Brandon Roberts Installment 2 (1)-2012.csv
+awaiting-cleaning,Monroe Police Department,PSU Tracking - Records Request Brandon Roberts Installment 2 (1)-2013.csv,PSU Tracking - Records Request Brandon Roberts Installment 2 (1)-2013.csv
+awaiting-cleaning,Monroe Police Department,PSU Tracking - Records Request Brandon Roberts Installment 2 (1)-2014.csv,PSU Tracking - Records Request Brandon Roberts Installment 2 (1)-2014.csv
+unchecked,Monroe Police Department,PSU Tracking - Records Request Brandon Roberts Installment 2 (1).xls,PSU Tracking - Records Request Brandon Roberts Installment 2 (1).xls
+awaiting-cleaning,Monroe Police Department,PSU Tracking - Records Request Brandon Roberts Installment 2-2012.csv,PSU Tracking - Records Request Brandon Roberts Installment 2.xls
+awaiting-cleaning,Monroe Police Department,PSU Tracking - Records Request Brandon Roberts Installment 2-2013.csv,PSU Tracking - Records Request Brandon Roberts Installment 2.xls
+awaiting-cleaning,Monroe Police Department,PSU Tracking - Records Request Brandon Roberts Installment 2-2014.csv,PSU Tracking - Records Request Brandon Roberts Installment 2.xls
+unchecked,Brier Police Department,B Roberts PRA request file 1.pdf,B Roberts PRA request file 1.pdf
+unchecked,Brier Police Department,B Roberts PRA request file 2.pdf,B Roberts PRA request file 2.pdf
+unchecked,Brier Police Department,B Roberts PRA request file 3.pdf,B Roberts PRA request file 3.pdf
+unchecked,Brier Police Department,Javorsky discipline.pdf,Javorsky discipline.pdf
+awaiting-cleaning,King County Sheriff's Office,P049716_Brandon_Roberts_Internal_Investigations_(names_removed).csv,P049716_Brandon_Roberts_Internal_Investigations_(names_removed).xlsx
+unchecked,Bellingham Police Department,Bennett.pdf,Bennett.pdf
+unchecked,Bellingham Police Department,Dhaliwal_R.pdf,Dhaliwal_R.pdf
+unchecked,Bellingham Police Department,Elmendorf.pdf,Elmendorf.pdf
+unchecked,Bellingham Police Department,Esparza.pdf,Esparza.pdf
+unchecked,Bellingham Police Department,Esparza_2_R.pdf,Esparza_2_R.pdf
+unchecked,Bellingham Police Department,Ghanbari_1.pdf,Ghanbari_1.pdf
+unchecked,Bellingham Police Department,Ghanbari_2.pdf,Ghanbari_2.pdf
+unchecked,Bellingham Police Department,Ghanbari_3.pdf,Ghanbari_3.pdf
+unchecked,Bellingham Police Department,James.pdf,James.pdf
+unchecked,Bellingham Police Department,Johnson.pdf,Johnson.pdf
+unchecked,Bellingham Police Department,Johnston.pdf,Johnston.pdf
+unchecked,Bellingham Police Department,Kaiser.pdf,Kaiser.pdf
+unchecked,Bellingham Police Department,Laughlin.pdf,Laughlin.pdf
+unchecked,Bellingham Police Department,Lease.pdf,Lease.pdf
+unchecked,Bellingham Police Department,Livesey_R.pdf,Livesey_R.pdf
+unchecked,Bellingham Police Department,Longbottom.pdf,Longbottom.pdf
+unchecked,Bellingham Police Department,Lyons.pdf,Lyons.pdf
+unchecked,Bellingham Police Department,Matsudaira.pdf,Matsudaira.pdf
+unchecked,Bellingham Police Department,Murphy.pdf,Murphy.pdf
+unchecked,Bellingham Police Department,Nelson.pdf,Nelson.pdf
+unchecked,Bellingham Police Department,Poortinga.pdf,Poortinga.pdf
+unchecked,Bellingham Police Department,Sturlaugson.pdf,Sturlaugson.pdf
+unchecked,Bellingham Police Department,Whipple.pdf,Whipple.pdf
+unchecked,Toppenish Police Department,#173-061520 (10 Items) PD Disciplinary Notices - nr.pdf,#173-061520 (10 Items) PD Disciplinary Notices - nr.pdf
+unchecked,Toppenish Police Department,173-061520 Final Response.pdf,173-061520 Final Response.pdf
+unchecked,Pasco Police Department,2019/Aceves.pdf,2019/Aceves.pdf
+unchecked,Pasco Police Department,2019/Andrews.pdf,2019/Andrews.pdf
+unchecked,Pasco Police Department,2019/Cobb.pdf,2019/Cobb.pdf
+unchecked,Pasco Police Department,2019/Decker.pdf,2019/Decker.pdf
+unchecked,Pasco Police Department,2019/Garza.pdf,2019/Garza.pdf
+unchecked,Pasco Police Department,2019/Jones-redacted.pdf,2019/Jones-redacted.pdf
+unchecked,Pasco Police Department,2019/Lee.pdf,2019/Lee.pdf
+unchecked,Pasco Police Department,2019/Ninemire (1).pdf,2019/Ninemire (1).pdf
+unchecked,Pasco Police Department,2019/Ninemire.pdf,2019/Ninemire.pdf
+unchecked,Pasco Police Department,2019/Orth.pdf,2019/Orth.pdf
+unchecked,Pasco Police Department,2019/Pruneda.pdf,2019/Pruneda.pdf
+unchecked,Pasco Police Department,2019/Ramos.pdf,2019/Ramos.pdf
+unchecked,Pasco Police Department,2019/Taylor.pdf,2020/Taylor.pdf
+unchecked,Pasco Police Department,2019/Wakeman.pdf,2019/Wakeman.pdf
+unchecked,Pasco Police Department,2020/Thielen.pdf,2020/Thielen.pdf
+unchecked,Pasco Police Department,other-years/2001 Nelson.pdf,other-years/2001 Nelson.pdf
+unchecked,Pasco Police Department,other-years/2013 Nelson.pdf,other-years/2013 Nelson.pdf
+unchecked,Pasco Police Department,other-years/Brewster.pdf,other-years/Brewster.pdf
+unchecked,Pasco Police Department,other-years/Goenen.pdf,other-years/Goenen.pdf
+unchecked,Pasco Police Department,other-years/Granger 2.pdf,other-years/Granger 2.pdf
+unchecked,Pasco Police Department,other-years/Majetich.pdf,other-years/Majetich.pdf
+unchecked,Pasco Police Department,other-years/Marquez 2.pdf,other-years/Marquez 2.pdf
+unchecked,Pasco Police Department,other-years/Marquez 3.pdf,other-years/Marquez 3.pdf
+unchecked,Pasco Police Department,other-years/Marquez.pdf,other-years/Marquez.pdf
+unchecked,Pasco Police Department,other-years/Perry 2.pdf,other-years/Perry 2.pdf
+unchecked,Pasco Police Department,other-years/Perry 3.pdf,other-years/Perry 3.pdf
+unchecked,Pasco Police Department,other-years/Perry 4.pdf,other-years/Perry 4.pdf
+unchecked,Pasco Police Department,other-years/Perry 5.pdf,other-years/Perry 5.pdf
+unchecked,Pasco Police Department,other-years/Perry 6.pdf,other-years/Perry 6.pdf
+unchecked,Pasco Police Department,other-years/Perry 7.pdf,other-years/Perry 7.pdf
+unchecked,Pasco Police Department,other-years/Perry 8.pdf,other-years/Perry 8.pdf
+unchecked,Pasco Police Department,other-years/Perry.pdf,other-years/Perry.pdf
+unchecked,Pasco Police Department,other-years/Quinlan.pdf,other-years/Quinlan.pdf
+awaiting-cleaning,Bremerton Police Department,2014_ROD's.csv,2014_ROD's.docx
+awaiting-cleaning,Bremerton Police Department,2015_ROD's.csv,2015_ROD's.csv
+unchecked,Bremerton Police Department,2015_RODs.docx,2015_RODs.docx
+awaiting-cleaning,Bremerton Police Department,Copy_of_UOF2013_(PDR)1.csv,Copy_of_UOF2013_(PDR)1.xlsx
+unchecked,Chewelah Police Department,Pankey Administrative Leave Letter.pdf,Pankey Administrative Leave Letter.pdf
+unchecked,Chewelah Police Department,Pankey Suspension Letter.pdf,Pankey Suspension Letter.pdf
+awaiting-cleaning,Richland Police Department,POLICE_-_Discipline__(Last_10-years).csv,POLICE_-_Discipline__(Last_10-years).xlsx
+unchecked,Pullman Police Department,16-03_Supervisory_Counseling_Crow_6-3-16_R.pdf,16-03_Supervisory_Counseling_Crow_6-3-16_R.pdf
+unchecked,Pullman Police Department,17-10_Final_Settlement_Agreement.pdf,17-10_Final_Settlement_Agreement.pdf
+unchecked,Pullman Police Department,18-10_PRR_Resignation_Termination.pdf,18-10_PRR_Resignation_Termination.pdf
+unchecked,Pullman Police Department,18-14_PRR_Sustained_1_Day_LWOP.pdf,18-14_PRR_Sustained_1_Day_LWOP.pdf
+unchecked,Pullman Police Department,19-03_Final_Written_Reprimmand_Signed.pdf,19-03_Final_Written_Reprimmand_Signed.pdf
+unchecked,Pullman Police Department,9_-_Notice_of_Discipline;_17-10;_Crow.pdf,9_-_Notice_of_Discipline;_17-10;_Crow.pdf
+unchecked,Pullman Police Department,Action_taken_on_Sustained_investigations_not_listed_in_other_documents.docx,Action_taken_on_Sustained_investigations_not_listed_in_other_documents.docx
+unchecked,Pullman Police Department,CHAPTER_8.Discipline.pdf,CHAPTER_8.Discipline.pdf
+unchecked,Pullman Police Department,Determination_of_Discipline;_17-02;_Crow.pdf,Determination_of_Discipline;_17-02;_Crow.pdf
+unchecked,Pullman Police Department,IA_16-06_Disposition_to_Guild_R.pdf,IA_16-06_Disposition_to_Guild_R.pdf
+unchecked,Pullman Police Department,IA_18-02_Disposition_to_Bray.pdf,IA_18-02_Disposition_to_Bray.pdf
+unchecked,Pullman Police Department,IA_18-17_Disposition.pdf,IA_18-17_Disposition.pdf
+unchecked,Pullman Police Department,IA_18-22_Disposition_to_Chamberlin.pdf,IA_18-22_Disposition_to_Chamberlin.pdf
+unchecked,Pullman Police Department,IA_18-22_Disposition_to_Harris.pdf,IA_18-22_Disposition_to_Harris.pdf
+unchecked,Pullman Police Department,IA_20-06_Notice_of_Disposition.docx,IA_20-06_Notice_of_Disposition.docx
+unchecked,Pullman Police Department,IA_By_Date_Detectives_R.pdf,IA_By_Date_Detectives_R.pdf
+unchecked,Pullman Police Department,IA_By_Date_Not_Entered.pdf,IA_By_Date_Not_Entered.pdf
+unchecked,Pullman Police Department,IA_By_Date_Patrol_R.pdf,IA_By_Date_Patrol_R.pdf
+unchecked,Pullman Police Department,IA_By_Date_Reserves.pdf,IA_By_Date_Reserves.pdf
+unchecked,Pullman Police Department,Not_Stated_IA_report.docx,Not_Stated_IA_report.docx
+unchecked,Pullman Police Department,Notice_of_Discipline;_17-18;_Bray_010418.pdf,Notice_of_Discipline;_17-18;_Bray_010418.pdf
+unchecked,Pullman Police Department,Notice_of_Discipline;_18-13;_Written_Reprimand.pdf,Notice_of_Discipline;_18-13;_Written_Reprimand.pdf
+unchecked,Pullman Police Department,Notice_of_Discipline;_19-11;_Humphrey_-_Signed.pdf,Notice_of_Discipline;_19-11;_Humphrey_-_Signed.pdf
+unchecked,Pullman Police Department,Notice_of_Discipline;_19-11;_Umbright_-_Signed.pdf,Notice_of_Discipline;_19-11;_Umbright_-_Signed.pdf
+unchecked,Pullman Police Department,Tennant's_IA_Report_Emerson_Late_LEA_19-08.doc,Tennant's_IA_Report_Emerson_Late_LEA_19-08.doc
+unchecked,Pullman Police Department,Updated_17-10_summary.docx,Updated_17-10_summary.docx
+unchecked,Pullman Police Department,Verbal_Warning_IA_14-05_468.pdf,Verbal_Warning_IA_14-05_468.pdf
+unchecked,Pullman Police Department,Verbal_Warning_IA_14-06_457.pdf,Verbal_Warning_IA_14-06_457.pdf
+awaiting-cleaning,Prosser Police Department,2020-23CH Roberts.csv,2020-23CH Roberts.pdf
+awaiting-cleaning,Sumner Police Department,Summary OPA complaints.csv,Summary OPA complaints.xlsx
+awaiting-cleaning,Tacoma Police Department,T005221_PDR_for_Sustained.xls.csv,T005221_PDR_for_Sustained.xls.xlsx
+unchecked,College Place Police Department,1888-S2.SL.pdf,1888-S2.SL.pdf
+awaiting-cleaning,College Place Police Department,2016.csv,2016.xlsx
+awaiting-cleaning,College Place Police Department,2017.csv,2017.xlsx
+awaiting-cleaning,College Place Police Department,2018.csv,2018.xlsx
+awaiting-cleaning,College Place Police Department,2019.csv,2019.xlsx
+awaiting-cleaning,College Place Police Department,2020.csv,2020.xlsx
+unchecked,College Place Police Department,6-24_Release_CP_Exemption_Log_Request_20-60.pdf,6-24_Release_CP_Exemption_Log_Request_20-60.pdf
+unchecked,College Place Police Department,CP_Exemption_Key.pdf,CP_Exemption_Key.pdf
+awaiting-reading,College Place Police Department,Officer Steve Harris Agreement   Written Reprimand.msg,Officer Steve Harris Agreement   Written Reprimand.msg
+awaiting-reading,College Place Police Department,RE  Officer Steve Harris Agreement   Written Reprimand.msg,RE  Officer Steve Harris Agreement   Written Reprimand.msg
+awaiting-reading,College Place Police Department,RE  Reprimand removal.msg,RE  Reprimand removal.msg
+unchecked,College Place Police Department,Third_Party_Notices_Scan_Redacted.pdf,Third_Party_Notices_Scan_Redacted.pdf
+awaiting-cleaning,College Place Police Department,Unredacted_Roberts_B_Records_Request_1st_release.csv,Unredacted_Roberts_B_Records_Request_1st_release.xlsx
+awaiting-cleaning,College Place Police Department,Unredacted_Roberts_B_Records_Request_2nd_release.csv,Unredacted_Roberts_B_Records_Request_2nd_release.xlsx
+awaiting-reading,Kirkland Police Department,FW_Kirkland_Police_Department_Public_Records_Request.msg,FW_Kirkland_Police_Department_Public_Records_Request.msg
+awaiting-cleaning,Kirkland Police Department,KPD_Reprimands_and_Warnings_Issued.csv,KPD_Reprimands_and_Warnings_Issued.xlsx
+awaiting-cleaning,Lynnwood Police Department,Combined_PDR-Criteria.csv,Combined_PDR.xlsx
+awaiting-cleaning,Lynnwood Police Department,Combined_PDR-New Combined.csv,Combined_PDR.xlsx
+awaiting-cleaning,Lynnwood Police Department,Combined_PDR-Options.csv,Combined_PDR.xlsx
+awaiting-cleaning,Lynnwood Police Department,Combined_PDR-Sheet1.csv,Combined_PDR.xlsx
+awaiting-cleaning,Sequim Police Department,Complaints.csv,Complaints.pdf
+awaiting-cleaning,Sequim Police Department,Use_of_Force.csv,Use_of_Force.pdf
+unchecked,Lacey Police Department,Collisions_2009.docx,Collisions_2009.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2009_1.csv,Collisions_2009_1.csv
+unchecked,Lacey Police Department,Collisions_2010.docx,Collisions_2010.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2010_1.csv,Collisions_2010_1.csv
+unchecked,Lacey Police Department,Collisions_2011.docx,Collisions_2011.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2011_1.csv,Collisions_2011_1.csv
+unchecked,Lacey Police Department,Collisions_2012.docx,Collisions_2012.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2012_1.csv,Collisions_2012_1.csv
+unchecked,Lacey Police Department,Collisions_2013.docx,Collisions_2013.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2013_1.csv,Collisions_2013_1.csv
+unchecked,Lacey Police Department,Collisions_2014.docx,Collisions_2014.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2014_1.csv,Collisions_2014_1.csv
+unchecked,Lacey Police Department,Collisions_2015.docx,Collisions_2015.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2015_1.csv,Collisions_2015_1.csv
+unchecked,Lacey Police Department,Collisions_2016.docx,Collisions_2016.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2016_1.csv,Collisions_2016_1.csv
+unchecked,Lacey Police Department,Collisions_2017.docx,Collisions_2017.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2017_1.csv,Collisions_2017_1.csv
+unchecked,Lacey Police Department,Collisions_2018.docx,Collisions_2018.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2018_1.csv,Collisions_2018_1.csv
+unchecked,Lacey Police Department,Collisions_2019.docx,Collisions_2019.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2019_1.csv,Collisions_2019_1.csv
+unchecked,Lacey Police Department,Collisions_2020.docx,Collisions_2020.docx
+awaiting-cleaning,Lacey Police Department,Collisions_2020_1.csv,Collisions_2020_1.csv
+unchecked,Lacey Police Department,Complaint_2013_wo_names.docx,Complaint_2013_wo_names.docx
+awaiting-cleaning,Lacey Police Department,Complaint_2013_wo_names_1.csv,Complaint_2013_wo_names_1.csv
+unchecked,Lacey Police Department,Complaint_2014_wo_names.docx,Complaint_2014_wo_names.docx
+awaiting-cleaning,Lacey Police Department,Complaint_2014_wo_names_1.csv,Complaint_2014_wo_names_1.csv
+unchecked,Lacey Police Department,Complaint_2015.docx,Complaint_2015.docx
+awaiting-cleaning,Lacey Police Department,Complaint_2015_1.csv,Complaint_2015_1.csv
+unchecked,Lacey Police Department,Complaint_2016.docx,Complaint_2016.docx
+awaiting-cleaning,Lacey Police Department,Complaint_2016_1.csv,Complaint_2016_1.csv
+unchecked,Lacey Police Department,Complaint_2017_wo_names.docx,Complaint_2017_wo_names.docx
+awaiting-cleaning,Lacey Police Department,Complaint_2017_wo_names_1.csv,Complaint_2017_wo_names_1.csv
+unchecked,Lacey Police Department,Complaint_2018.docx,Complaint_2018.docx
+awaiting-cleaning,Lacey Police Department,Complaint_2018_1.csv,Complaint_2018_1.csv
+unchecked,Lacey Police Department,Complaint_2019.docx,Complaint_2019.docx
+awaiting-cleaning,Lacey Police Department,Complaint_2019_1.csv,Complaint_2019_1.csv
+unchecked,Lacey Police Department,Complaint_2020.docx,Complaint_2020.docx
+awaiting-cleaning,Lacey Police Department,Complaint_2020_1.csv,Complaint_2020_1.csv
+unchecked,Lacey Police Department,Pursuits_2014.docx,Pursuits_2014.docx
+awaiting-cleaning,Lacey Police Department,Pursuits_2014_1.csv,Pursuits_2014_1.csv
+unchecked,Lacey Police Department,Pursuits_2015.docx,Pursuits_2015.docx
+awaiting-cleaning,Lacey Police Department,Pursuits_2015_1.csv,Pursuits_2015_1.csv
+unchecked,Lacey Police Department,Pursuits_2016.docx,Pursuits_2016.docx
+awaiting-cleaning,Lacey Police Department,Pursuits_2016_1.csv,Pursuits_2016_1.csv
+unchecked,Lacey Police Department,Pursuits_2017.docx,Pursuits_2017.docx
+awaiting-cleaning,Lacey Police Department,Pursuits_2017_1.csv,Pursuits_2017_1.csv
+unchecked,Lacey Police Department,Pursuits_2018.docx,Pursuits_2018.docx
+awaiting-cleaning,Lacey Police Department,Pursuits_2018_1.csv,Pursuits_2018_1.csv
+unchecked,Lacey Police Department,Pursuits_2019.docx,Pursuits_2019.docx
+awaiting-cleaning,Lacey Police Department,Pursuits_2019_1.csv,Pursuits_2019_1.csv
+unchecked,Lacey Police Department,Pursuits_2020.docx,Pursuits_2020.docx
+awaiting-cleaning,Lacey Police Department,Pursuits_2020_1.csv,Pursuits_2020_1.csv
+unchecked,Lacey Police Department,Use_of_Force_2014.docx,Use_of_Force_2014.docx
+awaiting-cleaning,Lacey Police Department,Use_of_Force_2014_1.csv,Use_of_Force_2014_1.csv
+unchecked,Lacey Police Department,Use_of_Force_2015.docx,Use_of_Force_2015.docx
+awaiting-cleaning,Lacey Police Department,Use_of_Force_2015_1.csv,Use_of_Force_2015_1.csv
+unchecked,Lacey Police Department,Use_of_Force_2016.docx,Use_of_Force_2016.docx
+awaiting-cleaning,Lacey Police Department,Use_of_Force_2016_1.csv,Use_of_Force_2016_1.csv
+unchecked,Lacey Police Department,Use_of_Force_2017.docx,Use_of_Force_2017.docx
+awaiting-cleaning,Lacey Police Department,Use_of_Force_2017_1.csv,Use_of_Force_2017_1.csv
+unchecked,Lacey Police Department,Use_of_Force_2018.docx,Use_of_Force_2018.docx
+awaiting-cleaning,Lacey Police Department,Use_of_Force_2018_1.csv,Use_of_Force_2018_1.csv
+unchecked,Lacey Police Department,Use_of_Force_2019.docx,Use_of_Force_2019.docx
+awaiting-cleaning,Lacey Police Department,Use_of_Force_2019_1.csv,Use_of_Force_2019_1.csv
+unchecked,Lacey Police Department,Use_of_Force_2019_Added_Fields.docx,Use_of_Force_2019_Added_Fields.docx
+awaiting-cleaning,Lacey Police Department,Use_of_Force_2019_Added_Fields_1.csv,Use_of_Force_2019_Added_Fields_1.csv
+unchecked,Lacey Police Department,Use_of_Force_2020.docx,Use_of_Force_2020.docx
+awaiting-cleaning,Lacey Police Department,Use_of_Force_2020_1.csv,Use_of_Force_2020_1.csv
+complete,Ocean Shores Police Department,Complaint Log.cleaned.csv,Complaint Log.pdf
+unchecked,Wapato Police Department,20-002 PDR REQUEST 6-15-2020 ROBERTS.pdf,20-002 PDR REQUEST 6-15-2020 ROBERTS.pdf
+unchecked,Wapato Police Department,20-002 PDR WAPATO PD EXTENSION LETTER -ROBERTS 6-15-2020.pdf,20-002 PDR WAPATO PD EXTENSION LETTER -ROBERTS 6-15-2020.pdf
+unchecked,Wapato Police Department,20-002 Response to PDR 7-5-2020.pdf,20-002 Response to PDR 7-5-2020.pdf
+awaiting-cleaning,Cheney Police Department,Cheney_PD_complaint_logs.csv,Cheney_PD_complaint_logs.pdf
+awaiting-cleaning,Marysville Police Department,IA Sustained Log.csv,IA Sustained Log.pdf
+unchecked,Marysville Police Department,"Roberts, Brandon PRR 06152020.pdf","Roberts, Brandon PRR 06152020.pdf"
+unchecked,La Center Police Department,2361_001.pdf,2361_001.pdf
+unchecked,La Center Police Department,2415_001.pdf,2415_001.pdf
+awaiting-cleaning,La Center Police Department,Final Installment Release.csv,Final Installment Release.xlsx
+unchecked,La Center Police Department,Final installment release letter.pdf,Final installment release letter.pdf
+awaiting-cleaning,La Center Police Department,First Installment Release.csv,First Installment Release.xlsx
+unchecked,La Center Police Department,First installment release letter.pdf,First installment release letter.pdf
+unchecked,Eastern Washington University Police Department,0601_001.pdf,0601_001.pdf
+awaiting-cleaning,Eastern Washington University Police Department,20-06-15 Roberts_Request_Final_Redacted.csv,20-06-15 Roberts_Request_Final_Redacted.pdf
+awaiting-cleaning,Ellensburg Police Department,Roberts PDR Excel.csv,Roberts PDR Excel.xlsx
+unchecked,Mabton Police Department,PR Request Roberts.pdf,PR Request Roberts.pdf
+unchecked,Grandview Police Department,Scanned from a Xerox Multifunction Printer.pdf,Scanned from a Xerox Multifunction Printer.pdf
+unchecked,Washougal Police Department,PRA Response 081720.pdf,PRA Response 081720.pdf
+awaiting-cleaning,Edmonds Police Department,2000_Complaint_Log.csv,2000_Complaint_Log.pdf
+awaiting-cleaning,Edmonds Police Department,2001-2019_Complaint_Log.csv,2001-2019_Complaint_Log.pdf
+awaiting-cleaning,Edmonds Police Department,IA_Log_2000-2020.csv,IA_Log_2000-2020.pdf
+awaiting-cleaning,Edmonds Police Department,Letter_of_Reprimand_Log.csv,Letter_of_Reprimand_Log.pdf
+unchecked,Wenatchee Police Department,20-278 PDR Completion Ltr.docx,20-278 PDR Completion Ltr.docx
+unchecked,Wenatchee Police Department,PRA - Privilege Log.pdf,PRA - Privilege Log.pdf
+awaiting-cleaning,Wenatchee Police Department,Records 2001 - 2020 2 Redacted 2.csv,Records 2001 - 2020 2 Redacted 2.pdf
+unchecked,Vancouver Police Department,IAC 2017-0001_Redacted.pdf,IAC 2017-0001_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2017-0014_Redacted.pdf,IAC 2017-0014_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2017-0015-No Redactions.pdf,IAC 2017-0015-No Redactions.pdf
+unchecked,Vancouver Police Department,IAC 2017-0017_Redacted.pdf,IAC 2017-0017_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2017-0045_Redacted.pdf,IAC 2017-0045_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2017-0101_Redacted.pdf,IAC 2017-0101_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2017-0108_Redacted.pdf,IAC 2017-0108_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2017-0123_Redacted.pdf,IAC 2017-0123_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2017-0125_Redacted.pdf,IAC 2017-0125_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2017-0138_Redacted.pdf,IAC 2017-0138_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0034 Prior Release_Redacted.pdf,IAC 2018-0034 Prior Release_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0067-Redacted.pdf,IAC 2018-0067-Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0073_Redacted.pdf,IAC 2018-0073_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0079_Redacted.pdf,IAC 2018-0079_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0081_Redacted.pdf,IAC 2018-0081_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0105_Redacted.pdf,IAC 2018-0105_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0118 -Redacted.pdf,IAC 2018-0118 -Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0146_Redacted.pdf,IAC 2018-0146_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2018-0193_Redacted.pdf,IAC 2018-0193_Redacted.pdf
+unchecked,Vancouver Police Department,IAC 2019-0025-No exemptions.pdf,IAC 2019-0025-No exemptions.pdf
+unchecked,Vancouver Police Department,IAC 2019-0152 No Exemptions.pdf,IAC 2019-0152 No Exemptions.pdf
+unchecked,Vancouver Police Department,IAC 2019-0168 No Exemptions.pdf,IAC 2019-0168 No Exemptions.pdf
+unchecked,Lakewood Police Department,20130102153911485.pdf,20130102153911485.pdf
+awaiting-reading,Lakewood Police Department,2019 Sustained Accidents.msg,2019 Sustained Accidents.msg
+unchecked,Lakewood Police Department,2019AVA-001.pdf,2019AVA-001.pdf
+unchecked,Lakewood Police Department,2019AVA-003.pdf,2019AVA-003.pdf
+unchecked,Lakewood Police Department,2019AVA-006.pdf,2019AVA-006.pdf
+unchecked,Lakewood Police Department,2019AVA-009.pdf,2019AVA-009.pdf
+unchecked,Lakewood Police Department,2019AVA-014.pdf,2019AVA-014.pdf
+unchecked,Lakewood Police Department,2019AVA-015.pdf,2019AVA-015.pdf
+unchecked,Lakewood Police Department,2019PSS-007 Case file.pdf,2019PSS-007 Case file.pdf
+unchecked,Lakewood Police Department,4791-1.pdf,4791-1.pdf
+unchecked,Lakewood Police Department,Arnold Last Chance and Separation Agreement.doc,Arnold Last Chance and Separation Agreement.doc
+unchecked,Lakewood Police Department,Bucat.pdf,Bucat.pdf
+unchecked,Blaine Police Department,Haslip Performance Interview for 04-11-2017.pdf,Haslip Performance Interview for 04-11-2017.pdf
+unchecked,Blaine Police Department,Munden - 10-20-2000.pdf,Munden - 10-20-2000.pdf
+unchecked,Blaine Police Department,PRA 20-22 Roberts 07-31-20.pdf,PRA 20-22 Roberts 07-31-20.pdf
+unchecked,Blaine Police Department,PRA 20-22 Roberts 08-07-20.pdf,PRA 20-22 Roberts 08-07-20.pdf
+unchecked,Blaine Police Department,PRA 20-22 first response 6-19-2020.pdf,PRA 20-22 first response 6-19-2020.pdf
+awaiting-cleaning,Port Orchard Police Department,List_of_Discipline_dl_08.10.2020.csv,List_of_Discipline_dl_08.10.2020.xlsx
+awaiting-cleaning,Walla Walla Police Department,Response to PRA - Police Disciplinary Action 2010 - 2020-Sheet1.csv,Response to PRA - Police Disciplinary Action 2010 - 2020.xlsx
+awaiting-cleaning,Walla Walla Police Department,Response to PRA - Police Disciplinary Action 2010 - 2020-Sheet2.csv,Response to PRA - Police Disciplinary Action 2010 - 2020.xlsx
+awaiting-cleaning,Walla Walla Police Department,Response to PRA - Police Disciplinary Action 2010 - 2020-Sheet3.csv,Response to PRA - Police Disciplinary Action 2010 - 2020.xlsx
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/19D384 Arceo.pdf,19D384 - Use of Force bxroberts/19D384 Arceo.pdf
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/19D384 Use of Force Review.pdf,19D384 - Use of Force bxroberts/19D384 Use of Force Review.pdf
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/IMG_20190509_203337751.jpg,19D384 - Use of Force bxroberts/IMG_20190509_203337751.jpg
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/IMG_20190509_203343970_HDR.jpg,19D384 - Use of Force bxroberts/IMG_20190509_203343970_HDR.jpg
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/IMG_20190509_203407308.jpg,19D384 - Use of Force bxroberts/IMG_20190509_203407308.jpg
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/IMG_20190509_203418482.jpg,19D384 - Use of Force bxroberts/IMG_20190509_203418482.jpg
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/IMG_20190509_203428869.jpg,19D384 - Use of Force bxroberts/IMG_20190509_203428869.jpg
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/IMG_20190509_204243372_HDR.jpg,19D384 - Use of Force bxroberts/IMG_20190509_204243372_HDR.jpg
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/IMG_20190509_204302880.jpg,19D384 - Use of Force bxroberts/IMG_20190509_204302880.jpg
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/LE Report 19D384.pdf,19D384 - Use of Force bxroberts/LE Report 19D384.pdf
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/MPD PDR Response -19D384-roberts.docx,MPD PDR Response -19D384-roberts.docx
+unchecked,Morton Police Department,19D384 - Use of Force bxroberts/Trooper Ecklund Narrative.pdf,19D384 - Use of Force bxroberts/Trooper Ecklund Narrative.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Brandon - Police Docs 3rd Party etc/00 Exemptions and Redactions.xlsx,PRR 2020-054 Brandon - Police Docs 3rd Party etc/00 Exemptions and Redactions.xlsx
+unchecked,Moses Lake Police Department,PRR 2020-054 Brandon - Police Docs 3rd Party etc/00 Invoice for pages scanned.docx,PRR 2020-054 Brandon - Police Docs 3rd Party etc/00 Invoice for pages scanned.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Brandon - Police Docs 3rd Party etc/3rd Party Notice Template.docx,PRR 2020-054 Brandon - Police Docs 3rd Party etc/3rd Party Notice Template.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/00 Brandon Roberts TR 704252.pdf,PRR 2020-054 Response expires Sept 21/00 Brandon Roberts TR 704252.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2007 Dec Hintz.pdf,PRR 2020-054 Response expires Sept 21/2007 Dec Hintz.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2013 Dec Serrato letter only.pdf,PRR 2020-054 Response expires Sept 21/2013 Dec Serrato letter only.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2014 0118 Sheats Complaint.pdf,PRR 2020-054 Response expires Sept 21/2014 0118 Sheats Complaint.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2014 two letters St. Peter.pdf,PRR 2020-054 Response expires Sept 21/2014 two letters St. Peter.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2015 Dec Munro.pdf,PRR 2020-054 Response expires Sept 21/2015 Dec Munro.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2015 St. Peter-1 letters only.pdf,PRR 2020-054 Response expires Sept 21/2015 St. Peter-1 letters only.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2018 Apr Ruffin.pdf,PRR 2020-054 Response expires Sept 21/2018 Apr Ruffin.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2018 Feb Ent.pdf,PRR 2020-054 Response expires Sept 21/2018 Feb Ent.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2018 Francis.pdf,PRR 2020-054 Response expires Sept 21/2018 Francis.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2018 Salazar Final Discipline Letter.docx,PRR 2020-054 Response expires Sept 21/2018 Salazar Final Discipline Letter.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2019 Francis Final Discipline Letter.docx,PRR 2020-054 Response expires Sept 21/2019 Francis Final Discipline Letter.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/2019 Nov Salazar Letters only.pdf,PRR 2020-054 Response expires Sept 21/2019 Nov Salazar Letters only.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Atkins three letters multiple years.pdf,PRR 2020-054 Response expires Sept 21/Atkins three letters multiple years.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Carter Sept 2019.pdf,PRR 2020-054 Response expires Sept 21/Carter Sept 2019.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Francis April 2019.pdf,PRR 2020-054 Response expires Sept 21/Francis April 2019.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Francis October 2019.pdf,PRR 2020-054 Response expires Sept 21/Francis October 2019.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Francis appeal 2019-2020.pdf,PRR 2020-054 Response expires Sept 21/Francis appeal 2019-2020.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/McCain Feb 2007.pdf,PRR 2020-054 Response expires Sept 21/McCain Feb 2007.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/McCain June 2006.pdf,PRR 2020-054 Response expires Sept 21/McCain June 2006.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/McCain June 2008.pdf,PRR 2020-054 Response expires Sept 21/McCain June 2008.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Police former ee Vang 2009.pdf,PRR 2020-054 Response expires Sept 21/Police former ee Vang 2009.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/REDACTED 2007 Johnson.pdf,PRR 2020-054 Response expires Sept 21/REDACTED 2007 Johnson.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/REDACTED police former Kalt Apr 2011_Redacted.pdf,PRR 2020-054 Response expires Sept 21/REDACTED police former Kalt Apr 2011_Redacted.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Redacted 2008 Francis Ltr.pdf,PRR 2020-054 Response expires Sept 21/Redacted 2008 Francis Ltr.pdf
+unchecked,Moses Lake Police Department,"PRR 2020-054 Response expires Sept 21/Redacted 2008, Aug Hintz Ltr.pdf","PRR 2020-054 Response expires Sept 21/Redacted 2008, Aug Hintz Ltr.pdf"
+unchecked,Moses Lake Police Department,"PRR 2020-054 Response expires Sept 21/Redacted 2008, Oct Hintz Ltr.pdf","PRR 2020-054 Response expires Sept 21/Redacted 2008, Oct Hintz Ltr.pdf"
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Redacted 2016 Hake Notice of Administrative Leave.docx,PRR 2020-054 Response expires Sept 21/Redacted 2016 Hake Notice of Administrative Leave.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Redacted 2016 Serrato Discipline Letter.docx,PRR 2020-054 Response expires Sept 21/Redacted 2016 Serrato Discipline Letter.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Redacted 2017 Hake Final Discipline Letter.docx,PRR 2020-054 Response expires Sept 21/Redacted 2017 Hake Final Discipline Letter.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Redacted 2017 Ledeboer Final Discipline Letter.docx,PRR 2020-054 Response expires Sept 21/Redacted 2017 Ledeboer Final Discipline Letter.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Redacted 2017 Welsh Final Discipline Letter.docx,PRR 2020-054 Response expires Sept 21/Redacted 2017 Welsh Final Discipline Letter.docx
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Redacted Johnson 5-1-2009 discipline only.pdf,PRR 2020-054 Response expires Sept 21/Redacted Johnson 5-1-2009 discipline only.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Ruffin April 2018.pdf,PRR 2020-054 Response expires Sept 21/Ruffin April 2018.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Stewart 8-2-2014 recommendation letter only.pdf,PRR 2020-054 Response expires Sept 21/Stewart 8-2-2014 recommendation letter only.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Taylor Nov 2019.pdf,PRR 2020-054 Response expires Sept 21/Taylor Nov 2019.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Taylor Sept 2019.pdf,PRR 2020-054 Response expires Sept 21/Taylor Sept 2019.pdf
+unchecked,Moses Lake Police Department,PRR 2020-054 Response expires Sept 21/Welsh driving warning June 2018.pdf,PRR 2020-054 Response expires Sept 21/Welsh driving warning June 2018.pdf
+awaiting-cleaning,Mountlake Terrace Police Department,PRR - June 2020 Internal Investigation log-Sheet1.csv,PRR - June 2020 Internal Investigation log.xlsx
+awaiting-cleaning,Mountlake Terrace Police Department,PRR - June 2020 Internal Investigation log-Sheet2.csv,PRR - June 2020 Internal Investigation log.xlsx
+awaiting-cleaning,Mountlake Terrace Police Department,PRR - June 2020 Internal Investigation log-Sheet3.csv,PRR - June 2020 Internal Investigation log.xlsx
+unchecked,Coupeville Police Department,20-008 Acknowledgement.pdf,20-008 Acknowledgement.pdf
+unchecked,Coupeville Police Department,20-008 Extension.pdf,20-008 Extension.pdf
+unchecked,Coupeville Police Department,20-008 No Record Found.pdf,20-008 No Record Found.pdf
+awaiting-cleaning,Hoquiam Police Department,CCE_000090.csv,CCE_000090.pdf
+unchecked,Hoquiam Police Department,Scan0001.pdf,Scan0001.pdf
+unchecked,Bainbridge Police Department,Bainbridge - PRR 20-409.xls,Bainbridge - PRR 20-409.xls
+awaiting-cleaning,Issaquah Police Department,17-09679_Informal_Complaint.eml-attachment.txt,17-09679_Informal_Complaint.msg
+unchecked,Issaquah Police Department,19-10474_Report.pdf,19-10474_Report.pdf
+unchecked,Issaquah Police Department,20190716121155844.pdf,20190716121155844.pdf
+awaiting-reading,Issaquah Police Department,Citizen_Complaint_19-08415_Holmes.msg,Citizen_Complaint_19-08415_Holmes.msg
+awaiting-reading,Issaquah Police Department,Citizen_Complaint_19-13871.msg,Citizen_Complaint_19-13871.msg
+awaiting-reading,Issaquah Police Department,Citizen_Complaint_Fulbright.msg,Citizen_Complaint_Fulbright.msg
+awaiting-reading,Issaquah Police Department,Complaint_Jaime_Cox.msg,Complaint_Jaime_Cox.msg
+awaiting-cleaning,Issaquah Police Department,Complaint_against_Sgt__Rohrbach__.msg.eml-attachment.txt,Complaint_against_Sgt__Rohrbach__.msg
+unchecked,Issaquah Police Department,Complaint_and_Memo.pdf,Complaint_and_Memo.pdf
+awaiting-reading,Issaquah Police Department,Complaint_from_Citizen.msg,Complaint_from_Citizen.msg
+awaiting-reading,Issaquah Police Department,FW_Incident_for_the_Informal_Complaint_Log.msg,FW_Incident_for_the_Informal_Complaint_Log.msg
+awaiting-reading,Issaquah Police Department,FW__Informal_complaint_16-04031.msg,FW__Informal_complaint_16-04031.msg
+awaiting-reading,Issaquah Police Department,Informal_Complaint_Log_or_More.msg,Informal_Complaint_Log_or_More.msg
+awaiting-reading,Issaquah Police Department,Informal_Complaint_for_Log_.msg,Informal_Complaint_for_Log_.msg
+awaiting-reading,Issaquah Police Department,Officer_Complaint.msg,Officer_Complaint.msg
+awaiting-reading,Issaquah Police Department,Officer_interaction.msg,Officer_interaction.msg
+unchecked,Issaquah Police Department,OutlookEmoji-1482244654410_Issaquah.jpg,OutlookEmoji-1482244654410_Issaquah.jpg
+awaiting-reading,Issaquah Police Department,Robert_Hendrickson.msg,Robert_Hendrickson.msg
+awaiting-reading,Issaquah Police Department,Telephone_Complaint.msg,Telephone_Complaint.msg
+unchecked,Issaquah Police Department,Traffic_Collision_Officer_Complaint.pdf,Traffic_Collision_Officer_Complaint.pdf
+unchecked,Issaquah Police Department,image001.png,image001.png
+unchecked,Issaquah Police Department,image002.png,image002.png
+awaiting-reading,Issaquah Police Department,informal_complaint.msg,informal_complaint.msg
+awaiting-reading,Issaquah Police Department,informal_complaint_-1.msg,informal_complaint_-1.msg
+unchecked,Issaquah Police Department,memo_Ofc._Fullbright_-complaint_=_COX.pdf,memo_Ofc._Fullbright_-complaint_=_COX.pdf
+complete,Battle Ground Police Department,Log.cleaned.csv,Log.pdf
+unchecked,Battle Ground Police Department,PRR 20-276 due 8.19.pdf,PRR 20-276 due 8.19.pdf
+unchecked,Battle Ground Police Department,PRR 5-Day Letter.pdf,PRR 5-Day Letter.pdf
+unchecked,Tenino Police Department,1-PRR-Roberts01-200714.pdf,1-PRR-Roberts01-200714.pdf
+unchecked,Tenino Police Department,1-PRR-Roberts02-200714.pdf,1-PRR-Roberts02-200714.pdf
+unchecked,Tenino Police Department,1-PRR-Roberts03-200714.pdf,1-PRR-Roberts03-200714.pdf
+awaiting-cleaning,Elma Police Department,PRA REQUEST - Brandon Roberts - police-p1.csv,PRA REQUEST - Brandon Roberts - police.pdf
+awaiting-cleaning,Elma Police Department,PRA REQUEST - Brandon Roberts - police-p2.csv,PRA REQUEST - Brandon Roberts - police.pdf
+awaiting-csv,Elma Police Department,PRA REQUEST - Brandon Roberts - police.ocr.pdf,PRA REQUEST - Brandon Roberts - police.pdf
+awaiting-cleaning,Camas Police Department,PDR #3318.csv,PDR #3318.xlsx
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p1.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p11.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p12.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p13.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p14.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p16.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p17.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p18.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p19.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p2.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p20.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p21.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p22.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p23.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p24.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p25.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p26.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p27.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p28.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p29.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p3.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p30.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p4.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p5.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p6.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p7.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p8.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted-p9.csv,Brandon Roberts - 2020-14 Redacted.pdf
+awaiting-cleaning,Chehalis Police Department,Brandon Roberts - 2020-14 Redacted.csv,Brandon Roberts - 2020-14 Redacted.pdf
+unchecked,Chehalis Police Department,DOC062620-06262020095324.pdf,DOC062620-06262020095324.pdf
+unchecked,Yelm Police Department,Final PRR 06152020 Brandon Roberts.pdf,Final PRR 06152020 Brandon Roberts.pdf
+unchecked,Yelm Police Department,PRR 06152020 Brandon Roberts extension.pdf,PRR 06152020 Brandon Roberts extension.pdf
+awaiting-cleaning,Sunnyside Police Department,Public Records Request 6.15.20.csv,Public Records Request 6.15.20.xlsx
+awaiting-cleaning,Sultan Police Department,records.txt,records.txt
+unchecked,Warden Police Department,PR Request Roberts_ Police response 08032020.pdf,PR Request Roberts_ Police response 08032020.pdf
+awaiting-cleaning,Longview Police Department,2019_-_2020_Chart.csv,2019_-_2020_Chart.pdf
+unchecked,Longview Police Department,Angel_Written_Warning_5-21-08.pdf,Angel_Written_Warning_5-21-08.pdf
+unchecked,Longview Police Department,Burns_10-1-13.pdf,Burns_10-1-13.pdf
+unchecked,Longview Police Department,D._Wells_Written_Warning_6-24-09.pdf,D._Wells_Written_Warning_6-24-09.pdf
+unchecked,Longview Police Department,Ferriss_11-29-06.pdf,Ferriss_11-29-06.pdf
+unchecked,Longview Police Department,Ferriss_2-22-07.pdf,Ferriss_2-22-07.pdf
+unchecked,Longview Police Department,Firkins_7-1-16.pdf,Firkins_7-1-16.pdf
+unchecked,Longview Police Department,Hallowell_6-10-16.pdf,Hallowell_6-10-16.pdf
+unchecked,Longview Police Department,Hillstrom_4-20-16_documents.pdf,Hillstrom_4-20-16_documents.pdf
+unchecked,Longview Police Department,Korpela_11-24-08.pdf,Korpela_11-24-08.pdf
+unchecked,Longview Police Department,M._Langlois_6-2-06.pdf,M._Langlois_6-2-06.pdf
+unchecked,Longview Police Department,Matt_Dennis_Warning_2-18-16.pdf,Matt_Dennis_Warning_2-18-16.pdf
+unchecked,Longview Police Department,Matthiesen.pdf,Matthiesen.pdf
+unchecked,Longview Police Department,N._Wells_5-8-14.pdf,N._Wells_5-8-14.pdf
+unchecked,Longview Police Department,Nevels_4-12-13.pdf,Nevels_4-12-13.pdf
+unchecked,Longview Police Department,Nevels_Letter_of_Reprimand_6-15-08.doc,Nevels_Letter_of_Reprimand_6-15-08.doc
+unchecked,Longview Police Department,Pannoni_11-27-16.pdf,Pannoni_11-27-16.pdf
+unchecked,Longview Police Department,Peterson_12-15-16.pdf,Peterson_12-15-16.pdf
+unchecked,Longview Police Department,Pineda_4-17-19.pdf,Pineda_4-17-19.pdf
+unchecked,Longview Police Department,Redaction_log (1).docx,Redaction_log (1).docx
+unchecked,Longview Police Department,Redaction_log (2).docx,Redaction_log (2).docx
+unchecked,Longview Police Department,Redaction_log.docx,Redaction_log.docx
+unchecked,Longview Police Department,Reece_4-22-14_R.pdf,Reece_4-22-14_R.pdf
+unchecked,Longview Police Department,S._Dennis_5-10-10.pdf,S._Dennis_5-10-10.pdf
+unchecked,Longview Police Department,Scrivner_8-8-14.pdf,Scrivner_8-8-14.pdf
+unchecked,Longview Police Department,Taylor_10-20-05.pdf,Taylor_10-20-05.pdf
+unchecked,Longview Police Department,Taylor_12-19-11.pdf,Taylor_12-19-11.pdf
+unchecked,Longview Police Department,Taylor_3-16-05_WRITTEN_REPRIMAND.pdf,Taylor_3-16-05_WRITTEN_REPRIMAND.pdf
+unchecked,Longview Police Department,Taylor_6-27-11.pdf,Taylor_6-27-11.pdf
+unchecked,Longview Police Department,Vronin_10-29-10.pdf,Vronin_10-29-10.pdf
+unchecked,Longview Police Department,Z._Ripp_11-8-14.pdf,Z._Ripp_11-8-14.pdf
