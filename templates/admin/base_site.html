@@ -1,0 +1,52 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block extrahead %}
+    <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />-->
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'Investigative Records Processing System' %}</h1>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+#header {
+  background-color: #e2e6ee;
+}
+#header, #header a, #header a:link, #header a:visited,
+#branding h1, #branding h1 a:link, #branding h1 a:visited {
+  color: black;
+}
+.button, .button.default, input[type=submit].default, .submit-row input.default {
+  background-color: #7081a2;
+  opacity: 1.0;
+}
+input[type=submit], input[type=button], .submit-row input, a.button {
+  background-color: #7081a2;
+  opacity: 0.6;
+}
+#nav-sidebar .current-app .section:link,
+#nav-sidebar .current-app .section:visited {
+  color: white;
+}
+.module h2, .module caption, .inline-group h2,
+div.breadcrumbs {
+  background-color: #7081a2;
+  color: white;
+}
+a, a:link, a:visited {
+  color: #7081a2;
+}
+#nav-sidebar .current-model {
+  background-color: #e2e6ee;
+}
+.toggle-nav-sidebar {
+    border-right: 1px solid #eaeaea;
+    background-color: #efefef;
+    border-top: 0;
+    border-left: 0;
+}
+</style>
+{% endblock %}
