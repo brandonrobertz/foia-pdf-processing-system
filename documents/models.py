@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
-from .util import STATUS_NAMES, document_file_path
+from .util import STATUS_NAMES, STATUS_SCORES, document_file_path
 
 
 class Agency(models.Model):
@@ -137,6 +137,16 @@ class ProcessedDocument(models.Model):
                 name='unique-processed-agency-file'
             )
         ]
+
+    def save(self, *args, **kwargs):
+        if self.status == self.document.status:
+            return super().save(*args, **kwargs)
+        doc_status = STATUS_SCORES[self.document.status]
+        is_more_processed = doc_status > STATUS_SCORES[self.status]
+        if is_more_processed:
+            self.document.status = self.status
+            self.document.save()
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.file} ({self.status})"
