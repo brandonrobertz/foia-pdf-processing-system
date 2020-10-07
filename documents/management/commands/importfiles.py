@@ -1,35 +1,22 @@
 #!/usr/bin/env python
-from collections import OrderedDict
 import os
 import re
 import sys
 
+from django.core.management.base import BaseCommand, CommandError
+from django.conf import settings
 import tablib
 
+from documents.models import Agency, Document, ProcessedDocument
+from documents.util import document_file_path, STATUSES, STATUS_SCORES
 
-# this is how we decide if a file is complete
-# these are in order, from more complete to less.
-# the way we'll check for complete-ness is to group
-# files by name without extension and then find the
-# most complete match based on full filename here.
-STATUSES = OrderedDict({
-    "complete": lambda n: n.endswith(".cleaned.csv") or n.endswith(".complete.csv"),
-    "awaiting-cleaning": lambda n: n.endswith(".csv") or n.endswith(".txt"),
-    "awaiting-csv": lambda n: n.endswith(".ocr.pdf"),
-    "awaiting-reading": lambda n: n.endswith(".msg"),
-    "awaiting-extraction": lambda n: n.endswith(".eml"),
-    "unchecked": lambda n: True,
-})
 
 
 def get_status(files_group, basepath=None, agency=None):
     print(f"Getting status for agency '{agency}' at base path: {basepath}")
-    status_keys = list(STATUSES.keys())
-    status_scores = {st: status_keys.index(st) for st in status_keys}
 
     s_fn = lambda n: os.path.getmtime(os.path.join(basepath, agency, n))
     sorted_files = sorted(files_group, key=s_fn, reverse=True)
-    print("sorted_files", sorted_files)
 
     final_status = None
     lowest_score = None
@@ -39,7 +26,7 @@ def get_status(files_group, basepath=None, agency=None):
         for status, test_fn in STATUSES.items():
             if not test_fn(filename):
                 continue
-            score = status_scores[status]
+            score = STATUS_SCORES[status]
             if lowest_score is None or lowest_score > score:
                 lowest_score = score
                 final_status = status
@@ -141,48 +128,89 @@ def get_agency_files(base_data_dir):
 
     return cleaned_agency_files
 
+class Command(BaseCommand):
+    help = """Scan agency directory, copying and setting up the database. This command will optionally output a CSV if the second arg is provided."""
 
-if __name__ == "__main__":
-    try:
-        base_data_dir = sys.argv[1]
-        output_csv = sys.argv[2]
-    except IndexError:
-        print(f"USAGE: {sys.argv[0]} path/to/PD_Directories output.csv")
-        print("Output CSV will be updated with agency files not"
-              " already included in the file, but exist in the"
-              " police department directories.")
-        sys.exit(1)
+    def add_arguments(self, parser):
+        parser.add_argument('base_data_dir', type=str)
+        parser.add_argument(
+            '--dryrun-output', type=str,
+            help='Ouput CSV instead of writing to DB/copying files'
+        )
 
-    # if os.path.exists(output_csv):
-    #     with open(output_csv, "r") as f:
-    #         data = tablib.Dataset.load(f.read(), format='csv')
-    # else:
-    headers = ("status", "agency", "current_file", "original_file")
-    data = tablib.Dataset(headers=headers)
+    def handle(self, *args, **options):
+        base_data_dir = options['base_data_dir']
+        output_csv = options.get('dryrun-output')
 
-    existing = set()
-    for row in data.dict:
-        agency = row["agency"]
-        name = row["original_file"]
-        unique_hash = f"{agency}-{name}"
-        existing[unique_hash] = True
+        # if os.path.exists(output_csv):
+        #     with open(output_csv, "r") as f:
+        #         data = tablib.Dataset.load(f.read(), format='csv')
+        # else:
+        headers = ("status", "agency", "current_file", "original_file")
+        data = tablib.Dataset(headers=headers)
 
-    for agency, files in get_agency_files(base_data_dir).items():
-        for basename, group in get_file_groups(files).items():
-            status, current_filename, original_filename = get_status(
-                group, basepath=base_data_dir, agency=agency
+        existing = set()
+        for row in data.dict:
+            agency = row["agency"]
+            name = row["original_file"]
+            unique_hash = f"{agency}-{name}"
+            existing[unique_hash] = True
+
+        for agency, files in get_agency_files(base_data_dir).items():
+            for basename, group in get_file_groups(files).items():
+                status, current_filename, original_filename = get_status(
+                    group, basepath=base_data_dir, agency=agency
+                )
+                print(status, agency, current_filename, original_filename)
+                unique_hash = f"{agency}-{original_filename}"
+                if unique_hash in existing:
+                    print("Skipping eixsting agency file", agency, original_filename)
+                    continue
+                data.append((status, agency, current_filename, original_filename))
+
+        if output_csv:
+            try:
+                os.rename(output_csv, f"{output_csv}.bak")
+            except FileNotFoundError:
+                pass
+
+            with open(output_csv, "w") as f:
+                f.write(data.csv)
+
+            # all done here, don't write results to DB or copy files
+            return
+
+        for row in data.dict:
+            agency, _ = Agency.objects.get_or_create(
+                name=row["agency"]
             )
-            print(status, agency, current_filename, original_filename)
-            unique_hash = f"{agency}-{original_filename}"
-            if unique_hash in existing:
-                print("Skipping eixsting agency file", agency, original_filename)
+            original_file = row["original_file"]
+            current_file = row["current_file"]
+            status = row["status"]
+
+            document, created = Document.objects.get_or_create(
+                agency=agency,
+                file=document_file_path(agency.name, original_file)
+            )
+
+            if current_file == original_file:
                 continue
-            data.append((status, agency, current_filename, original_filename))
 
-    try:
-        os.rename(output_csv, f"{output_csv}.bak")
-    except FileNotFoundError:
-        pass
+            processed_doc, created = ProcessedDocument.objects.get_or_create(
+                document=document,
+                file=document_file_path(agency.name, current_file),
+                status=status,
+            )
 
-    with open(output_csv, "w") as f:
-        f.write(data.csv)
+            found_page_parts = re.findall(r"-p([0-9\-]+)\.csv$", current_file)
+            if found_page_parts:
+                assert len(found_page_parts) == 1
+                processed_doc.source_page = found_page_parts[0]
+                processed_doc.save()
+
+            # check if there's a more processed version on disk ... greater
+            # score means higher number of steps required to completion
+            newer_on_disk = STATUS_SCORES[document.status] > STATUS_SCORES[status]
+            if created or newer_on_disk:
+                document.status = status
+                document.save()
