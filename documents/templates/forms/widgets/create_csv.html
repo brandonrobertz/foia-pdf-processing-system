@@ -1,4 +1,15 @@
 <style>
+#table-builder {
+  border-spacing: 0;
+}
+#table-builder td {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+#table-builder td input {
+  border-radius: 0px;
+}
 .row .id- {
   width: 30px;
 }
@@ -14,6 +25,8 @@
 .row .remove {
   cursor: pointer;
   color: red;
+  vertical-align: middle;
+  font-size: 20px;
 }
 </style>
 
@@ -105,6 +118,12 @@ $(document).ready(() => {
 </script>
 
 <div>
+  <p>
+  Use this to create a new CSV file corresponding to the above request
+  document. Once you're done adding information, you can download it
+  and then upload it below as a processed document. Make sure to set the
+  status on the processed document when you do that!
+  </p>
   <table id="table-builder"></table>
   <button class="add-row">Add row</button>
   <button class="download">Download File</button>

@@ -50,6 +50,7 @@ class AddNewField(forms.Textarea):
 
 class DocumentForm(forms.ModelForm):
     add_new_csv = forms.CharField(
+        required=False,
         widget=AddNewField()
     )
 

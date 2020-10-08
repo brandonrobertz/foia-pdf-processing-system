@@ -1,18 +1,14 @@
-from django.core.signals import post_save
+from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from .util import STATUS_SCORES
-from .models import ProcessedDocument
+from .models import Document, ProcessedDocument
 
 
-@receiver(post_save, sender=ProcessedDocument)
-def update_document_status(sender, **kwargs):
+def update_doc_status(document):
     """
     Keep a document's status in sync with its most processed document.
     """
-    instance = kwargs['instance']
-    document = instance.document
-
     # dict, {score: processed, ...}
     scores = {}
     for proc in document.processeddocument_set.all():
@@ -22,5 +18,18 @@ def update_document_status(sender, **kwargs):
     most_complete_score = min(scores.keys())
     most_complete_proc = scores[most_complete_score]
 
-    document.status = most_complete_proc.status
-    document.save()
+    if most_complete_proc.status != document.status:
+        document.status = most_complete_proc.status
+        document.save()
+
+
+@receiver(post_save, sender=ProcessedDocument)
+def update_document_status_from_processed(sender, **kwargs):
+    instance = kwargs['instance']
+    update_doc_status(instance.document)
+
+
+@receiver(post_save, sender=Document)
+def update_document_status(sender, **kwargs):
+    document = kwargs['instance']
+    update_doc_status(document)
