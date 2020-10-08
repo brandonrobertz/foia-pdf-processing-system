@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'processing',
     'documents',
 ]
 
@@ -73,6 +74,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'processing.wsgi.application'
 
+# Security
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

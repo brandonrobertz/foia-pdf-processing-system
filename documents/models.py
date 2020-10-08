@@ -48,11 +48,6 @@ class Document(models.Model):
         blank=True, null=True,
         help_text="The original file sent by the agency. This shouldn't need to be changed."
     )
-    current_file = models.FileField(
-        upload_to=document_file_path,
-        blank=True, null=True,
-        help_text="The current processed version of the file."
-    )
 
     notes = models.TextField(
         null=True, blank=True,
@@ -95,6 +90,7 @@ class ProcessedDocument(models.Model):
     file = models.FileField(
         upload_to=document_file_path,
         blank=True, null=True,
+        help_text="The processed version of the original document"
     )
 
     status = models.CharField(
@@ -137,16 +133,6 @@ class ProcessedDocument(models.Model):
                 name='unique-processed-agency-file'
             )
         ]
-
-    def save(self, *args, **kwargs):
-        if self.status == self.document.status:
-            return super().save(*args, **kwargs)
-        doc_status = STATUS_SCORES[self.document.status]
-        is_more_processed = doc_status > STATUS_SCORES[self.status]
-        if is_more_processed:
-            self.document.status = self.status
-            self.document.save()
-        return super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.file} ({self.status})"

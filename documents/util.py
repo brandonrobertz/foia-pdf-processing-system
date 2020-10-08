@@ -32,12 +32,13 @@ STATUS_NAMES = (
 
 
 def document_file_path(instance_or_agency, filename):
+    agency = ''
     if isinstance(instance_or_agency, str):
         agency = instance_or_agency
     elif hasattr(instance_or_agency, "name"):
-        agency = instance.name
+        agency = instance_or_agency.name
     elif hasattr(instance_or_agency, "agency"):
-        agency = instance.agency.name
+        agency = instance_or_agency.agency.name
     elif hasattr(instance_or_agency, "document"):
-        agency = instance.document.agency.name
+        agency = instance_or_agency.document.agency.name
     return os.path.join("agency_attachments", agency, filename)

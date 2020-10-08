@@ -1,5 +1,8 @@
+from django import forms
 from django.contrib import admin
+from django.db import models
 
+from .forms import ProcessedDocumentForm, DocumentForm
 from .models import Agency, Document, ProcessedDocument
 
 
@@ -41,7 +44,7 @@ class InlineProcessedDocument(admin.TabularInline):
 @admin.register(Document)
 class DocumentAdmin(CRUDModelAdmin):
     list_display = (
-        'agency', 'status', 'file',
+        'view_page', 'agency', 'status', 'file',
     )
     list_filter = ('status','agency')
     list_editable = ('status',)
@@ -49,20 +52,23 @@ class DocumentAdmin(CRUDModelAdmin):
     inlines = (
         InlineProcessedDocument,
     )
+    form = DocumentForm
 
-    # def details(self, obj):
-    #     return mark_safe(f"<a href='{SITE_URL}/admin/app/model/{obj.pk}/change'>View Page</a>")
-    # link_id.short_description = "View Detail Page"
-    # link_id.allow_tags = True
+    def view_page(self, obj):
+        return 'View Page'
+    view_page.short_description = "View Detail Page"
 
 
 @admin.register(ProcessedDocument)
-class DocumentAdmin(CRUDModelAdmin):
+class ProcessedDocumentAdmin(CRUDModelAdmin):
     list_display = (
-        'file', 'status', 'document',
+        'view_page', 'file', 'status', 'source_page', 'source_sheet',
     )
     list_filter = ('status','document__agency')
     list_editable = ('status',)
     search_fields = ('file', 'document',)
+    form = ProcessedDocumentForm
 
-
+    def view_page(self, obj):
+        return 'View Page'
+    view_page.short_description = "View Detail Page"

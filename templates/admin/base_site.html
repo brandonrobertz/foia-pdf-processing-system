@@ -4,6 +4,9 @@
 
 {% block extrahead %}
     <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
 {% endblock %}
 
 {% block branding %}
@@ -47,6 +50,13 @@ a, a:link, a:visited {
     background-color: #efefef;
     border-top: 0;
     border-left: 0;
+}
+.file-viewer {
+  width: 100%;
+}
+.file-viewer iframe {
+  width: 100%;
+  min-height: 400px;
 }
 </style>
 {% endblock %}

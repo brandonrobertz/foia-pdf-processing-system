@@ -1,0 +1,38 @@
+{% if widget.iframe_ext == '.pdf' %}
+<p class="file-viewer">
+  <iframe src="{{ widget.iframe_path }}"></iframe> 
+</p>
+{% elif widget.iframe_ext == '.csv' %}
+<div class="file-viewer">
+  <p class="info">
+    <b>File Preview</b><br/>
+    Some fields might be missing. If this is the case then the file might be
+    poorly formatted/cleaned.
+  </p>
+  <table id="{{widget.iframe_id}}">
+  </table>
+</div>
+<script>
+$(document).ready(function() {
+  $.get(`${window.origin}{{ widget.iframe_path }}`, (response) => {
+    const parsed = Papa.parse(response.trim());
+    const columns = parsed.data.shift().map((c) => { return {title: c }});
+    const cleaned = parsed.data.map((row) => {
+      if (row.length === columns.length) {
+        return row;
+      }
+      else if (row.length > columns.length) {
+        return row.slice(0, row.length);
+      }
+      else if (row.length < columns.length) {
+        return row.concat(new Array(columns.length - row.length));
+      }
+    });
+    $("#{{widget.iframe_id}}").DataTable({
+      data: cleaned,
+      columns: columns,
+    });
+  });
+});
+</script>
+{% endif %}

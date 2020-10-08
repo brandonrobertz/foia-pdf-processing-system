@@ -44,21 +44,25 @@ def get_status(files_group, basepath=None, agency=None):
     return final_status, current_file, original_file
 
 
+def get_basename_and_ext(filename):
+    ext = ''
+    basename = filename
+    while True:
+        basename, _ext = os.path.splitext(os.path.basename(basename))
+        if not _ext:
+            break
+        ext = f"{_ext}{ext}"
+    return basename, ext
+
+
 def get_file_groups(agency_files):
     # basename: filenames
     groups = {}
     for file in sorted(agency_files):
-        ext = ''
-        basename = file
-        while True:
-            basename, _ext = os.path.splitext(os.path.basename(basename))
-            if not _ext:
-                break
-            ext = f"{_ext}{ext}"
+        basename, ext = get_basename_and_ext(file)
         if basename not in groups:
             groups[basename] = []
         groups[basename].append(file)
-
     remove_groups = []
     for basename, group in groups.items():
         for file in group:
@@ -202,10 +206,19 @@ class Command(BaseCommand):
                 status=status,
             )
 
+            # set the source page number for a CSV
             found_page_parts = re.findall(r"-p([0-9\-]+)\.csv$", current_file)
             if found_page_parts:
                 assert len(found_page_parts) == 1
                 processed_doc.source_page = found_page_parts[0]
+                processed_doc.save()
+
+            # set the source sheet from an XLS for a CSV
+            basename, ext = get_basename_and_ext(original_file)
+            sheet_name = re.findall(f"{basename}-(.+)\.csv", current_file)
+            if sheet_name:
+                assert len(sheet_name) == 1
+                processed_doc.source_sheet = sheet_name[0]
                 processed_doc.save()
 
             # check if there's a more processed version on disk ... greater
