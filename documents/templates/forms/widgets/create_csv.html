@@ -1,0 +1,111 @@
+<style>
+.row .id- {
+  width: 30px;
+}
+.row .finding {
+  width: 75px;
+}
+.row .date{
+  width: 75px;
+}
+.row .pg- {
+  width: 20px;
+}
+.row .remove {
+  cursor: pointer;
+  color: red;
+}
+</style>
+
+<script>
+$(document).ready(() => {
+  const columns = [{
+    label: "Officer Name",
+  }, {
+    label: "Date",
+  }, {
+    label: "Allegation",
+  }, {
+    label: "Finding",
+  }, {
+    label: "Dicipline",
+  }, {
+    label: "ID #",
+  }, {
+    label: "Notes"
+  }, {
+    label: "Pg."
+  }];
+  console.log("Columns", columns);
+
+  const table = $("#table-builder");
+
+  const addHeader = () => {
+    const header = $("<tr></tr>");
+    columns.forEach((col) => {
+      const label = col.label;
+      const cell = $(`<th class='cell'>${label}</th>`);
+      cell.appendTo(header);
+    });
+    const remCell = $("<th class='cell'>Remove</th>");
+    remCell.appendTo(header);
+    header.appendTo(table);
+  };
+
+  const addRow = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const row = $("<tr class='row'></tr>");
+    columns.forEach((col) => {
+      const label = col.label;
+      const name = label.toLocaleLowerCase().replace(/[\s#\.]+/, "-");
+      $(`<td><input type="text" class="${name}" name="${name}" value="" /></td>`).appendTo(row);
+    });
+    const remBtn = $(`<td class='cell remove'>🗑️</td>`);
+    remBtn.on('click', (e) => {
+      console.log("Delete me");
+      $(e.target).parent().remove();
+    });
+    remBtn.appendTo(row);
+    row.appendTo(table);
+  };
+
+  const download = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const rows = [
+      columns.map((r) => r.label),
+    ];
+    table.find("tr").each((_, tr) => {
+      const row = [];
+      $(tr).find("input").each((_, td) => {
+        row.push($(td).val().trim());
+      });
+      if (row && row.length) {
+        rows.push(row);
+      }
+    });
+
+    const csv = Papa.unparse(rows);
+    const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
+    const filename = $("#document_form .field-file a")[0].textContent.replace(".pdf", ".csv");
+    saveAs(blob, filename);
+  };
+
+  addHeader();
+  addRow();
+
+  $(".add-row").on("click", addRow);
+  $(".download").on("click", download);
+});
+</script>
+
+<div>
+  <table id="table-builder"></table>
+  <button class="add-row">Add row</button>
+  <button class="download">Download File</button>
+</div>

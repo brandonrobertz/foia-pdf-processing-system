@@ -40,12 +40,25 @@ class ViewableSelect(forms.Select):
         return context
 
 
+class AddNewField(forms.Textarea):
+    template_name = 'forms/widgets/create_csv.html'
+
+    def get_context(self, name, value, attrs):
+        context = super().get_context(name, value, attrs)
+        return context
+
+
 class DocumentForm(forms.ModelForm):
+    add_new_csv = forms.CharField(
+        widget=AddNewField()
+    )
+
     class Meta:
         model = Document
         fields = (
             'agency',
             'file',
+            'add_new_csv',
             'status',
             'notes',
             'created_by',
@@ -59,7 +72,9 @@ class DocumentForm(forms.ModelForm):
         )
         widgets = {
             'file': ViewableFile(),
+            'add_new_csv': AddNewField(),
         }
+
 
 class ProcessedDocumentForm(forms.ModelForm):
     class Meta:
@@ -83,4 +98,3 @@ class ProcessedDocumentForm(forms.ModelForm):
             'file': ViewableFile(),
             'document': ViewableSelect(),
         }
-
