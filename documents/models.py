@@ -69,12 +69,15 @@ class Document(models.Model):
     )
 
     class Meta:
-        constraints = [
+        constraints = (
             models.UniqueConstraint(
                 fields=('agency','file'),
                 name='unique-agency-file'
-            )
-        ]
+            ),
+        )
+        indexes = (
+            models.Index(fields=('status',)),
+        )
 
     def __str__(self):
         return f"{self.file} ({self.status})"
@@ -127,12 +130,15 @@ class ProcessedDocument(models.Model):
     )
 
     class Meta:
-        constraints = [
+        constraints = (
             models.UniqueConstraint(
                 fields=('document','file'),
                 name='unique-processed-agency-file'
-            )
-        ]
+            ),
+        )
+        indexes = (
+            models.Index(fields=('status',)),
+        )
 
     def __str__(self):
         return f"{self.file} ({self.status})"
