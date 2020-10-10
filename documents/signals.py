@@ -9,9 +9,13 @@ def update_doc_status(document):
     """
     Keep a document's status in sync with its most processed document.
     """
+    processed = document.processeddocument_set.all()
+    if not processed.count():
+        return
+
     # dict, {score: processed, ...}
     scores = {}
-    for proc in document.processeddocument_set.all():
+    for proc in processed:
         score = STATUS_SCORES[proc.status]
         scores[score] = proc
 
