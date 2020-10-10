@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 MEDIA_URL= '/files/'
 MEDIA_ROOT=f"{BASE_DIR}/data/"
-
+DEFAULT_FILE_STORAGE = 'documents.storage.OverwritingFileSystemStorage'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
