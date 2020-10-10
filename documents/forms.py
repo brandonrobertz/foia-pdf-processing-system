@@ -13,6 +13,8 @@ class ViewableFile(forms.ClearableFileInput):
 
     def get_context(self, name, value, attrs):
         context = super().get_context(name, value, attrs)
+        if not value:
+            return context
         path = os.path.join(
             settings.MEDIA_URL, value.name
         )
@@ -98,4 +100,15 @@ class ProcessedDocumentForm(forms.ModelForm):
         widgets = {
             'file': ViewableFile(),
             'document': ViewableSelect(),
+        }
+
+
+class ProcessedInlineDocumentForm(forms.ModelForm):
+    class Meta:
+        model = ProcessedDocument
+        fields = (
+            'status', 'file'
+        )
+        widgets = {
+            'file': ViewableFile(),
         }

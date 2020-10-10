@@ -160,8 +160,11 @@ class Command(BaseCommand):
             unique_hash = f"{agency}-{name}"
             existing[unique_hash] = True
 
+        # {agency-original_filename: [file1, file2, ..., fileN]}
+        agency_middle_files = {}
         for agency, files in get_agency_files(base_data_dir).items():
             for basename, group in get_file_groups(files).items():
+                print("Agency", agency, "Basename", basename, "Group", group)
                 status, current_filename, original_filename = get_status(
                     group, basepath=base_data_dir, agency=agency
                 )
@@ -171,6 +174,13 @@ class Command(BaseCommand):
                     print("Skipping eixsting agency file", agency, original_filename)
                     continue
                 data.append((status, agency, current_filename, original_filename))
+                # skip XLS groups because they're more complicated
+                agency_ogname_key = f"{agency}-{original_filename}"
+                agency_middle_files[agency_ogname_key] = []
+                if ".xls" not in original_filename.lower():
+                    for filename in group:
+                        if filename != current_filename and filename != original_filename:
+                            agency_middle_files[agency_ogname_key].append(filename)
 
         if output_csv:
             try:
@@ -188,23 +198,46 @@ class Command(BaseCommand):
             agency, _ = Agency.objects.get_or_create(
                 name=row["agency"]
             )
+            print("Syncing agency", agency.name)
+
             original_file = row["original_file"]
             current_file = row["current_file"]
             status = row["status"]
+            print("original_file", original_file, "current_file", current_file,
+                  "status", status)
 
             document, created = Document.objects.get_or_create(
                 agency=agency,
                 file=document_file_path(agency.name, original_file)
             )
+            print("Got document", document)
 
-            if current_file == original_file:
-                continue
+            print("Processing middle state files for agency", agency.name)
+            middle_filenames = agency_middle_files[f"{agency.name}-{original_file}"]
+            print("Middle filenames", middle_filenames)
+            for middle_filename in middle_filenames:
+                m_status = None
+                for status, test_fn in STATUSES.items():
+                    if test_fn(middle_filename):
+                        m_status = status
+                        break
+                assert m_status, "No status for file: %s" % (middle_filename)
+                print("Saving middle file: %s status: %s" % (
+                    middle_filename, m_status
+                ))
+                m_proc_doc, _ = ProcessedDocument.objects.get_or_create(
+                    document=document,
+                    file=document_file_path(agency.name, middle_filename),
+                )
+                m_proc_doc.status = m_status
+                m_proc_doc.save()
 
             processed_doc, created = ProcessedDocument.objects.get_or_create(
                 document=document,
                 file=document_file_path(agency.name, current_file),
-                status=status,
             )
+            processed_doc.status=status
+            processed_doc.save()
 
             # set the source page number for a CSV
             found_page_parts = re.findall(r"-p([0-9\-]+)\.csv$", current_file)

@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.db import models
 
 from .util import STATUS_NAMES
-from .forms import ProcessedDocumentForm, DocumentForm
+from .forms import ProcessedDocumentForm, DocumentForm, ProcessedInlineDocumentForm
 from .models import Agency, Document, ProcessedDocument
 
 
@@ -68,6 +68,7 @@ class InlineProcessedDocument(admin.TabularInline):
     fields = (
         'status', 'file'
     )
+    form = ProcessedInlineDocumentForm
     extra = 0
 
 
@@ -76,7 +77,7 @@ class DocumentAdmin(CRUDModelAdmin):
     list_display = (
         'view_page', 'agency', 'status', 'file',
     )
-    list_filter = ('status', ExcludeListFilter,'agency')
+    list_filter = ('status', ExcludeListFilter, 'agency')
     list_editable = ('status',)
     search_fields = ('file', 'current_file',)
     inlines = (

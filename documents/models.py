@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
-from .util import STATUS_NAMES, STATUS_SCORES, document_file_path
+from .util import STATUSES, STATUS_NAMES, STATUS_SCORES, document_file_path
 
 
 class Agency(models.Model):
@@ -25,6 +25,9 @@ class Agency(models.Model):
         blank=True, null=True,
         related_name='agencies_updated',
     )
+
+    class Meta:
+        ordering = ('name',)
 
     def __str__(self):
         return self.name
@@ -78,6 +81,7 @@ class Document(models.Model):
         indexes = (
             models.Index(fields=('status',)),
         )
+        ordering = ('file',)
 
     def __str__(self):
         return f"{self.file} ({self.status})"
@@ -132,13 +136,21 @@ class ProcessedDocument(models.Model):
     class Meta:
         constraints = (
             models.UniqueConstraint(
-                fields=('document','file'),
-                name='unique-processed-agency-file'
+                fields=('file',),
+                name='unique-processed-file'
             ),
         )
         indexes = (
             models.Index(fields=('status',)),
         )
+        ordering = ('file',)
 
     def __str__(self):
         return f"{self.file} ({self.status})"
+
+    def save(self, *args, **kwargs):
+        for status, test_fn in STATUSES.items():
+            if test_fn(self.file.name):
+                self.status = status
+                break
+        return super().save(*args, **kwargs)
