@@ -45,13 +45,22 @@ def get_status(files_group, basepath=None, agency=None):
 
 
 def get_basename_and_ext(filename):
+    print("Getting basename and ext from", filename)
     ext = ''
     basename = filename
     while True:
-        basename, _ext = os.path.splitext(os.path.basename(basename))
+        _basename, _ext = os.path.splitext(os.path.basename(basename))
+        print("basename", basename, "_ext", _ext, "ext", ext)
         if not _ext:
+            basename = _basename
+            break
+        # only support long extensions for our two known long extension types
+        elif len(_ext) > 4 and _ext not in [".complete", ".cleaned"]:
             break
         ext = f"{_ext}{ext}"
+        basename = _basename
+        print("ext", ext)
+    print("Final basename", basename, "ext", ext)
     return basename, ext
 
 
@@ -63,6 +72,8 @@ def get_file_groups(agency_files):
         if basename not in groups:
             groups[basename] = []
         groups[basename].append(file)
+        print("Basename", basename, "Extension", ext)
+        print("Groups", groups)
     remove_groups = []
     for basename, group in groups.items():
         for file in group:
