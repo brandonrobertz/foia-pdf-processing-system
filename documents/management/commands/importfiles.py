@@ -24,13 +24,13 @@ def get_status(files_group, basepath=None, agency=None):
     current_file = None
     for filename in files_group:
         for status, test_fn in STATUSES.items():
-            if not test_fn(filename):
-                continue
-            score = STATUS_SCORES[status]
-            if lowest_score is None or lowest_score > score:
-                lowest_score = score
-                final_status = status
-                current_file = filename
+            if test_fn(filename):
+                score = STATUS_SCORES[status]
+                if lowest_score is None or lowest_score > score:
+                    lowest_score = score
+                    final_status = status
+                    current_file = filename
+                break
 
     # PDF Pre-processing correction: we have a page-extracted file here, so we
     # add the original file (without the -p[num]) suffix.
@@ -45,12 +45,10 @@ def get_status(files_group, basepath=None, agency=None):
 
 
 def get_basename_and_ext(filename):
-    print("Getting basename and ext from", filename)
     ext = ''
     basename = filename
     while True:
         _basename, _ext = os.path.splitext(os.path.basename(basename))
-        print("basename", basename, "_ext", _ext, "ext", ext)
         if not _ext:
             basename = _basename
             break
@@ -59,8 +57,6 @@ def get_basename_and_ext(filename):
             break
         ext = f"{_ext}{ext}"
         basename = _basename
-        print("ext", ext)
-    print("Final basename", basename, "ext", ext)
     return basename, ext
 
 
