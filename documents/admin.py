@@ -23,7 +23,7 @@ class ExcludeListFilter(admin.SimpleListFilter):
         human-readable name for the option that will appear
         in the right sidebar.
         """
-        return STATUS_NAMES
+        return (('any-complete', 'Complete or Awaiting final', ),) + STATUS_NAMES
 
     def queryset(self, request, queryset):
         """
@@ -31,7 +31,13 @@ class ExcludeListFilter(admin.SimpleListFilter):
         provided in the query string and retrievable via
         `self.value()`.
         """
-        if self.value():
+        if self.value() == 'any-complete':
+            return queryset.exclude(
+                status='complete'
+            ).exclude(
+                status="awaiting-cleaning"
+            )
+        elif self.value():
             return queryset.exclude(status=self.value())
         return queryset
 

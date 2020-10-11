@@ -13,6 +13,10 @@
 .row .id- {
   width: 30px;
 }
+.row .last-name,
+.row .first-name {
+  width: 75px;
+}
 .row .finding {
   width: 75px;
 }
@@ -33,15 +37,17 @@
 <script>
 $(document).ready(() => {
   const columns = [{
-    label: "Officer Name",
+    label: "First Name",
+  }, {
+    label: "Last Name",
   }, {
     label: "Date",
-  }, {
-    label: "Allegation",
   }, {
     label: "Finding",
   }, {
     label: "Dicipline",
+  }, {
+    label: "Allegation",
   }, {
     label: "ID #",
   }, {
