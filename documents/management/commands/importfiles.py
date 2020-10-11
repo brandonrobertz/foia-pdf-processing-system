@@ -239,12 +239,13 @@ class Command(BaseCommand):
                 m_proc_doc.status = m_status
                 m_proc_doc.save()
 
-            processed_doc, created = ProcessedDocument.objects.get_or_create(
-                document=document,
-                file=document_file_path(agency.name, current_file),
-            )
-            processed_doc.status=status
-            processed_doc.save()
+            if current_file != original_file:
+                processed_doc, created = ProcessedDocument.objects.get_or_create(
+                    document=document,
+                    file=document_file_path(agency.name, current_file),
+                )
+                processed_doc.status=status
+                processed_doc.save()
 
             # set the source page number for a CSV
             found_page_parts = re.findall(r"-p([0-9\-]+)\.csv$", current_file)
