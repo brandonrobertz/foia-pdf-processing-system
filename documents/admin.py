@@ -53,7 +53,7 @@ class InlineDocument(admin.TabularInline):
 
 
 @admin.register(Agency)
-class DocumentAdmin(CRUDModelAdmin):
+class AgencyAdmin(CRUDModelAdmin):
     list_display = (
         'name',
     )
@@ -62,6 +62,10 @@ class DocumentAdmin(CRUDModelAdmin):
         InlineDocument,
     )
 
+    class Meta:
+        verbose_name = "Agency"
+        verbose_name_plural = "Agencies"
+
 
 class InlineProcessedDocument(admin.TabularInline):
     model = ProcessedDocument
@@ -69,6 +73,7 @@ class InlineProcessedDocument(admin.TabularInline):
         'status', 'file'
     )
     form = ProcessedInlineDocumentForm
+    ordering = ('created_at',)
     extra = 0
 
 

@@ -27,6 +27,8 @@ class Agency(models.Model):
     )
 
     class Meta:
+        verbose_name = "Agency"
+        verbose_name_plural = "Agencies"
         ordering = ('name',)
 
     def __str__(self):
@@ -48,6 +50,7 @@ class Document(models.Model):
 
     file = models.FileField(
         upload_to=document_file_path,
+		max_length=500,
         blank=True, null=True,
         help_text="The original file sent by the agency. This shouldn't need to be changed."
     )
@@ -96,6 +99,7 @@ class ProcessedDocument(models.Model):
 
     file = models.FileField(
         upload_to=document_file_path,
+		max_length=500,
         blank=True, null=True,
         help_text="The processed version of the original document"
     )

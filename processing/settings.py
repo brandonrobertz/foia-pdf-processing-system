@@ -129,3 +129,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if os.getenv("PRODUCTION") == "true":
+    from processing.settings_prod import *
+else:
+    try:
+        from processing.settings_dev import *
+    except:
+        from processing.settings_prod import *
