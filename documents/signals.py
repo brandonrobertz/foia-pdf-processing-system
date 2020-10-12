@@ -36,4 +36,7 @@ def update_document_status_from_processed(sender, **kwargs):
 @receiver(post_save, sender=Document)
 def update_document_status(sender, **kwargs):
     document = kwargs['instance']
-    update_doc_status(document)
+    # only override status if file is marked as no records
+    # this means this document will never have a completed status
+    if not document.no_new_records:
+        update_doc_status(document)

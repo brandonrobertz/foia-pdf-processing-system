@@ -63,6 +63,7 @@ class DocumentForm(forms.ModelForm):
             'file',
             'add_new_csv',
             'status',
+            'no_new_records',
             'notes',
             'related',
             'created_by',

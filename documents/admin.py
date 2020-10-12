@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django.db import models
+from django.db.models import Q
 
 from .util import STATUS_NAMES
 from .forms import ProcessedDocumentForm, DocumentForm, ProcessedInlineDocumentForm
@@ -33,11 +34,9 @@ class ExcludeListFilter(admin.SimpleListFilter):
         """
         if self.value() == 'any-complete':
             return queryset.exclude(
-                status='complete'
-            ).exclude(
-                status="awaiting-cleaning"
-            ).exclude(
-                status="non-request"
+                Q(status='complete') |
+                Q(status="awaiting-cleaning") |
+                Q(no_new_records=True)
             )
         elif self.value():
             return queryset.exclude(status=self.value())
@@ -97,9 +96,9 @@ class InlineProcessedDocument(admin.TabularInline):
 @admin.register(Document)
 class DocumentAdmin(CRUDModelAdmin):
     list_display = (
-        'view_page', 'agency', 'status', 'file',
+        'view_page', 'agency', 'status', 'no_new_records', 'file',
     )
-    list_filter = ('status', ExcludeListFilter, 'agency')
+    list_filter = ('status', ExcludeListFilter, 'no_new_records', 'agency')
     list_editable = ('status',)
     search_fields = ('file', 'current_file',)
     inlines = (

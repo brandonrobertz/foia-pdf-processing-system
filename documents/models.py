@@ -79,6 +79,15 @@ class Document(models.Model):
         help_text="Status of processing the response document",
     )
 
+    no_new_records = models.BooleanField(
+        default=False,
+        help_text=(
+            "Check this if this document contains no new records. This "
+            "shortcuts all processed document checking for completion status "
+            "anb marks this document as complete (no parsing required)"
+        )
+    )
+
     file = models.FileField(
         upload_to=document_file_path,
 		max_length=500,
@@ -124,6 +133,11 @@ class Document(models.Model):
 
     def __str__(self):
         return f"{self.file} ({self.status})"
+
+    def save(self, *args, **kwargs):
+        if self.no_new_records:
+            self.status = "completed"
+        return super().save(*args, **kwargs)
 
 
 class ProcessedDocument(models.Model):
