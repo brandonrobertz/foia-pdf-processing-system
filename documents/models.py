@@ -14,6 +14,10 @@ class FieldCategory(models.Model):
     value = models.CharField(
         max_length=100
     )
+    # track number of uses, for sorting
+    count = models.IntegerField(
+        default=0
+    )
 
     class Meta:
         verbose_name = "Field Category"

@@ -23,6 +23,7 @@ from documents import views as documents_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/fieldname_values/count', documents_views.fieldname_value_count),
     path('api/fieldname_values', documents_views.fieldname_values),
 ]
 

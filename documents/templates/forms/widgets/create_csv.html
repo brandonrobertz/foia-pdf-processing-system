@@ -178,7 +178,7 @@ $(document).ready(() => {
     row.appendTo(table);
 
     interactiveIds.forEach((data) => {
-      $(`#${data.pk}`).selectize({
+      const selector = $(`#${data.pk}`).selectize({
         separator: ', ',
         persist: false,
         preload: true,
@@ -224,7 +224,13 @@ $(document).ready(() => {
               callback(res);
             }
           });
-        }
+        },
+        onItemAdd: function(value, $item) {
+          $.post('/api/fieldname_values/count', {
+            fieldname: data.name,
+            value: value,
+          });
+        },
       });
     });
   };

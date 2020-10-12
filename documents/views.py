@@ -15,7 +15,7 @@ def fieldname_values(request):
             q_kwargs['value__icontains'] = query
         fc = FieldCategory.objects.filter(
             **q_kwargs
-        ).values('value')
+        ).order_by("-count").values('value')
         return JsonResponse(list(fc), safe=False)
 
     elif request.method == "POST":
@@ -26,3 +26,16 @@ def fieldname_values(request):
             value=value
         )
         return JsonResponse({'status': 'ok'})
+
+
+def fieldname_value_count(request):
+    # just let it explode if people don't POST properly
+    fieldname = request.POST['fieldname']
+    value = request.POST['value']
+    fc = FieldCategory.objects.get(
+        fieldname=fieldname,
+        value=value
+    )
+    fc.count += 1
+    fc.save()
+    return JsonResponse({'status': 'ok'})
