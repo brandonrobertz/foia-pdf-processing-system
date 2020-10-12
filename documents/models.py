@@ -7,6 +7,33 @@ from django.db import models
 from .util import STATUSES, STATUS_NAMES, STATUS_SCORES, document_file_path
 
 
+class FieldCategory(models.Model):
+    fieldname = models.CharField(
+        max_length=100
+    )
+    value = models.CharField(
+        max_length=100
+    )
+
+    class Meta:
+        verbose_name = "Field Category"
+        verbose_name_plural = "Field Categories"
+        ordering = ('fieldname', 'value')
+        constraints = (
+            models.UniqueConstraint(
+                fields=('fieldname','value'),
+                name='unique-field-value'
+            ),
+        )
+        indexes = (
+            models.Index(fields=('fieldname',)),
+            models.Index(fields=('fieldname', 'value')),
+        )
+
+    def __str__(self):
+        return f"{self.fieldname} => {self.value}"
+
+
 class Agency(models.Model):
     name = models.CharField(
         max_length=300, unique=True

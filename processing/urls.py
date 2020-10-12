@@ -18,9 +18,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 
+from documents import views as documents_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/fieldname_values', documents_views.fieldname_values),
 ]
 
 

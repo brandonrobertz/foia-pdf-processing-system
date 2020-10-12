@@ -4,7 +4,7 @@ from django.db import models
 
 from .util import STATUS_NAMES
 from .forms import ProcessedDocumentForm, DocumentForm, ProcessedInlineDocumentForm
-from .models import Agency, Document, ProcessedDocument
+from .models import Agency, Document, ProcessedDocument, FieldCategory
 
 
 class ExcludeListFilter(admin.SimpleListFilter):
@@ -63,12 +63,21 @@ class InlineDocument(admin.TabularInline):
 @admin.register(Agency)
 class AgencyAdmin(CRUDModelAdmin):
     list_display = (
-        'name',
+        'name', 'unchecked', 'awaiting_cleaning', 'completed',
     )
     search_fields = ('name',)
     inlines = (
         InlineDocument,
     )
+
+    def awaiting_cleaning(self, obj):
+        return obj.document_set.filter(status='awaiting-cleaning').count()
+
+    def completed(self, obj):
+        return obj.document_set.filter(status='completed').count()
+
+    def unchecked(self, obj):
+        return obj.document_set.filter(status='unchecked').count()
 
     class Meta:
         verbose_name = "Agency"
@@ -116,3 +125,12 @@ class ProcessedDocumentAdmin(CRUDModelAdmin):
     def view_page(self, obj):
         return 'View Page'
     view_page.short_description = "View Detail Page"
+
+
+@admin.register(FieldCategory)
+class FieldCategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        'fieldname', 'value',
+    )
+    list_filter = ('fieldname',)
+    search_fields = ('fieldname', 'value',)

@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/selectize.default.css' %}" />
 <style>
 #table-builder {
   border-spacing: 0;
@@ -20,8 +22,11 @@
 .row .finding {
   width: 75px;
 }
+.row .mid- {
+  width: 30px;
+}
 .row .date{
-  width: 75px;
+  width: 80px;
 }
 .row .pg- {
   width: 20px;
@@ -32,22 +37,80 @@
   vertical-align: middle;
   font-size: 20px;
 }
+.row input {
+  height: 30px;
+}
+.field-add_new_csv {
+  overflow: visible;
+}
+.selectize-control,
+.selectize-input {
+  height: 42px;
+}
+.selectize-dropdown {
+  z-index: 20;
+}
+.selectize-dropdown-content .active {
+  background-color: #7081a2;
+  color: white;
+}
+.selectize-control.dicipline .selectize-input,
+.selectize-control.dicipline {
+  width: 175px;
+}
+.selectize-control.allegation .selectize-input,
+.selectize-control.allegation {
+  width: 175px;
+}
+.selectize-control.finding .selectize-input,
+.selectize-control.finding {
+  width: 100px;
+}
 </style>
 
+<script src="{% static 'js/standalone/selectize.min.js' %}"></script>
+<!--<script src="{% static 'js/selectize.min.js' %}"></script>-->
+<script>
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = django.jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+        }
+        if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+            // Only send the token to relative URLs i.e. locally.
+            xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+        }
+    }
+});
+</script>
 <script>
 $(document).ready(() => {
   const columns = [{
+    label: "Date",
+  }, {
     label: "First Name",
   }, {
     label: "Last Name",
   }, {
-    label: "Date",
+    label: "Mid.",
+  }, {
+    label: "Allegation",
   }, {
     label: "Finding",
   }, {
     label: "Dicipline",
-  }, {
-    label: "Allegation",
   }, {
     label: "ID #",
   }, {
@@ -55,7 +118,6 @@ $(document).ready(() => {
   }, {
     label: "Pg."
   }];
-  console.log("Columns", columns);
 
   const table = $("#table-builder");
 
@@ -71,24 +133,100 @@ $(document).ready(() => {
     header.appendTo(table);
   };
 
+  const getPlaceholder = (name) => {
+    if (name === "date") {
+      return "YYYY-MM-DD";
+    }
+    return "";
+  };
+
+  const makeid = (length) => {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
+
   const addRow = (e) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
     const row = $("<tr class='row'></tr>");
+    const interactiveIds = [];
     columns.forEach((col) => {
       const label = col.label;
       const name = label.toLocaleLowerCase().replace(/[\s#\.]+/, "-");
-      $(`<td><input type="text" class="${name}" name="${name}" value="" /></td>`).appendTo(row);
+      const placeholder = getPlaceholder(name);
+      const pk = makeid(16);
+      $(`<td><input id="${pk}" type="text" class="${name}" name="${name}" value="" placeholder="${placeholder}" /></td>`).appendTo(row);
+      if (name === 'allegation' | name === 'finding' || name === 'dicipline') {
+        interactiveIds.push({
+          pk: pk,
+          name: name
+        });
+      }
     });
     const remBtn = $(`<td class='cell remove'>🗑️</td>`);
     remBtn.on('click', (e) => {
-      console.log("Delete me");
       $(e.target).parent().remove();
     });
     remBtn.appendTo(row);
     row.appendTo(table);
+
+    interactiveIds.forEach((data) => {
+      $(`#${data.pk}`).selectize({
+        separator: ', ',
+        persist: false,
+        preload: true,
+        openOnFocus: true,
+        maxItems: null,
+        valueField: 'value',
+        labelField: 'value',
+        searchField: ['value'],
+        render: {
+          item: function(item, escape) {
+            return '<div>' +
+              (item.value ? '<span class="value">' + escape(item.value) + '</span>' : '') +
+            '</div>';
+          },
+          option: function(item, escape) {
+            return '<div>' +
+              '<span class="label">' + escape(item.value) + '</span>' +
+            '</div>';
+          }
+        },
+        create: function(input, callback) {
+          $.post('/api/fieldname_values', {
+            fieldname: data.name,
+            value: input,
+          }, (res) => {
+            callback({value: input});
+          });
+        },
+        load: function(query, callback) {
+          // if (!query.length) return callback();
+          $.ajax({
+            url: '/api/fieldname_values',
+            type: 'GET',
+            dataType: 'json',
+            data: {
+              q: query,
+              fieldname: data.name,
+            },
+            error: function() {
+              callback();
+            },
+            success: function(res) {
+              callback(res);
+            }
+          });
+        }
+      });
+    });
   };
 
   const download = (e) => {
@@ -123,7 +261,6 @@ $(document).ready(() => {
   $(".download").on("click", download);
 });
 </script>
-
 <div>
   <p>
   Use this to create a new CSV file corresponding to the above request
