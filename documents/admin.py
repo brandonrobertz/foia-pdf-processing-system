@@ -35,7 +35,8 @@ class ExcludeListFilter(admin.SimpleListFilter):
         if self.value() == 'any-complete':
             return queryset.exclude(
                 Q(status='complete') |
-                Q(status="awaiting-cleaning") |
+                Q(status='awaiting-cleaning') |
+                Q(status='non-request') |
                 Q(no_new_records=True)
             )
         elif self.value():
