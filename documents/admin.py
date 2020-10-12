@@ -105,6 +105,7 @@ class DocumentAdmin(CRUDModelAdmin):
     inlines = (
         InlineProcessedDocument,
     )
+    filter_vertical = ('related',)
     form = DocumentForm
 
     def view_page(self, obj):

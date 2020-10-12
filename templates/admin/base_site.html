@@ -59,5 +59,16 @@ a, a:link, a:visited {
   width: 100%;
   min-height: 400px;
 }
+.field-related .related-widget-wrapper .stacked,
+.field-related .related-widget-wrapper {
+    width: calc(100% - 180px);
+}
+.field-related .related-widget-wrapper .stacked .selector-chosen,
+.field-related .related-widget-wrapper .stacked .selector-available {
+  width: calc(100% - 20px); /* save room for plus mark */
+}
+.field-related .related-widget-wrapper .stacked select {
+  width: 100%;
+}
 </style>
 {% endblock %}

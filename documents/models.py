@@ -105,6 +105,11 @@ class Document(models.Model):
         related_name='documents_updated',
     )
 
+    related = models.ManyToManyField(
+        'self',
+        help_text="This document is related to (or part of) another document/incident"
+    )
+
     class Meta:
         constraints = (
             models.UniqueConstraint(
