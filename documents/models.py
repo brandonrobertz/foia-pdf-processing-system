@@ -116,6 +116,7 @@ class Document(models.Model):
 
     related = models.ManyToManyField(
         'self',
+        blank=True, null=True,
         help_text="This document is related to (or part of) another document/incident"
     )
 
