@@ -54,8 +54,8 @@
   background-color: #7081a2;
   color: white;
 }
-.selectize-control.dicipline .selectize-input,
-.selectize-control.dicipline {
+.selectize-control.discipline .selectize-input,
+.selectize-control.discipline {
   width: 175px;
 }
 .selectize-control.allegation .selectize-input,
@@ -110,7 +110,7 @@ $(document).ready(() => {
   }, {
     label: "Finding",
   }, {
-    label: "Dicipline",
+    label: "Discipline",
   }, {
     label: "ID #",
   }, {
@@ -163,7 +163,7 @@ $(document).ready(() => {
       const placeholder = getPlaceholder(name);
       const pk = makeid(16);
       $(`<td><input id="${pk}" type="text" class="${name}" name="${name}" value="" placeholder="${placeholder}" /></td>`).appendTo(row);
-      if (name === 'allegation' | name === 'finding' || name === 'dicipline') {
+      if (name === 'allegation' | name === 'finding' || name === 'discipline') {
         interactiveIds.push({
           pk: pk,
           name: name
@@ -253,7 +253,9 @@ $(document).ready(() => {
       }
     });
 
-    const csv = Papa.unparse(rows);
+    const csv = Papa.unparse(rows, {
+      quotes: true
+    });
     const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
     const filepath = $("#document_form .field-file a")[0].textContent.replace(".pdf", ".csv");
     const filename = filepath.split("/").pop();
