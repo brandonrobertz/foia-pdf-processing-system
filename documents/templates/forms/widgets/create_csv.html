@@ -162,7 +162,7 @@ $(document).ready(() => {
       const name = label.toLocaleLowerCase().replace(/[\s#\.]+/, "-");
       const placeholder = getPlaceholder(name);
       const pk = makeid(16);
-      $(`<td><input id="${pk}" type="text" class="${name}" name="${name}" value="" placeholder="${placeholder}" /></td>`).appendTo(row);
+      $(`<td><input id="${pk}" type="text" class="cell ${name}" name="${name}" value="" placeholder="${placeholder}" /></td>`).appendTo(row);
       if (name === 'allegation' | name === 'finding' || name === 'discipline') {
         interactiveIds.push({
           pk: pk,
@@ -245,8 +245,10 @@ $(document).ready(() => {
     ];
     table.find("tr").each((_, tr) => {
       const row = [];
-      $(tr).find("input").each((_, td) => {
-        row.push($(td).val().trim());
+      $(tr).find("input.cell").each((_, td) => {
+        const value = $(td).val().trim();
+        console.log("td", td, "value", value);
+        row.push(value);
       });
       if (row && row.length) {
         rows.push(row);
@@ -254,7 +256,8 @@ $(document).ready(() => {
     });
 
     const csv = Papa.unparse(rows, {
-      quotes: true
+      quotes: true,
+      escapeChar: '"',
     });
     const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
     const filepath = $("#document_form .field-file a")[0].textContent.replace(".pdf", ".csv");
