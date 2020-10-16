@@ -14,6 +14,7 @@ STATUSES = OrderedDict({
     "awaiting-csv": lambda n: n.endswith(".ocr.pdf"),
     "awaiting-reading": lambda n: n.endswith(".msg"),
     "awaiting-extraction": lambda n: n.endswith(".eml"),
+    "non-request": lambda n: False, # don't ever match this, but include it for score
     "unchecked": lambda n: True,
 })
 

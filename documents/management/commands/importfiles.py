@@ -11,7 +11,6 @@ from documents.models import Agency, Document, ProcessedDocument
 from documents.util import document_file_path, STATUSES, STATUS_SCORES
 
 
-
 def get_status(files_group, basepath=None, agency=None):
     print(f"Getting status for agency '{agency}' at base path: {basepath}")
 
@@ -53,7 +52,8 @@ def get_basename_and_ext(filename):
             basename = _basename
             break
         # only support long extensions for our two known long extension types
-        elif len(_ext) > 4 and _ext not in [".complete", ".cleaned"]:
+        # it's >5 because ext have dot in them
+        elif len(_ext) > 5 and _ext not in [".complete", ".cleaned"]:
             break
         ext = f"{_ext}{ext}"
         basename = _basename
@@ -68,17 +68,29 @@ def get_file_groups(agency_files):
         if basename not in groups:
             groups[basename] = []
         groups[basename].append(file)
-        print("Basename", basename, "Extension", ext)
-        print("Groups", groups)
     remove_groups = []
     for basename, group in groups.items():
         for file in group:
+            # combine [name].xls and its [name]-[sheet].csv files
             if ".xls" in file:
                 for basename2, group2 in groups.items():
                     if basename == basename2:
                         continue
                     for file2 in group2:
                         if re.findall(f"{basename}-.+\.csv", file2):
+                            # add the base xls/x file to the sheetgroup
+                            group2.append(file)
+                            # we have a match on the base XLS, so don't add
+                            # it as its own group
+                            if basename not in remove_groups:
+                                remove_groups.append(basename)
+            # combine [name].docx and its [name]_[table_no].csv files
+            elif ".docx" in file:
+                for basename2, group2 in groups.items():
+                    if basename == basename2:
+                        continue
+                    for file2 in group2:
+                        if re.findall(f"{basename}_.+\.csv", file2):
                             # add the base xls/x file to the sheetgroup
                             group2.append(file)
                             # we have a match on the base XLS, so don't add
@@ -95,16 +107,18 @@ def get_file_groups(agency_files):
     return groups
 
 
-def get_agency_files(base_data_dir):
+def get_agency_files(base_data_dir, only_agency=None):
     cleaned_agency_files = {}
     for basedir, _, files in os.walk(base_data_dir):
-        print("Base data dir", base_data_dir, "Basedir", basedir)
-        if basedir.endswith("agency_attachments/"):
+        last_dir = os.path.split(basedir.strip("/"))[-1]
+        if "agency_attachments" == last_dir:
             continue
-        agency = re.findall(
-            r"agency_attachments\/([A-Za-z\s\-']+)\b", basedir
-        )[0]
+
+        agency = last_dir
         print("Agency", agency)
+
+        if only_agency and agency != only_agency:
+            continue
 
         # if we're in a subdirectory of a agency directory, get
         # the relative path to our files
@@ -145,12 +159,17 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('base_data_dir', type=str)
         parser.add_argument(
+            '--agency', type=str,
+            help='Only use handle data for this agency (based on agency folder)'
+        )
+        parser.add_argument(
             '--dryrun-output', type=str,
             help='Ouput CSV instead of writing to DB/copying files'
         )
 
     def handle(self, *args, **options):
         base_data_dir = options['base_data_dir']
+        only_agency = options.get('agency')
         output_csv = options.get('dryrun-output')
 
         # if os.path.exists(output_csv):
@@ -169,18 +188,21 @@ class Command(BaseCommand):
 
         # {agency-original_filename: [file1, file2, ..., fileN]}
         agency_middle_files = {}
-        for agency, files in get_agency_files(base_data_dir).items():
+        agency_files = get_agency_files(base_data_dir, only_agency=only_agency)
+        for agency, files in agency_files.items():
             for basename, group in get_file_groups(files).items():
                 print("Agency", agency, "Basename", basename, "Group", group)
                 status, current_filename, original_filename = get_status(
                     group, basepath=base_data_dir, agency=agency
                 )
                 print(status, agency, current_filename, original_filename)
+
                 unique_hash = f"{agency}-{original_filename}"
                 if unique_hash in existing:
                     print("Skipping eixsting agency file", agency, original_filename)
                     continue
                 data.append((status, agency, current_filename, original_filename))
+
                 # skip XLS groups because they're more complicated
                 agency_ogname_key = f"{agency}-{original_filename}"
                 agency_middle_files[agency_ogname_key] = []

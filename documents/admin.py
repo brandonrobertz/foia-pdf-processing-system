@@ -74,7 +74,7 @@ class AgencyAdmin(CRUDModelAdmin):
         return obj.document_set.filter(status='awaiting-cleaning').count()
 
     def completed(self, obj):
-        return obj.document_set.filter(status='completed').count()
+        return obj.document_set.filter(status='complete').count()
 
     def unchecked(self, obj):
         return obj.document_set.filter(status='unchecked').count()

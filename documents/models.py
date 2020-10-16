@@ -137,7 +137,7 @@ class Document(models.Model):
 
     def save(self, *args, **kwargs):
         if self.no_new_records:
-            self.status = "completed"
+            self.status = "complete"
         return super().save(*args, **kwargs)
 
 
