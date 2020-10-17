@@ -71,15 +71,41 @@ class Agency(models.Model):
         return self.name
 
     def save(self, *args, **kwargs):
-        print("Saving...", self)
-        if not self.population and "county" not in self.name.lower():
-            city_name = self.name.replace("Police Department", "").strip()
-            print("City name", city_name)
+        if not self.population:
+            population = None
+            city_name = self.name.replace(
+                "Police Department", ""
+            ).replace(
+                "Marshals Office", ""
+            ).replace(
+                "Sheriff's Office", ""
+            ).strip()
             city = City.objects.filter(
                 region__name="Washington", name=city_name
             ).first()
-            print("city", city)
-            self.population = city.population
+            if city:
+                population = city.population
+
+            # based on approx student counts
+            if not city and city_name == "Eastern Washington University":
+                population =  12633
+            if not city and city_name == "Western Washington University":
+                population = 16142
+            if not city and city_name == "University of Washington":
+                population = 47571
+            # typo ... :/
+            if not city and city_name  == "Central Washington University Washington":
+                population = 12342
+            # not in cities DB for some reason
+            if not city and city_name == "Sedro-Wooley":
+                population = 10540
+            # county
+            if city_name == "King County":
+                population = 2252782
+
+            if population:
+                self.population = population
+
         return super().save(*args, **kwargs)
 
 

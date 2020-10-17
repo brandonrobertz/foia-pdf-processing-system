@@ -163,6 +163,13 @@ class Command(BaseCommand):
             help='Only use handle data for this agency (based on agency folder)'
         )
         parser.add_argument(
+            '--wipe-agency', action='store_true',
+            help=(
+                'Clears all files from an agency before importing. Can only '
+                'be used with --agency'
+            )
+        )
+        parser.add_argument(
             '--dryrun-output', type=str,
             help='Ouput CSV instead of writing to DB/copying files'
         )
@@ -170,7 +177,15 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         base_data_dir = options['base_data_dir']
         only_agency = options.get('agency')
+        wipe_agency = None
+        if only_agency:
+            wipe_agency = options.get('wipe_agency', None)
         output_csv = options.get('dryrun-output')
+
+        print("Importing with args:")
+        print(f"    Only agency: {only_agency}")
+        print(f"    Wipe agency: {wipe_agency}")
+        print(f"    Dryrun, output to CSV: {output_csv}")
 
         # if os.path.exists(output_csv):
         #     with open(output_csv, "r") as f:
@@ -222,6 +237,16 @@ class Command(BaseCommand):
 
             # all done here, don't write results to DB or copy files
             return
+
+        if wipe_agency:
+            print(f"Wiping agency '{only_agency}'")
+            agency = Agency.objects.get(
+                name=only_agency
+            )
+            for doc in agency.document_set.all():
+                doc.processeddocument_set.all().delete()
+
+            agency.document_set.all().delete()
 
         for row in data.dict:
             agency, _ = Agency.objects.get_or_create(
