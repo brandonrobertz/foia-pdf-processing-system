@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'cities',
+
     'processing',
     'documents',
 ]
@@ -87,6 +89,17 @@ DATABASES = {
     }
 }
 
+CITIES_FILES = {
+    'city': {
+       'filename': 'US.zip',
+       'urls':     ['http://download.geonames.org/export/dump/'+'{filename}']
+    },
+}
+CITIES_VALIDATE_POSTAL_CODES = False
+CITIES_SKIP_CITIES_WITH_EMPTY_REGIONS = True
+CITIES_LOCALES = ['en']
+# Import data with:
+# ./manage.py cities --import=country,region,subregion,city
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

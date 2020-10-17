@@ -2,3 +2,4 @@ Django==3.1.2
 tablib==2.0.0
 whitenoise==5.2.0
 psycopg2-binary==2.8.6
+django-cities==0.6

@@ -43,6 +43,11 @@ class Agency(models.Model):
         max_length=300, unique=True
     )
 
+    population = models.IntegerField(
+        blank=True, null=True,
+        help_text="Population of the city this agency serves (for sorting)"
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
         User, on_delete=models.SET_NULL,
@@ -64,6 +69,18 @@ class Agency(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        print("Saving...", self)
+        if not self.population and "county" not in self.name.lower():
+            city_name = self.name.replace("Police Department", "").strip()
+            print("City name", city_name)
+            city = City.objects.filter(
+                region__name="Washington", name=city_name
+            ).first()
+            print("city", city)
+            self.population = city.population
+        return super().save(*args, **kwargs)
 
 
 class Document(models.Model):

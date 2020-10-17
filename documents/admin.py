@@ -63,7 +63,7 @@ class InlineDocument(admin.TabularInline):
 @admin.register(Agency)
 class AgencyAdmin(CRUDModelAdmin):
     list_display = (
-        'name', 'unchecked', 'awaiting_cleaning', 'completed',
+        'name', 'population', 'unchecked', 'awaiting_cleaning', 'completed',
     )
     search_fields = ('name',)
     inlines = (
