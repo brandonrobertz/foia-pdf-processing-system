@@ -12,8 +12,6 @@ from documents.util import document_file_path, STATUSES, STATUS_SCORES
 
 
 def get_status(files_group, basepath=None, agency=None):
-    print(f"Getting status for agency '{agency}' at base path: {basepath}")
-
     s_fn = lambda n: os.path.getmtime(os.path.join(basepath, agency, n))
     sorted_files = sorted(files_group, key=s_fn, reverse=True)
 
@@ -109,47 +107,46 @@ def get_file_groups(agency_files):
 
 def get_agency_files(base_data_dir, only_agency=None):
     cleaned_agency_files = {}
-    for basedir, _, files in os.walk(base_data_dir):
-        last_dir = os.path.split(basedir.strip("/"))[-1]
-        if "agency_attachments" == last_dir:
+    for dirname in os.listdir(base_data_dir):
+        if dirname.startswith("."):
+            continue
+        dirpath = os.path.join(base_data_dir, dirname)
+        if not os.path.isdir(dirpath):
             continue
 
-        agency = last_dir
-        print("Agency", agency)
-
+        agency = dirname
         if only_agency and agency != only_agency:
             continue
 
-        # if we're in a subdirectory of a agency directory, get
-        # the relative path to our files
-        dir_part = ''
-        end_position = basedir.index(agency) + len(agency)
-        # if we have another folder, we'll have at least '/' and 
-        # a (minimum one char) folder appended
-        if len(basedir) >= end_position + 2:
-            # we have subdirs, add it to basedir
-            dir_part = basedir[end_position + 1:]
-            print("Directory part", dir_part)
+        for basedir, _, files in os.walk(dirpath):
+            # if we're in a subdirectory of a agency directory, get
+            # the relative path to our files
+            dir_part = ''
+            end_position = basedir.index(agency) + len(agency)
+            # if we have another folder, we'll have at least '/' and 
+            # a (minimum one char) folder appended
+            if len(basedir) >= end_position + 2:
+                # we have subdirs, add it to basedir
+                dir_part = basedir[end_position + 1:]
 
-        for name in files:
-            # ignore my own request document
-            if name.lower() == "records-request.pdf":
-                continue
-            elif "exemption log" in name.lower():
-                continue
-            elif "redaction log" in name.lower():
-                continue
-            elif name.endswith(".sh"):
-                continue
-            elif name.endswith(".zip"):
-                continue
-            elif name.startswith("."):
-                continue
-            if agency not in cleaned_agency_files:
-                cleaned_agency_files[agency] = []
-            rel_path = os.path.join(dir_part, name)
-            print("Relative path", rel_path)
-            cleaned_agency_files[agency].append(rel_path)
+            for name in files:
+                # ignore my own request document
+                if name.lower() == "records-request.pdf":
+                    continue
+                elif "exemption log" in name.lower():
+                    continue
+                elif "redaction log" in name.lower():
+                    continue
+                elif name.endswith(".sh"):
+                    continue
+                elif name.endswith(".zip"):
+                    continue
+                elif name.startswith("."):
+                    continue
+                if agency not in cleaned_agency_files:
+                    cleaned_agency_files[agency] = []
+                rel_path = os.path.join(dir_part, name)
+                cleaned_agency_files[agency].append(rel_path)
 
     return cleaned_agency_files
 
@@ -206,11 +203,9 @@ class Command(BaseCommand):
         agency_files = get_agency_files(base_data_dir, only_agency=only_agency)
         for agency, files in agency_files.items():
             for basename, group in get_file_groups(files).items():
-                print("Agency", agency, "Basename", basename, "Group", group)
                 status, current_filename, original_filename = get_status(
                     group, basepath=base_data_dir, agency=agency
                 )
-                print(status, agency, current_filename, original_filename)
 
                 unique_hash = f"{agency}-{original_filename}"
                 if unique_hash in existing:
@@ -249,49 +244,43 @@ class Command(BaseCommand):
             agency.document_set.all().delete()
 
         for row in data.dict:
-            agency, _ = Agency.objects.get_or_create(
+            agency, created = Agency.objects.get_or_create(
                 name=row["agency"]
             )
-            print("Syncing agency", agency.name)
+            if created:
+                print("Created agency", agency)
 
             original_file = row["original_file"]
             current_file = row["current_file"]
             status = row["status"]
-            print("original_file", original_file, "current_file", current_file,
-                  "status", status)
 
             document, created = Document.objects.get_or_create(
                 agency=agency,
                 file=document_file_path(agency.name, original_file)
             )
-            print("Got document", document)
+            if created:
+                print("Created document", document)
+                print("  - Doc agency", agency)
 
-            print("Processing middle state files for agency", agency.name)
             middle_filenames = agency_middle_files[f"{agency.name}-{original_file}"]
-            print("Middle filenames", middle_filenames)
             for middle_filename in middle_filenames:
-                m_status = None
-                for status, test_fn in STATUSES.items():
-                    if test_fn(middle_filename):
-                        m_status = status
-                        break
-                assert m_status, "No status for file: %s" % (middle_filename)
-                print("Saving middle file: %s status: %s" % (
-                    middle_filename, m_status
-                ))
-                m_proc_doc, _ = ProcessedDocument.objects.get_or_create(
+                m_proc_doc, created = ProcessedDocument.objects.get_or_create(
                     document=document,
                     file=document_file_path(agency.name, middle_filename),
                 )
-                m_proc_doc.status = m_status
-                m_proc_doc.save()
+                if created:
+                    print("Created middle processed document", m_proc_doc)
+                    print("  - Parent document", document)
 
             if current_file != original_file:
                 processed_doc, created = ProcessedDocument.objects.get_or_create(
                     document=document,
                     file=document_file_path(agency.name, current_file),
                 )
-                processed_doc.status=status
+                if created:
+                    print("Created processed document", processed_doc)
+                    print("  - Parent document", document)
+
                 processed_doc.save()
 
             # set the source page number for a CSV
@@ -309,9 +298,4 @@ class Command(BaseCommand):
                 processed_doc.source_sheet = sheet_name[0]
                 processed_doc.save()
 
-            # check if there's a more processed version on disk ... greater
-            # score means higher number of steps required to completion
-            newer_on_disk = STATUS_SCORES[document.status] > STATUS_SCORES[status]
-            if created or newer_on_disk:
-                document.status = status
-                document.save()
+        print("Complete!")
