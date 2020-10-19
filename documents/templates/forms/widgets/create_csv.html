@@ -15,6 +15,7 @@
 .row .id- {
   width: 30px;
 }
+.row .suspended,
 .row .last-name,
 .row .first-name {
   width: 75px;
@@ -112,6 +113,8 @@ $(document).ready(() => {
   }, {
     label: "Discipline",
   }, {
+    label: "Suspended",
+  }, {
     label: "ID #",
   }, {
     label: "Notes"
@@ -136,6 +139,9 @@ $(document).ready(() => {
   const getPlaceholder = (name) => {
     if (name === "date") {
       return "YYYY-MM-DD";
+    }
+    else if (name == "suspended") {
+      return "N days/hrs";
     }
     return "";
   };
