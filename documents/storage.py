@@ -40,7 +40,8 @@ class OverwritingFileSystemStorage(FileSystemStorage):
 
         # This file has a file path that we can move.
         if hasattr(content, 'temporary_file_path'):
-            file_move_safe(content.temporary_file_path(), full_path)
+            file_move_safe(content.temporary_file_path(), full_path,
+                           allow_overwrite=True)
 
         # This is a normal uploadedfile that we can stream.
         else:
