@@ -1,5 +1,6 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/selectize.default.css' %}" />
+
 <style>
 #table-builder {
   border-spacing: 0;
@@ -96,35 +97,47 @@ $.ajaxSetup({
     }
 });
 </script>
+
 <script>
 $(document).ready(() => {
-  const columns = [{
-    label: "Date",
-  }, {
-    label: "First Name",
-  }, {
-    label: "Last Name",
-  }, {
-    label: "Mid.",
-  }, {
-    label: "Allegation",
-  }, {
-    label: "Finding",
-  }, {
-    label: "Discipline",
-  }, {
-    label: "Suspended",
-  }, {
-    label: "ID #",
-  }, {
-    label: "Notes"
-  }, {
-    label: "Pg."
-  }];
+  const spreadsheets = {
+    reprimands: [{
+      label: "Date",
+    }, {
+      label: "First Name",
+    }, {
+      label: "Last Name",
+    }, {
+      label: "Mid.",
+    }, {
+      label: "Allegation",
+    }, {
+      label: "Finding",
+    }, {
+      label: "Discipline",
+    }, {
+      label: "Suspended",
+    }, {
+      label: "ID #",
+    }, {
+      label: "Notes"
+    }, {
+      label: "Pg."
+    }],
+    circumstances: [{
+      label: "Discipline",
+    }, {
+      label: "Suspended",
+    }, {
+      label: "ID #",
+    }, {
+      label: "Notes"
+    }, {
+      label: "Pg."
+    }],
+  };
 
-  const table = $("#table-builder");
-
-  const addHeader = () => {
+  const addHeader = (columns, table) => {
     const header = $("<tr></tr>");
     columns.forEach((col) => {
       const label = col.label;
@@ -156,7 +169,7 @@ $(document).ready(() => {
     return result;
   };
 
-  const addRow = (e) => {
+  const addRow = (columns, table, e) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -241,7 +254,7 @@ $(document).ready(() => {
     });
   };
 
-  const download = (e) => {
+  const download = (columns, table, name, e) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -266,16 +279,32 @@ $(document).ready(() => {
       escapeChar: '"',
     });
     const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
-    const filepath = $("#document_form .field-file a")[0].textContent.replace(".pdf", ".csv");
-    const filename = filepath.split("/").pop();
+    const basepath = $("#document_form .field-file a")[0].textContent.replace(".pdf", "");
+    const basename = filepath.split("/").pop();
+    const filepath = `${basename}-${name}.csv`;
     saveAs(blob, filename);
   };
 
-  addHeader();
-  addRow();
+  const addTable = (name) => {
+    const wrapper = $(`<div id="${name}"></div>`);
+    const table = $('<table class="table-builder"></table>');
+    const addButton = $('<button class="add-row">Add row</button>');
+    const downloadBtn = $('<button class="download">Download File</button>');
+    table.appendTo(wrapper);
+    addButton.appendTo(wrapper);
+    downloadBtn.appendTo(wrapper);
+    wrapper.appendTo('#spreadsheets-wrapper');
+    return table;
+  };
 
-  $(".add-row").on("click", addRow);
-  $(".download").on("click", download);
+  Object.keys(spreadsheets).forEach((name) => {
+    const columns = spreadsheets[name];
+    const table = addTable(name);
+    addHeader(columns, table);
+    addRow(columns, table);
+    $(".add-row").on("click", addRow.bind(this, columns, table));
+    $(".download").on("click", download.bind(this, columns, table, name));
+  });
 });
 </script>
 <div>
@@ -285,7 +314,5 @@ $(document).ready(() => {
   and then upload it below as a processed document. Make sure to set the
   status on the processed document when you do that!
   </p>
-  <table id="table-builder"></table>
-  <button class="add-row">Add row</button>
-  <button class="download">Download File</button>
+  <div id="spreadsheets-wrapper"></div>
 </div>

@@ -1,5 +1,7 @@
 import os
 
+from django.db.models import Model
+
 from collections import OrderedDict
 
 
@@ -42,4 +44,10 @@ def document_file_path(instance_or_agency, filename):
         agency = instance_or_agency.agency.name
     elif hasattr(instance_or_agency, "document"):
         agency = instance_or_agency.document.agency.name
-    return os.path.join("agency_attachments", agency, filename)
+
+    path = ''
+    if hasattr(instance_or_agency, "document"):
+        filepart = instance_or_agency.document.file.name.split(agency)[-1]
+        path = os.path.split(filepart)[0].strip("/")
+
+    return os.path.join("agency_attachments", agency, path, filename)

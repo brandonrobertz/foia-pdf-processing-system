@@ -101,7 +101,7 @@ class DocumentAdmin(CRUDModelAdmin):
     )
     list_filter = ('status', ExcludeListFilter, 'no_new_records', 'agency')
     list_editable = ('status',)
-    search_fields = ('file', 'current_file',)
+    search_fields = ('file',)
     inlines = (
         InlineProcessedDocument,
     )
@@ -109,8 +109,8 @@ class DocumentAdmin(CRUDModelAdmin):
     form = DocumentForm
 
     def view_page(self, obj):
-        return 'View Page'
-    view_page.short_description = "View Detail Page"
+        return 'View'
+    view_page.short_description = "-"
 
 
 @admin.register(ProcessedDocument)
