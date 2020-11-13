@@ -124,17 +124,6 @@ $(document).ready(() => {
     }, {
       label: "Pg."
     }],
-    circumstances: [{
-      label: "Discipline",
-    }, {
-      label: "Suspended",
-    }, {
-      label: "ID #",
-    }, {
-      label: "Notes"
-    }, {
-      label: "Pg."
-    }],
   };
 
   const addHeader = (columns, table) => {
@@ -280,8 +269,8 @@ $(document).ready(() => {
     });
     const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
     const basepath = $("#document_form .field-file a")[0].textContent.replace(".pdf", "");
-    const basename = filepath.split("/").pop();
-    const filepath = `${basename}-${name}.csv`;
+    const basename = basepath.split("/").pop();
+    const filename = `${basename}-${name}.csv`;
     saveAs(blob, filename);
   };
 

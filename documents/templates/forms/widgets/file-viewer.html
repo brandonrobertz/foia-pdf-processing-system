@@ -1,6 +1,6 @@
 {% if widget.iframe_ext == '.pdf' %}
 <p class="file-viewer">
-  <iframe src="{{ widget.iframe_path }}"></iframe> 
+  <iframe src="{{ widget.iframe_path|urlencode }}"></iframe> 
 </p>
 {% elif widget.iframe_ext == '.csv' %}
 <div class="file-viewer">
