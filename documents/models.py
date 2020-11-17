@@ -1,6 +1,6 @@
 import os
 
-from cities.models import City
+from cities.models import City, Subregion
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
@@ -87,6 +87,18 @@ class Agency(models.Model):
             if city:
                 population = city.population
 
+            if not city and 'County' in self.name:
+                county_name = self.name.replace(
+                    "Sheriff's Office", ""
+                ).strip()
+                county = Subregion.objects.filter(
+                    name=county_name,
+                    region__code='WA'
+                ).first()
+                if county:
+                    cities = county.cities.all()
+                    population = sum([c.population for c in cities])
+
             # based on approx student counts
             if not city and city_name == "Eastern Washington University":
                 population =  12633
@@ -98,8 +110,14 @@ class Agency(models.Model):
             if not city and city_name  == "Central Washington University Washington":
                 population = 12342
             # not in cities DB for some reason
-            if not city and city_name == "Sedro-Wooley":
+            if not population and city_name == "Sedro-Wooley":
                 population = 10540
+            if not population and city_name == "Bainbridge":
+                population = 23025
+            if not population and city_name == "Lakewood":
+                population = 58163
+            if not population and city_name == "Sunnyside":
+                population = 15858
             # county
             if city_name == "King County":
                 population = 2252782

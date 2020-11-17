@@ -105,7 +105,7 @@ def get_file_groups(agency_files):
     return groups
 
 
-def get_agency_files(base_data_dir, only_agency=None):
+def get_agency_files(base_data_dir, only_agency=None, ignore_agencies=None):
     cleaned_agency_files = {}
     for dirname in os.listdir(base_data_dir):
         if dirname.startswith("."):
@@ -116,6 +116,9 @@ def get_agency_files(base_data_dir, only_agency=None):
 
         agency = dirname
         if only_agency and agency != only_agency:
+            continue
+
+        if ignore_agencies and agency in ignore_agencies:
             continue
 
         for basedir, _, files in os.walk(dirpath):
@@ -142,6 +145,8 @@ def get_agency_files(base_data_dir, only_agency=None):
                 elif name.endswith(".zip"):
                     continue
                 elif name.startswith("."):
+                    continue
+                elif name.lower() == "joined.csv":
                     continue
                 if agency not in cleaned_agency_files:
                     cleaned_agency_files[agency] = []
@@ -198,9 +203,14 @@ class Command(BaseCommand):
             unique_hash = f"{agency}-{name}"
             existing[unique_hash] = True
 
+        ignore_agencies = [
+            'Kennewick Police Department',
+        ]
+
         # {agency-original_filename: [file1, file2, ..., fileN]}
         agency_middle_files = {}
-        agency_files = get_agency_files(base_data_dir, only_agency=only_agency)
+        agency_files = get_agency_files(base_data_dir, only_agency=only_agency,
+                                        ignore_agencies=ignore_agencies)
         for agency, files in agency_files.items():
             for basename, group in get_file_groups(files).items():
                 status, current_filename, original_filename = get_status(
@@ -292,7 +302,8 @@ class Command(BaseCommand):
 
             # set the source sheet from an XLS for a CSV
             basename, ext = get_basename_and_ext(original_file)
-            sheet_name = re.findall(f"{basename}-(.+)\.csv", current_file)
+            safe_basename = re.escape(basename)
+            sheet_name = re.findall(f"{safe_basename}-(.+)\.csv", current_file)
             if sheet_name:
                 assert len(sheet_name) == 1
                 processed_doc.source_sheet = sheet_name[0]
