@@ -12,10 +12,10 @@ from collections import OrderedDict
 # greater score means higher number of steps required to completion
 STATUSES = OrderedDict({
     "complete": lambda n: n.endswith(".cleaned.csv") or n.endswith(".complete.csv"),
-    "awaiting-cleaning": lambda n: n.endswith(".csv") or n.endswith(".txt"),
+    "awaiting-cleaning": lambda n: (n.endswith(".csv") and not n.endswith(".rough.csv")) or n.endswith(".txt"),
     "awaiting-csv": lambda n: n.endswith(".ocr.pdf"),
     "awaiting-reading": lambda n: n.endswith(".msg"),
-    "awaiting-extraction": lambda n: n.endswith(".eml"),
+    "awaiting-extraction": lambda n: n.endswith(".eml") or n.endswith(".rough.csv"),
     "non-request": lambda n: False, # don't ever match this, but include it for score
     "unchecked": lambda n: True,
 })
@@ -28,7 +28,7 @@ STATUS_NAMES = (
     ('awaiting-cleaning', 'Awaiting final cleaning'),
     ('awaiting-csv', 'Awaiting conversion to CSV'),
     ('awaiting-reading', 'Awaiting reading/processing'),
-    ('awaiting-extraction', 'Awaiting extraction (email)'),
+    ('awaiting-extraction', 'Awaiting extraction'),
     ('non-request', 'Misc file/unrelated to response'),
     ('unchecked', 'New/Unprocessed'),
 )

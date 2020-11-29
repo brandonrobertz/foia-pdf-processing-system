@@ -124,6 +124,23 @@ $(document).ready(() => {
     }, {
       label: "Pg."
     }],
+    use_of_force: [{
+      label: "Date",
+    }, {
+      label: "Officer(s) Involced",
+    }, {
+      label: "Involved citizen(s)",
+    }, {
+      label: "Incident No.",
+    }, {
+      label: "Location",
+    },{
+      label: "Force Used",
+    }, {
+      label: "Lethal?",
+    }, {
+      label: "Notes",
+    }],
   };
 
   const addHeader = (columns, table) => {
@@ -277,8 +294,8 @@ $(document).ready(() => {
   const addTable = (name) => {
     const wrapper = $(`<div id="${name}"></div>`);
     const table = $('<table class="table-builder"></table>');
-    const addButton = $('<button class="add-row">Add row</button>');
-    const downloadBtn = $('<button class="download">Download File</button>');
+    const addButton = $(`<button class="add-row add-row-${name}">Add row</button>`);
+    const downloadBtn = $(`<button class="download download-${name}">Download File</button>`);
     table.appendTo(wrapper);
     addButton.appendTo(wrapper);
     downloadBtn.appendTo(wrapper);
@@ -291,8 +308,8 @@ $(document).ready(() => {
     const table = addTable(name);
     addHeader(columns, table);
     addRow(columns, table);
-    $(".add-row").on("click", addRow.bind(this, columns, table));
-    $(".download").on("click", download.bind(this, columns, table, name));
+    $(`.add-row-${name}`).on("click", addRow.bind(this, columns, table));
+    $(`.download-${name}`).on("click", download.bind(this, columns, table, name));
   });
 });
 </script>

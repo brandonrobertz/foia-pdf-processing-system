@@ -2,6 +2,7 @@ from django import forms
 from django.contrib import admin
 from django.db import models
 from django.db.models import Q
+from django.utils.safestring import mark_safe
 
 from .util import STATUS_NAMES
 from .forms import ProcessedDocumentForm, DocumentForm, ProcessedInlineDocumentForm
@@ -55,9 +56,18 @@ class CRUDModelAdmin(admin.ModelAdmin):
 class InlineDocument(admin.TabularInline):
     model = Document
     fields = (
-        'status', 'file'
+        'view_doc', 'status', 'file'
+    )
+    readonly_fields = (
+        'view_doc',
     )
     extra = 0
+
+    def view_doc(self, obj):
+        link = f"/admin/documents/document/{obj.id}/change"
+        return mark_safe(
+            f'<a href="{link}" target="_blank">View</a>'
+        )
 
 
 @admin.register(Agency)
@@ -87,11 +97,20 @@ class AgencyAdmin(CRUDModelAdmin):
 class InlineProcessedDocument(admin.TabularInline):
     model = ProcessedDocument
     fields = (
-        'status', 'file'
+        'view_doc', 'status', 'file'
+    )
+    readonly_fields = (
+        'view_doc',
     )
     form = ProcessedInlineDocumentForm
     ordering = ('created_at',)
-    extra = 0
+    extra = 1
+
+    def view_doc(self, obj):
+        link = f"/admin/documents/processeddocument/{obj.id}/change"
+        return mark_safe(
+            f'<a href="{link}" target="_blank">View</a>'
+        )
 
 
 @admin.register(Document)

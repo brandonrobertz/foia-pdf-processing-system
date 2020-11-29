@@ -140,6 +140,10 @@ def get_agency_files(base_data_dir, only_agency=None, ignore_agencies=None):
                     continue
                 elif "redaction log" in name.lower():
                     continue
+                elif name.endswith(".extractor.yaml"):
+                    continue
+                elif name.endswith(".py"):
+                    continue
                 elif name.endswith(".sh"):
                     continue
                 elif name.endswith(".zip"):
