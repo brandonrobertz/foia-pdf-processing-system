@@ -30,6 +30,7 @@ STATUS_NAMES = (
     ('awaiting-reading', 'Awaiting reading/processing'),
     ('awaiting-extraction', 'Awaiting extraction'),
     ('non-request', 'Misc file/unrelated to response'),
+    ('exemption-log', 'Exemption log'),
     ('unchecked', 'New/Unprocessed'),
 )
 
