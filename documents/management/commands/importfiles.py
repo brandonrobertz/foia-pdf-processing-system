@@ -126,7 +126,7 @@ def get_agency_files(base_data_dir, only_agency=None, ignore_agencies=None):
             # the relative path to our files
             dir_part = ''
             end_position = basedir.index(agency) + len(agency)
-            # if we have another folder, we'll have at least '/' and 
+            # if we have another folder, we'll have at least '/' and
             # a (minimum one char) folder appended
             if len(basedir) >= end_position + 2:
                 # we have subdirs, add it to basedir
@@ -207,9 +207,7 @@ class Command(BaseCommand):
             unique_hash = f"{agency}-{name}"
             existing[unique_hash] = True
 
-        ignore_agencies = [
-            'Kennewick Police Department',
-        ]
+        ignore_agencies = []
 
         # {agency-original_filename: [file1, file2, ..., fileN]}
         agency_middle_files = {}

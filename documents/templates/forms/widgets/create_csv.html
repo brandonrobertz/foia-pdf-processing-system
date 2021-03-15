@@ -124,6 +124,7 @@ $(document).ready(() => {
     }, {
       label: "Pg."
     }],
+    /*
     use_of_force: [{
       label: "Date",
     }, {
@@ -141,6 +142,7 @@ $(document).ready(() => {
     }, {
       label: "Notes",
     }],
+    */
   };
 
   const addHeader = (columns, table) => {
@@ -286,8 +288,12 @@ $(document).ready(() => {
     });
     const blob = new Blob([csv], {type: "text/csv;charset=utf-8"});
     const basepath = $("#document_form .field-file a")[0].textContent.replace(".pdf", "");
-    const basename = basepath.split("/").pop();
-    const filename = `${basename}-${name}.csv`;
+    const basename = basepath.split("/").pop().split(".").slice(0,-1).join(".");
+    const n_spreadsheets = Object.keys(spreadsheets).length;
+    let filename = `${basename}-${name}.csv`;
+    if (n_spreadsheets === 1) {
+      filename = `${basename}.csv`;
+   }
     saveAs(blob, filename);
   };
 
