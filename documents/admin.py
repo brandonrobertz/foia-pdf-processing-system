@@ -87,7 +87,7 @@ class InlineSyntheticDocument(admin.TabularInline):
 class AgencyAdmin(CRUDModelAdmin):
     list_display = (
         'name', 'population', 'unchecked', 'not_csv', 'dirty_csv',
-        'completed', 'total',
+        'status_done', 'total', 'pct_done', 'completed',
     )
     search_fields = ('name',)
     inlines = (
@@ -105,7 +105,8 @@ class AgencyAdmin(CRUDModelAdmin):
 
     def not_csv(self, obj):
         return obj.document_set.filter(status__in=[
-            'awaiting-reading','awaiting-extraction'
+            'awaiting-reading','awaiting-extraction', 'supporting-document',
+            'exemption-log', 'non-request'
         ]).count()
 
     def dirty_csv(self, obj):
@@ -113,16 +114,23 @@ class AgencyAdmin(CRUDModelAdmin):
             'awaiting-cleaning',
         ]).count()
 
-    def completed(self, obj):
+    def status_done(self, obj):
         return obj.document_set.filter(status__in=[
             'complete','exemption-log', 'non-request'
         ]).count()
 
-    def unchecked(self, obj):
-        return obj.document_set.filter(status='unchecked').count()
+    def pct_done(self, obj):
+        n_completed = self.status_done(obj)
+        n_total = self.total(obj)
+        pct = int((n_completed / n_total) * 100)
+        return f"{pct}%"
 
     def total(self, obj):
         return obj.document_set.count()
+
+    def unchecked(self, obj):
+        return obj.document_set.filter(status='unchecked').count()
+
     class Meta:
         verbose_name = "Agency"
         verbose_name_plural = "Agencies"
