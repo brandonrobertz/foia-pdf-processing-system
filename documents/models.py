@@ -49,6 +49,10 @@ class Agency(models.Model):
         help_text="Population of the city this agency serves (for sorting)"
     )
 
+    completed = models.BooleanField(
+        default="False"
+    )
+
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
         User, on_delete=models.SET_NULL,
@@ -152,7 +156,7 @@ class Document(models.Model):
 
     file = models.FileField(
         upload_to=document_file_path,
-		max_length=500,
+        max_length=500,
         blank=True, null=True,
         help_text="The original file sent by the agency. This shouldn't need to be changed."
     )
@@ -182,6 +186,19 @@ class Document(models.Model):
         help_text="This document is related to (or part of) another document/incident"
     )
 
+    @property
+    def completed_files(self):
+        """
+        Find and return the most processed (furthest along in conversion to
+        final format) version(s) of this original responsive document. This
+        returns an array since a single responsive document (multi-table XLSX
+        for example) can result in multiple final CSVs.
+        """
+        return filter(
+            lambda x: x.status == "complete",
+            self.processeddocument_set.all()
+        )
+
     class Meta:
         constraints = (
             models.UniqueConstraint(
@@ -204,6 +221,12 @@ class Document(models.Model):
 
 
 class ProcessedDocument(models.Model):
+    """
+    A processed version of a single file. There is a one-to-one relationship
+    between a processed document and a document (provided by agency). Ideally,
+    a processed document should be able to stand as a direct replacement for
+    the original document in all cases.
+    """
     document = models.ForeignKey(
         Document, on_delete=models.SET_NULL,
         blank=True, null=True,
@@ -212,7 +235,7 @@ class ProcessedDocument(models.Model):
 
     file = models.FileField(
         upload_to=document_file_path,
-		max_length=500,
+        max_length=500,
         blank=True, null=True,
         help_text="The processed version of the original document"
     )
@@ -271,3 +294,85 @@ class ProcessedDocument(models.Model):
                 self.status = status
                 break
         return super().save(*args, **kwargs)
+
+
+class SyntheticDocument(models.Model):
+    """
+    A file created by us! This consists of merged CSVs, etc. One or many
+    processed documents and documents can be linked to this type of document.
+    Typically, this will be a "finalized" version of a set of documents (e.g.
+    merged installments).
+    """
+    file = models.FileField(
+        upload_to=document_file_path,
+        max_length=500,
+        blank=True, null=True,
+        help_text="The file that we created."
+    )
+
+    documents = models.ManyToManyField(
+        Document,
+        blank=True,
+        help_text="The original document(s) this file was based on"
+    )
+
+    processed_documents = models.ManyToManyField(
+        ProcessedDocument,
+        blank=True,
+        help_text="The processed document(s) this file was based on"
+    )
+
+    completed = models.BooleanField(
+        default="False",
+        help_text=(
+            "Is this document complete? Note: If this is checked then all "
+            "the documents and processed documents linked are also considered "
+            "complete."
+        )
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL,
+        blank=True, null=True,
+        related_name='syntheticdocuments_created',
+    )
+
+    updated_at = models.DateTimeField(auto_now=True)
+    updated_by = models.ForeignKey(
+        User, on_delete=models.SET_NULL,
+        blank=True, null=True,
+        related_name='syntheticdocuments_updated',
+    )
+
+    def save(self, *args, **kwargs):
+        # make sure all the documents/processed documents have the same
+        # agencies
+        agency = None
+        for doc in self.documents.all():
+            if agency is None:
+                agency = doc.agency
+            assert agency == doc.agency
+        for pdoc in self.processed_documents.all():
+            if agency is None:
+                agency = pdoc.document.agency
+            assert agency == pdoc.document.agency
+        return super().save(*args, **kwargs)
+
+    def __str__(self):
+        text = "Synthetic doc"
+        if self.completed:
+            text = "Completed synthetic doc"
+        if self.file:
+            text += f" ({self.file})"
+        n_documents = self.documents.count()
+        n_processed_documents = self.processed_documents.count()
+        if n_documents and n_processed_documents:
+            text += f" ({n_documents} documents, {n_processed_documents} processed documents)"
+        elif n_documents:
+            text += f" ({n_documents} documents)"
+        elif n_processed_documents:
+            text += f" ({n_processed_documents} processed documents)"
+        else:
+            text += "(no source documents)"
+        return text

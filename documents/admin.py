@@ -6,7 +6,9 @@ from django.utils.safestring import mark_safe
 
 from .util import STATUS_NAMES
 from .forms import ProcessedDocumentForm, DocumentForm, ProcessedInlineDocumentForm
-from .models import Agency, Document, ProcessedDocument, FieldCategory
+from .models import (
+    Agency, Document, ProcessedDocument, FieldCategory, SyntheticDocument
+)
 
 
 class ExcludeListFilter(admin.SimpleListFilter):
@@ -70,25 +72,57 @@ class InlineDocument(admin.TabularInline):
         )
 
 
+class InlineSyntheticDocument(admin.TabularInline):
+    model = SyntheticDocument
+    extra = 0
+
+    def view_doc(self, obj):
+        link = f"/admin/documents/syntheticdocument/{obj.id}/change"
+        return mark_safe(
+            f'<a href="{link}" target="_blank">View</a>'
+        )
+
+
 @admin.register(Agency)
 class AgencyAdmin(CRUDModelAdmin):
     list_display = (
-        'name', 'population', 'unchecked', 'awaiting_cleaning', 'completed',
+        'name', 'population', 'unchecked', 'not_csv', 'dirty_csv',
+        'completed', 'total',
     )
     search_fields = ('name',)
     inlines = (
         InlineDocument,
     )
 
-    def awaiting_cleaning(self, obj):
-        return obj.document_set.filter(status='awaiting-cleaning').count()
+    #'complete', 'Complete'
+    #'awaiting-cleaning', 'Awaiting final cleaning'
+    #'awaiting-csv', 'Awaiting conversion to CSV'
+    #'awaiting-reading', 'Awaiting reading/processing'
+    #'awaiting-extraction', 'Awaiting extraction'
+    #'non-request', 'Misc file/unrelated to response'
+    #'exemption-log', 'Exemption log'
+    #'unchecked', 'New/Unprocessed'
+
+    def not_csv(self, obj):
+        return obj.document_set.filter(status__in=[
+            'awaiting-reading','awaiting-extraction'
+        ]).count()
+
+    def dirty_csv(self, obj):
+        return obj.document_set.filter(status__in=[
+            'awaiting-cleaning',
+        ]).count()
 
     def completed(self, obj):
-        return obj.document_set.filter(status='complete').count()
+        return obj.document_set.filter(status__in=[
+            'complete','exemption-log', 'non-request'
+        ]).count()
 
     def unchecked(self, obj):
         return obj.document_set.filter(status='unchecked').count()
 
+    def total(self, obj):
+        return obj.document_set.count()
     class Meta:
         verbose_name = "Agency"
         verbose_name_plural = "Agencies"
@@ -117,6 +151,7 @@ class InlineProcessedDocument(admin.TabularInline):
 class DocumentAdmin(CRUDModelAdmin):
     list_display = (
         'view_page', 'agency', 'status', 'no_new_records', 'file',
+        'agency__population',
     )
     list_filter = ('status', ExcludeListFilter, 'no_new_records', 'agency')
     list_editable = ('status',)
@@ -131,20 +166,38 @@ class DocumentAdmin(CRUDModelAdmin):
         return 'View'
     view_page.short_description = "-"
 
+    def agency__population(self, obj):
+        if not obj or not obj.agency:
+            return -1
+        return obj.agency.population
+    agency__population.admin_order_field  = 'agency__population'
+
 
 @admin.register(ProcessedDocument)
 class ProcessedDocumentAdmin(CRUDModelAdmin):
     list_display = (
         'view_page', 'file', 'status', 'source_page', 'source_sheet',
+        'document__agency__population',
     )
-    list_filter = ('status','document__agency')
+    list_filter = ('status',)
     list_editable = ('status',)
-    search_fields = ('file', 'document',)
+    search_fields = ('file', 'document__file',)
     form = ProcessedDocumentForm
 
     def view_page(self, obj):
         return 'View Page'
     view_page.short_description = "View Detail Page"
+
+    def document__agency__population(self, obj):
+        if not obj or not obj.document or not obj.document.agency:
+            return -1
+        return obj.document.agency.population
+    document__agency__population.admin_order_field  = 'document__agency__population'
+
+
+@admin.register(SyntheticDocument)
+class SyntheticDocumentAdmin(CRUDModelAdmin):
+    filter_vertical = ('documents', 'processed_documents')
 
 
 @admin.register(FieldCategory)

@@ -285,6 +285,10 @@ class Command(BaseCommand):
                     print("  - Parent document", document)
 
             if current_file != original_file:
+                p_file = document_file_path(agency.name, current_file)
+                if ProcessedDocument.objects.filter(file=p_file).count():
+                    print("ProcessedDocument for file Exists!", p_file)
+                    continue
                 processed_doc, created = ProcessedDocument.objects.get_or_create(
                     document=document,
                     file=document_file_path(agency.name, current_file),

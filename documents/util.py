@@ -17,12 +17,13 @@ STATUSES = OrderedDict({
     "awaiting-reading": lambda n: n.endswith(".msg"),
     "awaiting-extraction": lambda n: n.endswith(".eml") or n.endswith(".rough.csv"),
     "non-request": lambda n: False, # don't ever match this, but include it for score
+    "supporting-document": lambda n: False, # all False status won't be matched
+    "exemption-log": lambda n: False,
     "unchecked": lambda n: True,
 })
 
 STATUS_KEYS = list(STATUSES.keys())
 STATUS_SCORES = {st: STATUS_KEYS.index(st) for st in STATUS_KEYS}
-
 STATUS_NAMES = (
     ('complete', 'Complete'),
     ('awaiting-cleaning', 'Awaiting final cleaning'),
@@ -30,6 +31,7 @@ STATUS_NAMES = (
     ('awaiting-reading', 'Awaiting reading/processing'),
     ('awaiting-extraction', 'Awaiting extraction'),
     ('non-request', 'Misc file/unrelated to response'),
+    ('supporting-document', 'Supporting document (complete)'),
     ('exemption-log', 'Exemption log'),
     ('unchecked', 'New/Unprocessed'),
 )

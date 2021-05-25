@@ -2,6 +2,8 @@
 {% load static %}
 {% load i18n %}
 
+{% block title %}{% if original %}{{original}}{%endif%}{{title}}{% endblock %}
+
 {% block extrahead %}
     <!--<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>

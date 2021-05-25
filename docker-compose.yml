@@ -10,13 +10,24 @@ services:
       PGDATA: /var/lib/postgresql/data/10.10
     ports:
        - "5432:5432"
-    networks: [ 'dev' ]
+    #networks: [ 'dev' ]
     volumes:
       - ./data/dbdata:/var/lib/postgresql/data
 
-networks:
-  dev:
-    driver: bridge
+  # # TODO: incomplete! make a dockerfile eventually
+  # django:
+  #   image: python:3.6.10-slim
+  #   environment:
+  #     POSTGRES_USER: django
+  #     POSTGRES_PASSWORD: insecure!
+  #     POSTGRES_DB: wa_pd_data
+  #     PGDATA: /var/lib/postgresql/data/10.10
+  #   ports:
+  #     - "8002:8000"
+  #   volumes:
+  #     - ./:
 
-volumes:
-  dbdata: {}
+
+# networks:
+#   dev:
+#     driver: bridge
