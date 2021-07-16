@@ -1,11 +1,16 @@
 import os
 
+print("PROD!")
+
 
 DEBUG = True
 DEVELOPMENT, PRODUCTION = True, False
 DEBUG_TOOLBAR = False
 
-SITE_URL = 'http://localhost:8000'
+ALLOWED_HOSTS = ['wa-pd-records.bxroberts.org']
+
+SITE_URL = 'https://wa-pd-records.bxroberts.org'
+MEDIA_ROOT = "/app/data"
 
 DATABASES = {
     'default': {
@@ -13,7 +18,7 @@ DATABASES = {
         'NAME': 'wa_pd_data',
         'USER': 'django',
         'PASSWORD': os.getenv("DJANGO_PASSWORD", "insecure!"),
-        'HOST': os.getenv("DB_HOST", "localhost"),
+        'HOST': 'db',
         'PORT': '5432',
     }
 }

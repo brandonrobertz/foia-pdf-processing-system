@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgis/postgis:10-3.0
+    environment:
+      POSTGRES_USER: django
+      POSTGRES_PASSWORD: insecure!
+      POSTGRES_DB: wa_pd_data
+      PGDATA: /var/lib/postgresql/data/10.10
+    ports:
+       - "5432:5432"
+    volumes:
+      - ./data/dbdata:/var/lib/postgresql/data

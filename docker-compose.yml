@@ -2,32 +2,34 @@ version: '3.4'
 
 services:
   db:
+    restart: unless-stopped
     image: postgis/postgis:10-3.0
     environment:
       POSTGRES_USER: django
       POSTGRES_PASSWORD: insecure!
       POSTGRES_DB: wa_pd_data
       PGDATA: /var/lib/postgresql/data/10.10
-    ports:
-       - "5432:5432"
-    #networks: [ 'dev' ]
+    networks:
+      - wa_pd_dev
     volumes:
-      - ./data/dbdata:/var/lib/postgresql/data
+      - ../../data/dbdata:/var/lib/postgresql/data
 
-  # # TODO: incomplete! make a dockerfile eventually
-  # django:
-  #   image: python:3.6.10-slim
-  #   environment:
-  #     POSTGRES_USER: django
-  #     POSTGRES_PASSWORD: insecure!
-  #     POSTGRES_DB: wa_pd_data
-  #     PGDATA: /var/lib/postgresql/data/10.10
-  #   ports:
-  #     - "8002:8000"
-  #   volumes:
-  #     - ./:
+  django:
+    restart: unless-stopped
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8002:8000
+    environment:
+      PYTHONUNBUFFERED: 1
+      DB_HOST: db
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    networks:
+      - wa_pd_dev
 
-
-# networks:
-#   dev:
-#     driver: bridge
+networks:
+  wa_pd_dev:
+    driver: bridge
