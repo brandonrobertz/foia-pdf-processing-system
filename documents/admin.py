@@ -86,8 +86,11 @@ class InlineSyntheticDocument(admin.TabularInline):
 @admin.register(Agency)
 class AgencyAdmin(CRUDModelAdmin):
     list_display = (
-        'name', 'population', 'unchecked', 'not_csv', 'dirty_csv',
-        'status_done', 'total', 'pct_done', 'completed',
+        'name', 'population', 'unchecked', 'not_csv', 'await_clean',
+        'status_done', 'total', 'pct_done', 'completed', 'request_done',
+    )
+    list_editable = (
+        'request_done',
     )
     search_fields = ('name',)
     inlines = (
@@ -109,7 +112,7 @@ class AgencyAdmin(CRUDModelAdmin):
             'exemption-log', 'non-request'
         ]).count()
 
-    def dirty_csv(self, obj):
+    def await_clean(self, obj):
         return obj.document_set.filter(status__in=[
             'awaiting-cleaning',
         ]).count()

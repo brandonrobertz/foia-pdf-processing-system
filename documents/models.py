@@ -50,7 +50,10 @@ class Agency(models.Model):
     )
 
     completed = models.BooleanField(
-        default="False"
+        default=False
+    )
+    request_done = models.BooleanField(
+        default=False
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
