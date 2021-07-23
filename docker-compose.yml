@@ -25,6 +25,7 @@ services:
       DB_HOST: db
     volumes:
       - .:/app
+      - ../../data/agency_attachments:/app/data/agency_attachments
     depends_on:
       - db
     networks:
