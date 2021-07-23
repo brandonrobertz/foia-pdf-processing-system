@@ -93,6 +93,7 @@ class AgencyAdmin(CRUDModelAdmin):
         'request_done',
     )
     search_fields = ('name',)
+    ordering = ('-population',)
     inlines = (
         InlineDocument,
     )
