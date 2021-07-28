@@ -89,9 +89,9 @@ class AgencyAdmin(CRUDModelAdmin):
         'name', 'population', 'unchecked', 'not_csv', 'await_clean',
         'status_done', 'total', 'pct_done', 'completed', 'request_done',
     )
-    list_editable = (
-        'request_done',
-    )
+    # list_editable = (
+    #     'request_done',
+    # )
     search_fields = ('name',)
     ordering = ('-population',)
     inlines = (
