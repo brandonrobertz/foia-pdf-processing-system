@@ -78,60 +78,63 @@ class Agency(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, *args, **kwargs):
-        if not self.population:
-            population = None
-            city_name = self.name.replace(
-                "Police Department", ""
-            ).replace(
-                "Marshals Office", ""
-            ).replace(
+    @staticmethod
+    def try_to_get_population(name):
+        population = None
+        city_name = name.replace(
+            "Police Department", ""
+        ).replace(
+            "Marshals Office", ""
+        ).replace(
+            "Sheriff's Office", ""
+        ).strip()
+        city = City.objects.filter(
+            region__name="Washington", name=city_name
+        ).first()
+        if city:
+            population = city.population
+
+        if not city and 'County' in name:
+            county_name = name.replace(
                 "Sheriff's Office", ""
             ).strip()
-            city = City.objects.filter(
-                region__name="Washington", name=city_name
+            county = Subregion.objects.filter(
+                name=county_name,
+                region__code='WA'
             ).first()
-            if city:
-                population = city.population
+            if county:
+                cities = county.cities.all()
+                population = sum([c.population for c in cities])
 
-            if not city and 'County' in self.name:
-                county_name = self.name.replace(
-                    "Sheriff's Office", ""
-                ).strip()
-                county = Subregion.objects.filter(
-                    name=county_name,
-                    region__code='WA'
-                ).first()
-                if county:
-                    cities = county.cities.all()
-                    population = sum([c.population for c in cities])
+        # based on approx student counts
+        if not city and city_name == "Eastern Washington University":
+            population =  12633
+        if not city and city_name == "Western Washington University":
+            population = 16142
+        if not city and city_name == "University of Washington":
+            population = 47571
+        # typo ... :/
+        if not city and city_name  == "Central Washington University Washington":
+            population = 12342
+        # not in cities DB for some reason
+        if not population and city_name == "Sedro-Wooley":
+            population = 10540
+        if not population and city_name == "Bainbridge":
+            population = 23025
+        if not population and city_name == "Lakewood":
+            population = 58163
+        if not population and city_name == "Sunnyside":
+            population = 15858
+        # county
+        if city_name == "King County":
+            population = 2252782
+        return population
 
-            # based on approx student counts
-            if not city and city_name == "Eastern Washington University":
-                population =  12633
-            if not city and city_name == "Western Washington University":
-                population = 16142
-            if not city and city_name == "University of Washington":
-                population = 47571
-            # typo ... :/
-            if not city and city_name  == "Central Washington University Washington":
-                population = 12342
-            # not in cities DB for some reason
-            if not population and city_name == "Sedro-Wooley":
-                population = 10540
-            if not population and city_name == "Bainbridge":
-                population = 23025
-            if not population and city_name == "Lakewood":
-                population = 58163
-            if not population and city_name == "Sunnyside":
-                population = 15858
-            # county
-            if city_name == "King County":
-                population = 2252782
-
+    def save(self, *args, **kwargs):
+        if not self.population:
+            population = Agency.try_to_get_population(self.name)
             if population:
                 self.population = population
-
         return super().save(*args, **kwargs)
 
 
@@ -292,10 +295,10 @@ class ProcessedDocument(models.Model):
         return f"{self.file} ({self.status})"
 
     def save(self, *args, **kwargs):
-        for status, test_fn in STATUSES.items():
-            if test_fn(self.file.name):
-                self.status = status
-                break
+        # for status, test_fn in STATUSES.items():
+        #     if test_fn(self.file.name):
+        #         self.status = status
+        #         break
         return super().save(*args, **kwargs)
 
 
