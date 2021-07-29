@@ -12,7 +12,7 @@ from collections import OrderedDict
 # greater score means higher number of steps required to completion
 STATUSES = OrderedDict({
     "complete": lambda n: n.endswith(".cleaned.csv") or n.endswith(".complete.csv"),
-    "awaiting-cleaning": lambda n: (n.endswith(".csv") and not n.endswith(".rough.csv")) or n.endswith(".txt"),
+    "awaiting-cleaning": lambda n: (n.endswith(".csv") and not n.endswith(".rough.csv")) or n.endswith(".txt") or n.endswith(".precleaned.csv"),
     "awaiting-csv": lambda n: n.endswith(".ocr.pdf"),
     "awaiting-reading": lambda n: n.endswith(".msg"),
     "awaiting-extraction": lambda n: n.endswith(".eml") or n.endswith(".rough.csv"),
