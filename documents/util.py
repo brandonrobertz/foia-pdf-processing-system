@@ -31,7 +31,7 @@ STATUS_NAMES = (
     ('awaiting-csv', 'Awaiting conversion to CSV'),
     ('awaiting-reading', 'Awaiting reading/processing'),
     ('awaiting-extraction', 'Awaiting extraction'),
-    ('case-doc', 'Document related to an IA case (to be linked)'),
+    ('case-doc', 'Document related to an incident (to be linked/parsed)'),
     ('non-request', 'Misc file/unrelated to response'),
     ('supporting-document', 'Supporting document (complete)'),
     ('exemption-log', 'Exemption log'),
