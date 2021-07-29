@@ -6,7 +6,6 @@ import sys
 
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
-import IPython
 import tablib
 
 from documents.models import Agency, Document, ProcessedDocument
@@ -225,6 +224,7 @@ def add_doc_by_type(mtype, agency, file):
         strip_extensions = [
             ".cleaned.csv", ".complete.csv", ".rough.csv",
             ".precleaned.csv", ".ocr.pdf", ".rough.csv",
+            # these ones can be dangerous is there's multiple .ext.ext
             ".csv", ".txt",
         ]
         for ext in strip_extensions:
