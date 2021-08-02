@@ -19,7 +19,7 @@ STATUSES = OrderedDict({
     "non-request": lambda n: False, # don't ever match this, but include it for score
     "supporting-document": lambda n: False, # all False status won't be matched
     "case-doc": lambda n: False,
-    "extractor": lambda n: False,
+    "extractor": lambda n: (n.endswith(".R") and "make_" in n) or n.endswith(".py"),
     "exemption-log": lambda n: False,
     "unchecked": lambda n: True,
 })
