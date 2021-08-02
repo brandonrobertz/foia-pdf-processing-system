@@ -16,9 +16,10 @@ STATUSES = OrderedDict({
     "awaiting-csv": lambda n: n.endswith(".ocr.pdf"),
     "awaiting-reading": lambda n: n.endswith(".msg"),
     "awaiting-extraction": lambda n: n.endswith(".eml") or n.endswith(".rough.csv"),
-    "case-doc": lambda n: False,
     "non-request": lambda n: False, # don't ever match this, but include it for score
     "supporting-document": lambda n: False, # all False status won't be matched
+    "case-doc": lambda n: False,
+    "extractor": lambda n: False,
     "exemption-log": lambda n: False,
     "unchecked": lambda n: True,
 })
@@ -31,9 +32,10 @@ STATUS_NAMES = (
     ('awaiting-csv', 'Awaiting conversion to CSV'),
     ('awaiting-reading', 'Awaiting reading/processing'),
     ('awaiting-extraction', 'Awaiting extraction'),
-    ('case-doc', 'Document related to an incident (to be linked/parsed)'),
     ('non-request', 'Misc file/unrelated to response'),
     ('supporting-document', 'Supporting document (complete)'),
+    ('case-doc', 'Document related to an incident (to be linked/parsed)'),
+    ('extractor', 'Code/script used for processing document'),
     ('exemption-log', 'Exemption log'),
     ('unchecked', 'New/Unprocessed'),
 )

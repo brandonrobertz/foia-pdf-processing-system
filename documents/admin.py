@@ -86,8 +86,9 @@ class InlineSyntheticDocument(admin.TabularInline):
 @admin.register(Agency)
 class AgencyAdmin(CRUDModelAdmin):
     list_display = (
-        'name', 'population', 'unchecked', 'not_csv', 'await_clean',
-        'status_done', 'total', 'pct_done', 'completed', 'request_done',
+        'name', 'population', 'responsive', 'unchecked',
+        'await_csv', 'status_done', 'total', 'pct_done', 'completed',
+        'request_done',
     )
     # list_editable = (
     #     'request_done',
@@ -98,34 +99,67 @@ class AgencyAdmin(CRUDModelAdmin):
         InlineDocument,
     )
 
-    #'complete', 'Complete'
-    #'awaiting-cleaning', 'Awaiting final cleaning'
-    #'awaiting-csv', 'Awaiting conversion to CSV'
-    #'awaiting-reading', 'Awaiting reading/processing'
-    #'awaiting-extraction', 'Awaiting extraction'
-    #'non-request', 'Misc file/unrelated to response'
-    #'exemption-log', 'Exemption log'
-    #'unchecked', 'New/Unprocessed'
+    # 'complete',
+    # 'awaiting-cleaning', 
+    # 'awaiting-csv',
+    # 'awaiting-reading',
+    # 'awaiting-extraction',
+    # 'non-request',
+    # 'supporting-document',
+    # 'case-doc',
+    # 'extractor',
+    # 'exemption-log',
+    # 'unchecked',
 
-    def not_csv(self, obj):
-        return obj.document_set.filter(status__in=[
-            'awaiting-reading','awaiting-extraction', 'supporting-document',
-            'exemption-log', 'non-request'
-        ]).count()
+    RESPONSIVE_STATUSES = [
+        'complete',
+        'awaiting-cleaning', 
+        'awaiting-csv',
+        'awaiting-reading',
+        'awaiting-extraction',
+        'supporting-document',
+        # also include unchecked as they're potentially
+        # responsive and because we want to ensure a 100%
+        # done status means we've checked all files
+        'unchecked',
+    ]
 
-    def await_clean(self, obj):
-        return obj.document_set.filter(status__in=[
+    def non_request(self, obj):
+        statuses = [
+            'non-request',
+            'case-doc',
+            'extractor',
+            'exemption-log',
+        ]
+        return obj.document_set.filter(status__in=statuses).count()
+
+    def responsive(self, obj):
+        return obj.document_set.filter(
+            status__in=self.RESPONSIVE_STATUSES
+        ).count()
+
+    def await_csv(self, obj):
+        statuses = [
             'awaiting-cleaning',
-        ]).count()
+            'awaiting-csv',
+            'awaiting-reading',
+            'awaiting-extraction',
+        ]
+        return obj.document_set.filter(
+            status__in=self.RESPONSIVE_STATUSES
+        ).filter(status__in=statuses).count()
 
     def status_done(self, obj):
-        return obj.document_set.filter(status__in=[
-            'complete','exemption-log', 'non-request'
+        return obj.document_set.filter(
+            status__in=self.RESPONSIVE_STATUSES
+        ).filter(status__in=[
+            'complete',
+            'supporting-document',
         ]).count()
 
     def pct_done(self, obj):
         n_completed = self.status_done(obj)
-        n_total = self.total(obj)
+        n_total = self.responsive(obj)
         pct = int((n_completed / n_total) * 100)
         return f"{pct}%"
 
