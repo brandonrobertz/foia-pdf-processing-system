@@ -13,7 +13,7 @@ def std_filename(filename):
 
 class Command(BaseCommand):
     help = """
-    Merge one or more documents into a single, "completed" CSV file.
+    Merge one or more documents into a single, "standardized" CSV file.
     This program accepts document paths as input. These are looked up,
     by file name, in the DB, checked to see if the CSV headers are matched
     and all files can be clearly merged.
