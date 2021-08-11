@@ -331,10 +331,12 @@ class Command(BaseCommand):
 
             for file in files:
                 mtype = None
-                if is_definitely_responsive_doc(file):
-                    mtype = DOCUMENT_TYPE
-                elif is_definitely_proc_doc(file):
+                # check this first as .pdf will get caught for document, when
+                # in fact ocr.pdf is a processed doc
+                if is_definitely_proc_doc(file):
                     mtype = PROCESSED_TYPE
+                elif is_definitely_responsive_doc(file):
+                    mtype = DOCUMENT_TYPE
                 else:
                     print(" - Can't figure out what type of doc this is:")
                     print(file)
