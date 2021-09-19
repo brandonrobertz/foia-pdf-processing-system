@@ -6,6 +6,7 @@ import sys
 
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
+from django.db.models import Q
 import tablib
 
 from documents.models import Agency, Document, ProcessedDocument
@@ -243,12 +244,26 @@ def add_doc_by_type(mtype, agency, file):
         if docs.count() == 0:
             # export from word doc have the following format:
             # [BASENAME]_[NUMBER].csv (or .complete.csv)
-            possible_parent = re.sub(r"_\d\.[^\.]*\.?csv", "", file)
+            possible_parent1 = re.sub(r"_\d\.[^\.]*\.?csv", "", file)
+            # [BASENAME]-[SHEETNAME].csv (or .complete.csv)
+            possible_parent2 = file.rsplit("-", 1)[:-1][0]
             docs = Document.objects.filter(
                 agency=agency,
-                file__startswith=possible_parent,
+            ).filter(Q(
+                file__startswith=f"{possible_parent1}.",
+            ) | Q(
+                file__startswith=f"{possible_parent2}.",
+            )).filter(Q(
+                file__endswith=".doc",
+            ) | Q(
                 file__endswith=".docx",
-            )
+            ) | Q(
+                file__endswith=".xls",
+            ) | Q(
+                file__endswith=".xlsx",
+            ))
+            if docs.count() > 0:
+                print(" ", " -  Found doc/xls possible parents")
 
         # now either set parent, or try and rope in user for help
         parent = None
