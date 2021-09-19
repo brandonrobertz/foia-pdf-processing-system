@@ -127,7 +127,8 @@ def get_new_agency_files(base_data_dir, only_agency=None, ignore_agencies=None):
             new_agency_files[agency].append(agency_file)
 
     for agency, files in new_agency_files.items():
-        files.sort(reverse=True)
+        # sort by extension
+        files.sort(key=lambda fname: fname.split(".")[-1], reverse=True)
 
     return new_agency_files
 
@@ -179,7 +180,7 @@ def is_definitely_proc_doc(filename):
 def interactively_find_proc_doc_parent(agency, file):
     parent = None
     while parent is None:
-        print(" - Current parent:", parent)
+        print("  ", " -  Current parent:", parent)
         parent_file = input("Enter the filename of the parent (s to skip): ")
         if parent_file == "s":
             return
@@ -187,7 +188,7 @@ def interactively_find_proc_doc_parent(agency, file):
             agency=agency,
             file=parent_file
         ).first()
-        print(" - Found parent:", parent)
+        print("  ", " -  Found parent:", parent)
     return parent
 
 
@@ -214,7 +215,7 @@ def is_definitely_responsive_doc(file):
 def add_doc_by_type(mtype, agency, file):
     assert agency, f"No agency passed when creating file: {file}!"
     if mtype == DOCUMENT_TYPE:
-        print(" - Adding as document")
+        print("  ", "[+] Adding as document")
         Document.objects.create(
             agency=agency,
             file=file
@@ -222,6 +223,7 @@ def add_doc_by_type(mtype, agency, file):
     elif mtype == PROCESSED_TYPE:
         possible_parent = file
         strip_extensions = [
+            # normal cleaned/etc processed files
             ".cleaned.csv", ".complete.csv", ".rough.csv",
             ".precleaned.csv", ".ocr.pdf", ".rough.csv",
             # these ones can be dangerous is there's multiple .ext.ext
@@ -230,36 +232,50 @@ def add_doc_by_type(mtype, agency, file):
         for ext in strip_extensions:
             if possible_parent.endswith(ext):
                 possible_parent = possible_parent.replace(ext, "")
-        print(" - Looking for parent with prefix:", possible_parent)
+        print("  ", " -  Looking for parent with prefix:", possible_parent)
         docs = Document.objects.filter(
             agency=agency,
             file__startswith=possible_parent,
         )
+
+        # before moving forward, check for failure, then try
+        # for docx extraction
+        if docs.count() == 0:
+            # export from word doc have the following format:
+            # [BASENAME]_[NUMBER].csv (or .complete.csv)
+            possible_parent = re.sub(r"_\d\.[^\.]*\.?csv", "", file)
+            docs = Document.objects.filter(
+                agency=agency,
+                file__startswith=possible_parent,
+                file__endswith=".docx",
+            )
+
+        # now either set parent, or try and rope in user for help
         parent = None
         if docs.count() == 1:
             parent = docs[0]
         elif docs.count() == 0:
-            print(f" - Couldn't find parent for file: {file}")
+            print("  ", f"[!] Couldn't find parent for file: {file}")
             parent = interactively_find_proc_doc_parent(agency, file)
         else:
-            print(f" - Found possible parents:")
+            print("  ", f" -  Found possible parents:")
             for ix in range(len(docs)):
                 d = docs[ix]
-                print("    -", ix, d.file)
+                print("  ", "    -", ix, d.file)
             p_ix = int(input("Which file is the parent? (enter number) "))
             parent = docs[p_ix]
 
         if parent is None:
-            print(f" - Couldn't find parent for file: {file}")
+            print("  ", f"[!] Couldn't find parent for file: {file}")
         else:
-            print(" - Adding as processed doc")
-            print(" - Parent:", parent)
+            print("  ", "[+] Adding as processed doc")
+            print("  ", " -  Parent:", parent)
             ProcessedDocument.objects.create(
                 document=parent,
                 file=file,
             )
     else:
-        print(f"ERROR: Couldn't add file with type: {mtype}")
+        print("  ", f"[!] ERROR: Couldn't add file with type: {mtype}")
 
 
 class Command(BaseCommand):
@@ -305,7 +321,7 @@ class Command(BaseCommand):
                 print(f"\nAgency '{agency_name}'")
             except Agency.DoesNotExist:
                 print(f"\nAgency '{agency_name}' doesn't exist.")
-                print(" - New files:")
+                print("[+] New files:")
                 for f in files:
                     print(f"   - {f}")
                 yn = input(f"Create '{agency_name}'? (y/n) ")
@@ -315,17 +331,17 @@ class Command(BaseCommand):
                     )
                     pop = Agency.try_to_get_population(agency_name)
                     if not pop:
-                        print(" - Couldn't automatically find population.")
+                        print(" -  Couldn't automatically find population.")
                         try:
                             pop = int(input("Enter population: "))
                         except Exception as e:
-                            print(" ! Parse error:", e)
-                            print(" - Not adding population.")
+                            print("[!] Parse error:", e)
+                            print(" -  Not adding population.")
                             pop = None
                     if pop:
                         agency.population = pop
                     agency.save()
-                    print(" - Created agency!")
+                    print("[+] Created agency!")
                 else:
                     continue
 
@@ -338,14 +354,14 @@ class Command(BaseCommand):
                 elif is_definitely_responsive_doc(file):
                     mtype = DOCUMENT_TYPE
                 else:
-                    print(" - Can't figure out what type of doc this is:")
+                    print("[!] Can't figure out what type of doc this is:")
                     print(file)
                     pd = input(
                         f"What type is it? (p)rocessed, (d)ocument or (s)kip "
                     ).lower().strip()
 
                     if pd == "s":
-                        print(" - Skipping file")
+                        print(" -  Skipping file")
                         continue
                     elif pd == "d":
                         mtype = DOCUMENT_TYPE
@@ -353,11 +369,10 @@ class Command(BaseCommand):
                         mtype = PROCESSED_TYPE
                     # this should be a catch all
                     elif pd not in ["p", "d"]:
-                        print(" - Unrecognized option! Skipping file.")
+                        print(" -  Unrecognized option! Skipping file.")
                         continue
 
-                print(f" - New file: {file} Type: {mtype}")
+                print(f"[+] New file: {file} Type: {mtype}")
                 add_doc_by_type(mtype, agency, file)
-
 
         print("Complete!")
