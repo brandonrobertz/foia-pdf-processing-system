@@ -295,10 +295,11 @@ class ProcessedDocument(models.Model):
         return f"{self.file} ({self.status})"
 
     def save(self, *args, **kwargs):
-        # for status, test_fn in STATUSES.items():
-        #     if test_fn(self.file.name):
-        #         self.status = status
-        #         break
+        if not self.status or self.status == "unchecked":
+            for status, test_fn in STATUSES.items():
+                if test_fn(self.file.name):
+                    self.status = status
+                    break
         return super().save(*args, **kwargs)
 
 

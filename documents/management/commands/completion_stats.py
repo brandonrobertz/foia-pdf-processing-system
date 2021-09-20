@@ -29,6 +29,10 @@ class Command(BaseCommand):
         n_csv_rows = 0
         for pdoc in complete_recs:
             with pdoc.file.open(mode='r') as f:
+                # If file starts with (UTF-8 BOM): 0xEFBBBF4F
+                # >>> with codecs.open('excel_output.csv', encoding='utf-8-sig') as f:
+                # ...     reader = csv.reader(f)
+                # ...     rows = [row for row in reader]
                 try:
                     reader = csv.reader(f)
                     for row in reader:
