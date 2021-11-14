@@ -124,3 +124,5 @@ GitHub.sublime-settings
 
 # Agency data (separate git repo)
 data/
+all_records.csv
+filename_headers.csv

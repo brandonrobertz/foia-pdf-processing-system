@@ -25,6 +25,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'NOT-A-SECRET')
 # SECURITY WARNING: don't run with debug turned on in production!
 # NOTE: Turning this to False will kill media file links, you'll need nginx
 DEBUG = True
+SECURE_SSL_REDIRECT = False
 
 ALLOWED_HOSTS = []
 
