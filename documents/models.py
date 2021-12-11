@@ -218,7 +218,10 @@ class Document(models.Model):
         ordering = ('file',)
 
     def __str__(self):
-        return f"{self.file} ({self.status})"
+        friendly_file = self.file
+        if self.file and self.file.name:
+            friendly_file = self.file.name.rsplit("/", 1)[-1]
+        return f"{friendly_file} ({self.status})"
 
     def save(self, *args, **kwargs):
         if self.no_new_records:
@@ -292,7 +295,10 @@ class ProcessedDocument(models.Model):
         ordering = ('file',)
 
     def __str__(self):
-        return f"{self.file} ({self.status})"
+        friendly_file = self.file
+        if self.file and self.file.name:
+            friendly_file = self.file.name.rsplit("/", 1)[-1]
+        return f"{friendly_file} ({self.status})"
 
     def save(self, *args, **kwargs):
         if not self.status or self.status == "unchecked":
