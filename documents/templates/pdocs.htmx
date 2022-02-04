@@ -1,0 +1,8 @@
+<div id="pdocs-{{ agency.id }}">
+  <h2>{{ agency.name }}</h2>
+  <article class="pdocs">
+    {% for pdoc in pdocs %}
+    {% include 'pdoc.htmx' with pdoc=pdoc %}
+    {% endfor %}
+  </article>
+</div>

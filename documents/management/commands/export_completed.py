@@ -5,6 +5,7 @@ import itertools
 import json
 import os
 import re
+import sys
 
 from django.core.management.base import BaseCommand
 import ftfy
@@ -14,6 +15,9 @@ import sqlite_utils
 import tablib
 
 from documents.models import Agency, Document, ProcessedDocument
+
+
+csv.field_size_limit(sys.maxsize)
 
 
 DOCUMENT_TYPES = [
@@ -127,6 +131,8 @@ def damerau_levenshtein_similarity(a, b):
 
 # https://stackoverflow.com/a/18048211
 def print_table(seq, columns=3):
+    if len(seq) <= 1:
+        print("\n".join(seq))
     table = ''
     col_height = int(len(seq) / columns)
     for x in range(col_height):
@@ -157,6 +163,15 @@ class Command(BaseCommand):
     of rows. This is just to give an approximate number of total IA
     records we've processed.
     """
+
+    prompt = True
+    def should_continue(self):
+        yn = input("Continue? [Y]es/(n)o/(a)ll ").lower()
+        if yn == "n":
+            sys.exit(1)
+        elif yn == "a":
+            self.prompt = False
+
     def convert_processed_doc(self, pdoc):
         with codecs.open(pdoc.file.path, encoding='utf-8-sig') as f:
             # If file starts with (UTF-8 BOM): 0xEFBBBF4F
@@ -168,25 +183,28 @@ class Command(BaseCommand):
             # except UnicodeDecodeError as e:
             #     ftfy.fix_encoding()
             except Exception as e:
-                print("While reading file:", pdoc.file.name)
+                print("ERROR While reading file:", pdoc.file.name)
                 print("ProcessedDocument:", pdoc)
                 raise e
 
             if not len(csv):
+                print("No rows in CSV, returning without processing.")
                 return
 
             self.total_rows += len(csv)
             for h in csv.headers:
                 self.filename_headers.append([pdoc.file.name, h])
+
             print("Processed Document:", pdoc)
             print("Rows:", len(csv))
-            print("Headers:")
+            print("Headers:", csv.headers)
             print_table(csv.headers)
+
             for row in csv.dict:
                 self.all_rows.append(row)
             return csv
 
-    def tablename_from_filenames(self, filenames):
+    def table_name_from_filenames(self, filenames):
         common_name = filenames[0]
         if len(filenames) >= 2:
             a = filenames[0]
@@ -194,14 +212,18 @@ class Command(BaseCommand):
             for a in filenames[2:]:
                 b = smith_waterman(a, b)
             common_name = b
-        return re.sub(
+        table_name = re.sub(
             r"^[\s\-_]+|[\s\-_]+$", "", common_name.rsplit(
                 ".", 2
-            )[0].rsplit("/", 1)[-1]
-        )
+            )[0].rsplit("/", 1)[-1].replace(".", "_")
+        ).strip()
+        if not table_name:
+            return "incidents"
+        return table_name
 
     def write_database(self, agency, table, csv, unified_headers,
                        filename=None):
+        print("=" * 10)
         print("Table:", table)
         print("Filename:", filename)
         print("Unified Headers:", len(unified_headers), unified_headers)
@@ -236,16 +258,17 @@ class Command(BaseCommand):
         # a sequence we'll use to join and split headers pre/post cleaning
         # it should be something that won't naturally be found in headers
         JOIN_SEQ = "-~=~-"
+        EXPORT_STATUSES = ["complete", "auto-extracted", "case-doc"]
 
         agency_complete_docs = Document.objects.filter(
-            status='complete',
+            status__in=EXPORT_STATUSES,
             # skip these, they don't have data, even if marked complete
             no_new_records=False,
             agency=agency,
-            processeddocument__status="complete",
         )
 
         if not agency_complete_docs.count():
+            print("No complete documents for", agency.name)
             return 0
 
         print()
@@ -256,18 +279,23 @@ class Command(BaseCommand):
         filename_csv_lookup = {}
         agency_filenames = []
         agency_csvs = []
+
         # store IDs for deduplication
         pdocs_ids_seen = set()
         for doc in agency_complete_docs:
+            # process PDF/Excel that got converted to CSV via processed doc
             if not doc.file.name.endswith(".csv"):
-                for pdoc in doc.processeddocument_set.filter(status="complete"):
+                for pdoc in doc.processeddocument_set.filter(status__in=EXPORT_STATUSES):
                     if not pdoc.file:
-                        # print("!", "ERROR: skipping blank Processed Doc",
-                        #       pdoc, "Skipping.")
+                        print("!", "ERROR: skipping blank Processed Doc",
+                              pdoc, "Skipping.")
                         continue
+
+                    print("Adding pdoc:", pdoc)
 
                     if pdoc.id in pdocs_ids_seen:
                         continue
+
                     pdocs_ids_seen.add(pdoc.id)
 
                     # with pdoc.file.open(mode='r', encoding='utf-8-sig') as f:
@@ -378,7 +406,7 @@ class Command(BaseCommand):
             unified_headers = unified_header_text.split(JOIN_SEQ)
             # TODO: get a unified filename for all these files to get
             # written to a single database table with
-            table_basename = self.tablename_from_filenames(filenames)
+            table_basename = self.table_name_from_filenames(filenames)
             suffix = 0
             table_name = f"{table_basename}{suffix or ''}"
             # pre-increment it in case table_name without a suffix is
@@ -389,14 +417,15 @@ class Command(BaseCommand):
                 suffix += 1
                 table_name = f"{table_basename}{suffix}"
             used_table_names.add(table_name)
-            db_filepath = os.path.join(OUTPUT_DIRECTORY, f"{agency.name}.db")
+            agency_dbname = re.sub(r"[\s\.]+", "_", agency.name.replace("'", ""))
+            db_filepath = os.path.join(OUTPUT_DIRECTORY, f"{agency_dbname}.db")
             db = sqlite_utils.Database(sqlite3.connect(db_filepath))
             table = db[table_name]
             for filename in filenames:
                 csv = filename_csv_lookup[filename]
                 self.write_database(
                     agency, table, csv, unified_headers,
-                    filename=filename
+                    filename=filename or "incidents"
                 )
 
         return self.total_rows
@@ -413,19 +442,25 @@ class Command(BaseCommand):
         # every CSV row goes into here (as dicts)
         self.all_rows = []
 
+        if not os.path.exists(OUTPUT_DIRECTORY):
+            os.makedirs(OUTPUT_DIRECTORY)
+
         # Document.objects.filter(status__in=['complete',
         # 'awaiting-cleaning', 'awaiting-csv', 'awaiting-reading',
         # 'awaiting-extraction', 'supporting-document', 'case-doc',
         # 'unchecked']).count()
-        n_complete = Document.objects.filter(status='complete').count()
-        print(f"{n_complete} completed responsive documents")
-
         complete_docs = Document.objects.filter(
-            status='complete',
+            status__in=[
+                'complete',
+                'auto-extracted',
+                'case-doc',
+            ]
         )
         n_complete_docs  = complete_docs.count()
         print(f"{n_complete_docs} CSVs built from responsive documents")
-        for agency in Agency.objects.all():
+
+        agencies = Agency.objects.all()
+        for agency in agencies:
             n_rows_processed = self.process_agency(
                 agency,
             )

@@ -1,0 +1,17 @@
+<article class="pdoc"
+         id="pdoc-{{ pdoc.pk }}">
+  <div hx-get="{% url 'pdoc_image_segments' pdoc.pk %}"
+       hx-swap="outerHTML"
+       _="on htmx:beforeSend add .loading to me end
+          on htmx:afterOnLoad remove .loading from me end">
+    <h3>{{ pdoc.filename }} {% if pdoc.pages >= 2 %}({{ pdoc.pages }} pgs){% endif %}</h3>
+    <p class="info">
+      Segments:
+      {% if pdoc.incident_pgs %}
+      <code>{{ pdoc.incident_pgs }}</code>
+      {% else %}
+      None/Single-incident
+      {% endif %}
+    </p>
+  </div>
+</article>

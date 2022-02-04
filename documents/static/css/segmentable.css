@@ -1,0 +1,158 @@
+body {
+  background-color: #efefef;
+}
+
+.main {
+  display: flex;
+  flex-flow: row wrap;
+}
+.main > section {
+  width: calc(50% - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#zoomed-page {
+  display: inline-block;
+  background-repeat: no-repeat;
+}
+
+.segmentable-home {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+  height: 100vh;
+}
+.segmentable-home .agency {
+  padding: 20px;
+  min-width: 300px;
+  border: 1px solid #ddd;
+  margin: 10px;
+  background-color: #fff;
+}
+.segmentable-home .agency.opened {
+  width: 100%;
+}
+.segmentable-home .agency:hover {
+}
+
+.segmentable-home h1, h2, h3, h4 {
+  margin: 0;
+  font-family: sans-serif;
+}
+.segmentable-home > div {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: 0;
+}
+.segmentable-home p {
+  margin: 0;
+}
+
+.segmentable-home .loading {
+  transition: background-color 20s ease-out;
+  background-color: rgba(20, 205, 0, 0.7);
+}
+.segmentable-home [hx-get] {
+  border: 10px solid transparent;
+  cursor: pointer;
+}
+.segmentable-home .pdoc [hx-disabled]:hover {
+  border: 10px solid transparent;
+}
+.segmentable-home [hx-get]:hover {
+  border: 10px solid rgba(255, 255, 0, 0.15);
+}
+
+.segmentable-home .instruction,
+.segmentable-home .null {
+  font-style: italic;
+  color: grey;
+}
+
+.segmentable-home .image-segments {
+  flex-flow: column wrap;
+  justify-content: center;
+}
+.segmentable-home .image-segments code {
+  display: block;
+  max-width: 100%;
+  overflow-x: scroll;
+  font-size: x-small;
+  padding-bottom: 25px;
+}
+.image-segments .controls {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.segmentable-home .images-list {
+  display: flex;
+  flex-flow: row wrap;
+}
+.segmentable-home .page-image {
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 150px;
+  margin: 20px;
+  align-items: center;
+}
+.segmentable-home .page-image img {
+  max-width: 100%;
+}
+.segmentable-home .page-image caption {
+  font-size: small;
+  font-color: grey;
+  font-style: italic;
+}
+
+.segmentable-home .page-image {
+  border: 0 solid transparent;
+  padding: 10px;
+}
+
+.segmentable-home .page-image.end {
+  border: 10px solid black;
+}
+.page-image:not(.end) {
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  margin-right: 0;
+  margin-left: 0;
+}
+/* _ ] <- end, inclusive segment */
+.page-image:not(.end) + .page-image.end {
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  border-right: 10px solid black;
+  border-left: 0 transparent;
+  margin-left: 0;
+}
+.page-image.end + .page-image:not(.end) {
+  border-top: 10px solid black;
+  border-bottom: 10px solid black;
+  border-right: 0 transparent;
+  border-left: 10px solid black;
+  margin-left: 10px;
+}
+.page-image:not(.end):first-of-type {
+  border-left: 10px solid black;
+}
+.page-image:not(.end):last-of-type {
+  border-right: 10px solid black;
+}
+.page-image.end + .page-image.end {
+  border: 10px solid black;
+}
+
+.close:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+.close {
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.3);
+}

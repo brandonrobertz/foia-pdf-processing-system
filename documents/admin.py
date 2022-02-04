@@ -114,6 +114,7 @@ class AgencyAdmin(CRUDModelAdmin):
     RESPONSIVE_STATUSES = [
         'complete',
         'awaiting-cleaning', 
+        "auto-extracted",
         'awaiting-csv',
         'awaiting-reading',
         'awaiting-extraction',
@@ -127,7 +128,6 @@ class AgencyAdmin(CRUDModelAdmin):
     def non_request(self, obj):
         statuses = [
             'non-request',
-            'case-doc',
             'extractor',
             'exemption-log',
         ]
@@ -155,6 +155,8 @@ class AgencyAdmin(CRUDModelAdmin):
         ).filter(status__in=[
             'complete',
             'supporting-document',
+            'case-doc',
+            'auto-extracted',
         ]).count()
 
     def pct_done(self, obj):

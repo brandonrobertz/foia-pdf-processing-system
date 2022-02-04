@@ -1,9 +1,12 @@
 import os
+import json
 
 from cities.models import City, Subregion
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
+from pdf2image import convert_from_path
 
 from .util import STATUSES, STATUS_NAMES, STATUS_SCORES, document_file_path
 
@@ -242,6 +245,26 @@ class ProcessedDocument(models.Model):
         help_text="The original document this processed version is extracted from"
     )
 
+    incident_pgs = ArrayField(
+        ArrayField(
+            models.IntegerField(
+                help_text="Start/end page."
+            ),
+            size=2,
+            help_text="Start and end pages (inclusive) for incident."
+        ),
+        blank=True, null=True,
+        help_text=(
+            "Groups of pages indicating individual reprimands/incidents."
+            " If this field is blank, we assume the document is a single"
+            " incident. This field is only intended to be used with PDFs."
+        )
+    )
+    pages = models.IntegerField(
+        blank=True, null=True,
+        help_text="Pages in this document, if applicable"
+    )
+
     file = models.FileField(
         upload_to=document_file_path,
         max_length=500,
@@ -293,6 +316,70 @@ class ProcessedDocument(models.Model):
             models.Index(fields=('status',)),
         )
         ordering = ('file',)
+
+    @property
+    def filename(self):
+        if not self.file or not self.file.name:
+            return ""
+        return os.path.basename(self.file.name)
+
+    def images(self, overwrite=False):
+        if not self.file:
+            return []
+        if not self.file.path:
+            return []
+
+        pg_filename = "{pdoc_id}-page-{page}.jpg"
+        media_path = "wapd-segment-temp"
+        tmpdir = os.path.join(settings.MEDIA_ROOT, media_path)
+        json_filename = os.path.join(tmpdir, f"{self.pk}-pages.json")
+
+        if not overwrite and os.path.exists(json_filename):
+            print(f"Not overwriting existing pdoc ({self}) images")
+            with open(json_filename, "r") as f:
+                return json.load(f)
+
+        print(f"Parsing: {self}")
+
+        pages = convert_from_path(self.file.path, dpi=200)
+
+        page_count = len(pages)
+        if not page_count:
+            return []
+
+        if not os.path.exists(tmpdir):
+            os.makedirs(tmpdir)
+
+        img_files = []
+        total_pages = 0
+        for idx, page in enumerate(pages):
+            filename = pg_filename.format(
+                pdoc_id=self.pk, page=idx
+            )
+            tmpfile_path = os.path.join(
+                tmpdir, filename
+            )
+
+            if not overwrite and os.path.exists(tmpfile_path):
+                print(f"Not overwriting existing page ({idx})")
+                continue
+
+            page.save(tmpfile_path, "JPEG")
+            url = os.path.join(settings.MEDIA_URL, media_path, filename)
+            img_files.append({
+                "page": idx,
+                "url": url,
+            })
+
+        with open(json_filename, "w") as f:
+            f.write(json.dumps(img_files))
+
+        if len(img_files) >= 2:
+            print(f"Pages: {len(img_files)}")
+
+        return img_files
+
+
 
     def __str__(self):
         friendly_file = self.file

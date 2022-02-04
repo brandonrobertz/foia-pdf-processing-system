@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+    <head>
+      <meta charset="UTF-8">
+      <title>Agencies</title>
+      <script src="https://unpkg.com/hyperscript.org@0.9.4"></script>
+      <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+      <script type="text/javascript" src="{% static 'js/segmentable.js' %}">
+      </script>
+    </head>
+    <body>
+      <link rel="stylesheet" href="{% static 'css/segmentable.css' %}" />
+      
+      <section class="overall-info">
+        <!-- <p class="info incomplete">Unsegmented: {{ unsegmented_pdocs }}</p> -->
+        <p class="info complete">Total Segmented: {{ segmented_pdocs }}</p>
+        <p class="info total">Total pages: {{ total_segmentable_pdocs }}</p>
+      </section>
+      
+      <div class="main">
+        <section class="segmentable-home">
+          {% for agency in agencies %}
+            {% include 'agency.htmx' with agency=agency %}
+          {% endfor %}
+        </section>
+        <section id="zoomed-page">
+        </section>
+    </body>
+</html>

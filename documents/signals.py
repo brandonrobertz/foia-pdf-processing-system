@@ -9,7 +9,7 @@ def update_doc_status(document):
     """
     Keep a document's status in sync with its most processed document.
     """
-    if document.status == "complete":
+    if document.status in ["complete", "case-doc"]:
         return
 
     for syndoc in document.syntheticdocument_set.all():

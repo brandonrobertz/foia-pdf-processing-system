@@ -22,9 +22,29 @@ from documents import views as documents_views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/fieldname_values/count', documents_views.fieldname_value_count),
-    path('api/fieldname_values', documents_views.fieldname_values),
+    path("api/fieldname_values/count", documents_views.fieldname_value_count),
+    path("api/fieldname_values", documents_views.fieldname_values),
+    path("api/segmentable_home",
+         documents_views.GET_segmentable_home,
+         name="segmentable_home"),
+    path("api/agency/<int:id>",
+         documents_views.GET_agency,
+         name="agency"),
+    # TODO: use query args lookups, default shows all ala DRF
+    path("api/pdocs/<int:agency_id>",
+         documents_views.GET_pdocs,
+         name="pdocs"),
+    path("api/pdoc/<int:pdoc_id>",
+         documents_views.GET_pdoc,
+         name="pdoc"),
+    path("api/pdoc_image_segments/<int:pdoc_id>",
+         documents_views.GET_pdoc_image_segments,
+         name="pdoc_image_segments"),
+    path("api/save-segments/<int:pdoc_id>",
+         documents_views.POST_save_image_segments,
+         name="save_segments"),
+
+
 ]
 
 

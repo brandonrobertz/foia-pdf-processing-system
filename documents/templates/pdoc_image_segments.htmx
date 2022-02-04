@@ -1,0 +1,44 @@
+<article class="image-segments"
+         _="on load call applySegments({{ pdoc.pk }}, {{ pdoc.incident_pgs|safe }})">
+  <h3>{{ pdoc.filename }} {% if pdoc.pages >= 2 %}({{ pdoc.pages }} pgs){% endif %}</h3>
+  <p class="info"><code>{{ pdoc.incident_pgs }}</code></p>
+  <div id="image-segments-{{ pdoc.pk }}-inner">
+    <div class="controls">
+      <div>
+        {% if pdoc.incident_pgs %}
+        <button _="on click call applySegments({{ pdoc.pk }}, {{ pdoc.incident_pgs|safe }})">
+          Restore Previous
+        </button>
+        {% endif %}
+        <button class="separate-all"
+                _="on click add .end to .page-image-{{ pdoc.pk }} then call saveSegments({{ pdoc.pk }})">
+          Separate All
+        </button>
+        <button class="combine-all"
+                _="on click remove .end from .page-image-{{ pdoc.pk }} then call saveSegments({{ pdoc.pk }})">
+          Combine All
+        </button>
+      </div>
+      <div>
+        <p class="close"
+           hx-get="{% url 'pdoc' pdoc.pk %}"
+           hx-swap="outerHTML"
+           hx-target="#pdoc-{{ pdoc.pk }}">
+          Close
+        </p>
+      </div>
+    </div>
+    <div class="images-list">
+      {% for img in images %}
+      <div class="page-image page-image-{{ pdoc.pk }}"
+           _="on click toggle .end then call saveSegments({{ pdoc.pk }}, {{ img.page }})">
+        <!-- on mousemove call zoomPage({{ img }}, event) end -->
+        <img src="{{ img.url }}"
+             alt="Page {{ img.page }}"
+             _="on mouseenter call zoomOut({{ img }}, event) end" />
+        <caption>Page {{ img.page }}</caption>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</article>
