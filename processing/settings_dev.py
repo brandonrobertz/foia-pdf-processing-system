@@ -14,6 +14,6 @@ DATABASES = {
         'USER': 'django',
         'PASSWORD': os.getenv("DJANGO_PASSWORD", "insecure!"),
         'HOST': os.getenv("DB_HOST", "localhost"),
-        'PORT': '5432',
+        'PORT': os.getenv("DB_PORT", "5432"),
     }
 }

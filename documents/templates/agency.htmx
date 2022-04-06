@@ -5,7 +5,7 @@
        _="on click add .opened to #agency-{{ agency.pk }}">
     <h2>{{ agency.name }}</h2>
     <p class="info complete">Total Segmented: {{ agency.segmented_pdocs }}</p>
-    <p class="info total">Total pages: {{ agency.total_segmentable_pdocs }}</p>
+    <p class="info total">Total Docs: {{ agency.total_segmentable_pdocs }}</p>
     <p class="instruction">Click to Show documents</p>
   </div>
 </article>

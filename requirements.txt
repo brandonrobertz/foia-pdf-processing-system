@@ -4,3 +4,4 @@ whitenoise==5.2.0
 psycopg2-binary==2.8.6
 django-cities==0.6
 ftfy==6.0.3
+django_markdownfield==0.10.0

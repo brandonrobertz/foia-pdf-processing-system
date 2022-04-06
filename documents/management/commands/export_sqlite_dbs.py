@@ -5,6 +5,7 @@ import itertools
 import json
 import os
 import re
+import shutil
 import sys
 
 from django.core.management.base import BaseCommand
@@ -28,8 +29,6 @@ DOCUMENT_TYPES = [
     # catch-all
     "reprimands-warnings",
 ]
-# where to output our databases
-OUTPUT_DIRECTORY="./data/wa_pd_databases"
 
 
 def matrix(a, b, match_score=3, gap_cost=2):
@@ -164,15 +163,37 @@ class Command(BaseCommand):
     records we've processed.
     """
 
-    prompt = True
-    def should_continue(self):
-        yn = input("Continue? [Y]es/(n)o/(a)ll ").lower()
-        if yn == "n":
-            sys.exit(1)
-        elif yn == "a":
-            self.prompt = False
+    EXPORT_STATUSES = [
+        'complete',
+        'auto-extracted',
+        # # TODO: incorporate these somehow, maybe after
+        # # auto-summarization or auto-extraction?
+        # 'case-doc',
+    ]
+    WIPE = False
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            'output_data_dir',
+            type=str,
+            help="Directory where to write Sqlite DBs"
+        )
+        parser.add_argument(
+            '--wipe',
+            action='store_true',
+            help='Wipe entire output directory before running'
+        )
+        parser.add_argument(
+            '--ignore', type=str,
+            help='Ignore these agencies (comma separated)'
+        )
 
     def convert_processed_doc(self, pdoc):
+        """
+        Open a CSV file attached to a ProcessedDoc, add the headers found to it
+        to the global filename_headers and all_rows data and return the CSV
+        records in tablib Dataset format.
+        """
         with codecs.open(pdoc.file.path, encoding='utf-8-sig') as f:
             # If file starts with (UTF-8 BOM): 0xEFBBBF4F
             # >>> with codecs.open('excel_output.csv', encoding='utf-8-sig') as f:
@@ -254,14 +275,25 @@ class Command(BaseCommand):
         for row in csv.dict:
             table.insert(row, alter=True)
 
+    def db_filepath_from_agency(self, agency):
+        # NOTE: if this changes, change export_metadata_yml
+        # db_filepath_from_agency function as well
+        agency_dbname = re.sub(r"[\s\.]+", "_", agency.name.replace("'", ""))
+        db_filepath = os.path.join(self.OUTPUT_DIRECTORY, f"{agency_dbname}.db")
+        return db_filepath
+
     def process_agency(self, agency):
+        """
+        Process agency. This does the following:
+            - finds the responsive Documents that are eligible for export
+            - dedupes them
+        """
         # a sequence we'll use to join and split headers pre/post cleaning
         # it should be something that won't naturally be found in headers
         JOIN_SEQ = "-~=~-"
-        EXPORT_STATUSES = ["complete", "auto-extracted", "case-doc"]
 
         agency_complete_docs = Document.objects.filter(
-            status__in=EXPORT_STATUSES,
+            status__in=self.EXPORT_STATUSES,
             # skip these, they don't have data, even if marked complete
             no_new_records=False,
             agency=agency,
@@ -285,7 +317,8 @@ class Command(BaseCommand):
         for doc in agency_complete_docs:
             # process PDF/Excel that got converted to CSV via processed doc
             if not doc.file.name.endswith(".csv"):
-                for pdoc in doc.processeddocument_set.filter(status__in=EXPORT_STATUSES):
+                # we can have multiple completed processed docs per Document (Elma PD)
+                for pdoc in doc.processeddocument_set.filter(status__in=self.EXPORT_STATUSES):
                     if not pdoc.file:
                         print("!", "ERROR: skipping blank Processed Doc",
                               pdoc, "Skipping.")
@@ -298,7 +331,6 @@ class Command(BaseCommand):
 
                     pdocs_ids_seen.add(pdoc.id)
 
-                    # with pdoc.file.open(mode='r', encoding='utf-8-sig') as f:
                     csv = self.convert_processed_doc(pdoc)
                     if csv and (pdoc.file.name not in agency_filenames):
                         self.total_rows += len(csv)
@@ -316,10 +348,6 @@ class Command(BaseCommand):
             if header_text not in headers_seen:
                 headers_seen[header_text] = []
             headers_seen[header_text].append(agency_filenames[ix])
-
-        # print()
-        # print("Headers Seen #1")
-        # print(json.dumps(headers_seen, indent=2))
 
         # now we do a second pass, ordered alphabetically, and
         # merge headers that start with the preceeding headers
@@ -371,10 +399,7 @@ class Command(BaseCommand):
                 if len(diff) <= 2:
                     headers_seen[header_text2] += headers_seen.pop(header_text1)
 
-        # print()
-        # print("Headers Seen #2")
-        # print(json.dumps(headers_seen, indent=2))
-
+        # Actually merge the datasets based on the above check scenarios
         n_original = len(agency_csvs)
         n_combined = len(headers_seen.keys())
         if n_original == n_combined:
@@ -416,9 +441,10 @@ class Command(BaseCommand):
             while table_name in used_table_names:
                 suffix += 1
                 table_name = f"{table_basename}{suffix}"
+
             used_table_names.add(table_name)
-            agency_dbname = re.sub(r"[\s\.]+", "_", agency.name.replace("'", ""))
-            db_filepath = os.path.join(OUTPUT_DIRECTORY, f"{agency_dbname}.db")
+
+            db_filepath = self.db_filepath_from_agency(agency)
             db = sqlite_utils.Database(sqlite3.connect(db_filepath))
             table = db[table_name]
             for filename in filenames:
@@ -431,6 +457,9 @@ class Command(BaseCommand):
         return self.total_rows
 
     def handle(self, *args, **options):
+        self.OUTPUT_DIRECTORY = options["output_data_dir"]
+        self.WIPE = options.get("wipe", self.WIPE)
+
         # keep track of all headers seen in every file
         self.filename_headers = tablib.Dataset(headers=[
             "Processed Doc Filename", "Header Name"
@@ -442,21 +471,19 @@ class Command(BaseCommand):
         # every CSV row goes into here (as dicts)
         self.all_rows = []
 
-        if not os.path.exists(OUTPUT_DIRECTORY):
-            os.makedirs(OUTPUT_DIRECTORY)
+        if self.WIPE and os.path.exists(self.OUTPUT_DIRECTORY):
+            print(f"About to delete directory: {self.OUTPUT_DIRECTORY}")
+            yn = input("Are you sure? [y/N] ").lower()
+            if yn == "y":
+                shutil.rmtree(self.OUTPUT_DIRECTORY)
 
-        # Document.objects.filter(status__in=['complete',
-        # 'awaiting-cleaning', 'awaiting-csv', 'awaiting-reading',
-        # 'awaiting-extraction', 'supporting-document', 'case-doc',
-        # 'unchecked']).count()
+        if not os.path.exists(self.OUTPUT_DIRECTORY):
+            os.makedirs(self.OUTPUT_DIRECTORY)
+
         complete_docs = Document.objects.filter(
-            status__in=[
-                'complete',
-                'auto-extracted',
-                'case-doc',
-            ]
+            status__in=self.EXPORT_STATUSES
         )
-        n_complete_docs  = complete_docs.count()
+        n_complete_docs = complete_docs.count()
         print(f"{n_complete_docs} CSVs built from responsive documents")
 
         agencies = Agency.objects.all()

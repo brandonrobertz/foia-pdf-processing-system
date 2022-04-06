@@ -127,3 +127,5 @@ GitHub.sublime-settings
 data/
 all_records.csv
 filename_headers.csv
+
+ner-data*.*json

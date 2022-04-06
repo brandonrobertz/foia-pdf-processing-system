@@ -162,7 +162,10 @@ class AgencyAdmin(CRUDModelAdmin):
     def pct_done(self, obj):
         n_completed = self.status_done(obj)
         n_total = self.responsive(obj)
-        pct = int((n_completed / n_total) * 100)
+        try:
+            pct = int((n_completed / n_total) * 100)
+        except ZeroDivisionError:
+            return '0%'
         return f"{pct}%"
 
     def total(self, obj):

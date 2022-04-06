@@ -2,12 +2,19 @@ body {
   background-color: #efefef;
 }
 
+.overall-info {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  font-size: small;
+}
+
 .main {
   display: flex;
   flex-flow: row wrap;
 }
 .main > section {
-  width: calc(50% - 40px);
+  width: calc(50% - 110px);
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -22,7 +29,7 @@ body {
   align-items: center;
   justify-content: center;
   overflow-y: scroll;
-  height: 100vh;
+  height: calc(100vh - 60px);
 }
 .segmentable-home .agency {
   padding: 20px;
@@ -51,9 +58,18 @@ body {
   margin: 0;
 }
 
-.segmentable-home .loading {
-  transition: background-color 20s ease-out;
-  background-color: rgba(20, 205, 0, 0.7);
+.loading {
+  animation: pulse-animation 2s infinite;
+  /* transition: background-color 20s ease-out; */
+  /* background-color: rgba(20, 205, 0, 0.7); */
+}
+@keyframes pulse-animation {
+  0% {
+    background-color: rgba(0, 200, 0, 0.5);
+  }
+  100% {
+    background-color: rgba(0, 200, 0, 0);
+  }
 }
 .segmentable-home [hx-get] {
   border: 10px solid transparent;

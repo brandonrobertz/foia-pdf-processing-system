@@ -48,6 +48,7 @@ def fieldname_value_count(request):
     return JsonResponse({'status': 'ok'})
 
 
+# TODO: share with export_autoextractable.py mgmt command
 SEGMENTABLE_STATUSES = [
     "awaiting-reading",
     "auto-extracted",
@@ -57,12 +58,13 @@ SEGMENTABLE_STATUSES = [
 ]
 
 
+# TODO: share with export_autoextractable.py mgmt command
 def agency_segmentable_pdocs(agency):
     return ProcessedDocument.objects.filter(
         file__endswith=".ocr.pdf",
         document__agency=agency,
         document__status__in=SEGMENTABLE_STATUSES,
-        pages__gt=0,
+        # pages__gt=1,
     ).order_by("-pages")
 
 

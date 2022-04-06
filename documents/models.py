@@ -6,6 +6,8 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
+from markdownfield.models import MarkdownField, RenderedMarkdownField
+from markdownfield.validators import VALIDATOR_STANDARD
 from pdf2image import convert_from_path
 
 from .util import STATUSES, STATUS_NAMES, STATUS_SCORES, document_file_path
@@ -43,6 +45,12 @@ class FieldCategory(models.Model):
 
 
 class Agency(models.Model):
+    HAVE_OFFICER_NAMES = (
+        ('full', "Full names"),
+        ('last', "Last only"),
+        ('none', "No names"),
+    )
+
     name = models.CharField(
         max_length=300, unique=True
     )
@@ -71,6 +79,52 @@ class Agency(models.Model):
         User, on_delete=models.SET_NULL,
         blank=True, null=True,
         related_name='agencies_updated',
+    )
+
+    have_uof = models.BooleanField(
+        blank=True, null=True,
+        help_text=("Select this if we have UOF data.")
+    )
+
+    have_complaints = models.BooleanField(
+        blank=True, null=True,
+        help_text=("Select this if we have complaint data.")
+    )
+
+    have_structured_data = models.BooleanField(
+        blank=True, null=True,
+        help_text=("Select this if we received structured data from the agency (Excel, etc).")
+    )
+
+    have_incident_summaries = models.BooleanField(
+        blank=True, null=True,
+        help_text=(
+            "Whether or not we have summary information about incidents"
+        )
+    )
+
+    have_full_incident_documents = models.BooleanField(
+        blank=True, null=True,
+        help_text=(
+            "Whether or not we have full incident document files as "
+            "opposed to a summary or just a spreadsheet of incidents."
+        )
+    )
+
+    have_officer_names = models.CharField(
+        blank=True, null=True,
+        max_length=30,
+        choices=HAVE_OFFICER_NAMES,
+        help_text="Whether or not we have officer names",
+    )
+
+
+    notes = MarkdownField(
+        blank=True, default='',
+        rendered_field='notes_html', validator=VALIDATOR_STANDARD
+    )
+    notes_html = RenderedMarkdownField(
+        blank=True, null=True
     )
 
     class Meta:

@@ -7,8 +7,10 @@ import tablib
 
 from documents.models import Agency, Document, ProcessedDocument
 
+
 # Don't steal focus while PDF->Texting
 os.environ["JAVA_TOOL_OPTIONS"] = "-Djava.awt.headless=true"
+
 
 class Command(BaseCommand):
     help = """
@@ -18,6 +20,10 @@ class Command(BaseCommand):
 
     NOTE: This only applies to non-complete documents without a CSV
     processed document!
+
+    NOTE: The status here (going from awaiting-reading to auto-extracted)
+    is also related to the delete_autoextractions mgmt command, so any
+    status changes here need to be reflected over there, too.
     """
     DOCUMENT_TEXT_PROG = lambda _, inp_file: [
         "java",

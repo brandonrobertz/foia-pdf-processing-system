@@ -19,6 +19,7 @@ class Command(BaseCommand):
         pdoc_images = []
         total_pages = 0
         for agency in Agency.objects.all():
+            if "Pouls" not in agency.name: continue
             pdocs = ProcessedDocument.objects.filter(
                 file__endswith=".ocr.pdf",
                 document__agency=agency,
@@ -49,11 +50,10 @@ class Command(BaseCommand):
 
                 tmpdir = os.path.join(settings.MEDIA_ROOT, "wapd-segment-temp")
 
-                # clear it (delete all files)
-                if os.path.exists(tmpdir):
-                    shutil.rmtree(tmpdir)
-
-                os.makedirs(tmpdir)
+                # # clear it (delete all files)
+                # if os.path.exists(tmpdir):
+                #     shutil.rmtree(tmpdir)
+                # os.makedirs(tmpdir)
 
                 img_files = []
                 for idx, page in enumerate(pages):
